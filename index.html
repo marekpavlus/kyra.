@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyra. | Software Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <section id="hero" class="home-hero">
+    <header>
+      <a href="#hero" class="header-logo">Kyra<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <span class="sr-only">Open menu</span>
+      </button>
+      <nav id="mobile-menu">
+        <a href="#hero" class="nav-item"><b>Home</b></a>
+        <a href="#about" class="nav-item">About Me</a>
+        <a href="#portfolio" class="nav-item">Projects</a>
+        <a href="blog.html" class="nav-item">Blog</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </nav>
+      <a href="mailto:info@kyra.com" class="header-btn">Contact Me</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="content">
+      <div class="left">
+        <h3 class="typing-greeting" aria-label="Hello, I'm Marek!"></h3>
+        <h1 class="role-title"><span class="role-title-text"></span></h1>
+        <p>
+          I'm a <b>Software Technology Engineering</b> student at VIA University College in Horsens. 
+          I'm continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL).
+          I enjoy bridging the gap between robust backend logic and intuitive frontend design.
+        </p>
+        <p><i>"Always learning, always coding."</i></p>
+        <div class="cta-section">
+          <a href="#portfolio" class="cta-1" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            My Projects <i class="fa-solid fa-code"></i>
+          </a>
+          <a href="#contact" class="cta-2" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            Hire me <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        <div class="social-section">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-linkedin-in"></i>
+          <i class="fa-brands fa-github"></i>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="img-wrap">
+         <!-- <img class="hero-img" src="pro-pic.png" alt="Marek"> -->
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="section-next" aria-label="Go to About Me">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <section id="about" class="full-section">
+    <div class="section-container">
+      <h2>About <span>Me</span></h2>
+      <p>Tu napíš viac o svojom štúdiu na VIA University College, o tvojich cieľoch a o tom, čo ťa na kódovaní baví najviac.</p>
+    </div>
+    <a href="#portfolio" class="section-next" aria-label="Go to Projects">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+    <a href="#hero" class="section-next section-prev" aria-label="Go to top section">
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <section id="portfolio" class="full-section">
+    <div class="section-container">
+      <h2>My <span>Projects</span></h2>
+      <div class="project-grid">
+        <p>Pracujem na úžasných projektoch v Jave a Pythone. Čoskoro ich tu uvidíte.</p>
+      </div>
+    </div>
+    <a href="#contact" class="section-next" aria-label="Go to Contact">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+    <a href="#about" class="section-next section-prev" aria-label="Go to About Me">
+      <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <section id="contact" class="full-section"> 
+    <div class="section-container">
+    <h2>Get In <span>Touch</span></h2>
+    <p>Máš záujem o spoluprácu? Napíš mi!</p>
+    <a href="mailto:info@kyra.com" class="header-btn" style="margin: 20px auto;">Send Email</a>
+  </div>
+  <a href="#portfolio" class="section-next section-prev" aria-label="Go to Projects">
+    <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+  </a>
+</section>
+
+  <footer id="footer">
+    <a href="#hero" class="footer-logo">Kyra<span>.</span></a>
+    <p>&copy; 2026 Kyra. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

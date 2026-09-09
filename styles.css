@@ -14,7 +14,7 @@
     90deg,
     white 0%,
     white 50%,
-    rgb(255, 126, 45, 0.2) 100%
+    rgba(255, 126, 45, 0.2) 100%
   );
   --dark-page-gradient: linear-gradient(
     90deg,
@@ -177,7 +177,7 @@ nav {
 
 .header-btn:hover {
   background-color: rgb(224, 96, 24);
-  box-shadow: 0 4px 3px rgba(224, 96, 24, 0.3);
+  box-shadow: 0 4px 3px rgba(184, 40, 18, 0.3);
 }
 
 .theme-toggle {
@@ -227,7 +227,7 @@ body.dark-mode header {
 
 html:has(body.dark-mode) {
   background: var(--dark-page-gradient) no-repeat;
-  background-color: rgb(43, 58, 85);
+  background-color: #2b3a55;
   background-size: 100vw 100vh;
 }
 
@@ -529,6 +529,66 @@ body.dark-mode .section-next:hover {
   margin: 0 auto;
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  width: min(100%, 900px);
+  margin: 40px auto 0;
+  text-align: left;
+}
+
+.project-card {
+  background: rgba(43, 58, 85, 0.03);
+  border: 1px solid rgba(43, 58, 85, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.project-card h3 {
+  color: rgba(43, 58, 85, 0.9);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.project-card h3 span {
+  color: rgb(255, 126, 45);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.project-card p {
+  color: grey;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.project-card code {
+  background: rgba(255, 126, 45, 0.1);
+  color: rgb(255, 126, 45);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .project-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-mode .project-card h3 {
+  color: white;
+}
+
+body.dark-mode .project-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .project-card code {
+  background: rgba(255, 126, 45, 0.16);
+  color: rgb(255, 126, 45);
+}
+
 /* --- FOOTER --- */
 footer {
   position: relative;
@@ -784,6 +844,11 @@ body.dark-mode .footer-logo:hover {
   
   .section-container h2 { font-size: 2.5rem; }
 
+  .project-grid {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+  }
+
   footer {
     display: flex;
     flex-direction: column;
@@ -891,11 +956,11 @@ body.dark-mode .footer-logo:hover {
     90deg,
     white 0%,
     white 50%,
-    rgb(255, 126, 45, 0.2) 100%
+    rgba(255, 126, 45, 0.2) 100%
   );
   --dark-page-gradient: linear-gradient(
     90deg,
-    rgb(43, 58, 85) 0%,
+    #2b3a55 0%,
     rgb(43, 58, 85) 50%,
     rgb(105, 69, 45) 100%
   );

@@ -1,2 +1,1 @@
-# Kyra.
-## Portfolio website
+# Kyra. portfolio website

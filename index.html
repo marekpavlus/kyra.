@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags & Viewport -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-language="meta.title">Kyra. | Software Engineer</title>
+    <!-- Favicon Icons -->
+    <link href="./images/kyra.favicon.ico" rel="icon" type="image/x-icon"/>
+    <link href="./images/kyra.favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+    <script>
+      try {
+      if (localStorage.getItem('kyra-theme') === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+      }
+      } catch (error) {
+      console.error('Unable to restore the saved color theme.', error);
+      }
+    </script>
+
+    <script>
+      (function () {
+      var supported = ['en', 'sk', 'da'];
+      var lang = 'en';
+      try {
+      var fromUrl = new URLSearchParams(window.location.search).get('lang');
+      if (fromUrl === 'dk') fromUrl = 'da';
+      var saved = localStorage.getItem('kyra-lang');
+      if (supported.indexOf(fromUrl) !== -1) { lang = fromUrl; localStorage.setItem('kyra-lang', lang); }
+      else if (supported.indexOf(saved) !== -1) { lang = saved; }
+      } catch (error) { console.error('Unable to read or save the selected language.', error); }
+      document.documentElement.lang = lang;
+      if (lang !== 'en') {
+      document.documentElement.classList.add('language-pending');
+      window.setTimeout(function () { document.documentElement.classList.remove('language-pending'); }, 2000);
+      }
+      })();
+    </script>
+
+    <!-- Stylesheets & Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+  </head>
+
+  <body>
+    <script>
+      if (document.documentElement.classList.contains('dark-mode')) {
+      document.body.classList.add('dark-mode');
+      }
+    </script>
+
+    <!-- ==========================================
+         HOME
+         ========================================== -->
+    <section class="home-hero" id="hero">
+      <header>
+        <a class="header-logo" href="#hero">Kyra<span>.</span></a>
+        <button aria-controls="mobile-menu" aria-expanded="false" class="menu-toggle" type="button">
+          <i aria-hidden="true" class="fa-solid fa-bars"></i>
+          <span class="sr-only" data-language="ui.openMenu">Open menu</span>
+        </button>
+        <nav id="mobile-menu">
+          <a class="nav-item is-active" data-language="nav.home" href="#hero">Home</a>
+          <a class="nav-item" data-language="nav.about" data-language-attr="data-search-terms:nav.aboutTerms" data-search-terms="skills technical skills" href="#about">About Me</a>
+          <a class="nav-item" data-language="nav.projects" href="#portfolio">Projects</a>
+          <a class="nav-item" data-language="nav.blog" data-language-attr="href:nav.blogHref" href="blog.html">Blog</a>
+          <a class="nav-item" data-language="nav.contact" href="#contact">Contact</a>
+          <!-- MOBILE LANGUAGE MENU -->
+          <div class="lang-switcher mobile-lang">
+            <button aria-label="Change language" class="lang-btn" data-language-attr="aria-label:ui.changeLanguage" type="button">
+              <img alt="EN" src="https://flagcdn.com/gb.svg"/>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown">
+              <a class="lang-option" data-lang="en" href="?lang=en">
+                <img alt="EN" src="https://flagcdn.com/gb.svg"/>EN - English
+              </a>
+              <a class="lang-option" data-lang="sk" href="?lang=sk">
+                <img alt="SK" src="https://flagcdn.com/sk.svg"/>SK - Slovenčina
+              </a>
+              <a class="lang-option" data-lang="da" href="?lang=da">
+                <img alt="DK" src="https://flagcdn.com/dk.svg"/>DA - Dansk
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div class="header-search" data-close-label="Close search" data-language-attr="data-pages-label:search.pages;data-projects-label:search.projects;data-no-results:search.noResults;data-projects-empty:search.projectsEmpty;data-open-label:search.open;data-close-label:search.close" data-no-results="No matching pages or projects." data-open-label="Open search" data-pages-label="Sections" data-projects-empty="No projects match your search." data-projects-label="Projects" data-site-search="">
+          <input aria-label="Search projects and pages" autocomplete="off" class="header-search-input" data-language-attr="placeholder:search.placeholder;aria-label:search.ariaLabel" id="site-search" placeholder="Search..." type="search"/>
+          <button aria-controls="site-search-results" aria-expanded="false" aria-label="Open search" class="header-search-toggle" data-language-attr="aria-label:search.open" type="button">
+            <i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <div aria-live="polite" class="header-search-dropdown" id="site-search-results">
+            <div class="header-search-results"></div>
+          </div>
+        </div>
+        <a class="header-btn" data-language="header.contactMe" href="mailto:info@kyra.com">Contact Me</a>
+        <!-- Light/Dark Mode Toggle | Language Switcher -->
+        <div class="header-controls">
+          <button aria-label="Switch to dark mode" class="theme-toggle" data-language-attr="aria-label:ui.switchToDark" type="button">
+            <i aria-hidden="true" class="fa-regular fa-lightbulb"></i>
+          </button>
+          <div class="lang-switcher desktop-lang">
+            <button aria-label="Change language" class="lang-btn" data-language-attr="aria-label:ui.changeLanguage" type="button">
+              <img alt="EN" src="https://flagcdn.com/gb.svg"/>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="lang-dropdown">
+              <a class="lang-option" data-lang="en" href="?lang=en">
+                <img alt="EN" src="https://flagcdn.com/gb.svg"/>English
+              </a>
+              <a class="lang-option" data-lang="sk" href="?lang=sk">
+                <img alt="SK" src="https://flagcdn.com/sk.svg"/>Slovenčina
+              </a>
+              <a class="lang-option" data-lang="da" href="?lang=da">
+                <img alt="DK" src="https://flagcdn.com/dk.svg"/>Dansk
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="left">
+          <h3 aria-label="Hello, I’m Marek!" class="typing-greeting" data-language-attr="aria-label:hero.greeting"></h3>
+          <h1 class="role-title"><span class="role-title-text"></span></h1>
+          <p data-language-html="hero.intro">
+            I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens.
+            I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL).
+            I enjoy bridging the gap between robust backend logic and intuitive frontend design.
+          </p>
+          <p><i data-language="hero.quote">"Always learning, always coding."</i></p>
+          <div class="cta-section">
+            <a class="cta-1" href="#portfolio" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;"><span data-language="hero.ctaProjects">My Projects</span><i class="fa-solid fa-code"></i>
+            </a>
+            <a class="cta-2" href="#contact" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;"><span data-language="hero.ctaHire">Hire me</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          <div class="social-section">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <a aria-label="Visit my LinkedIn profile" data-language-attr="aria-label:hero.linkedin" href="https://www.linkedin.com/in/marekpavlus" rel="noopener noreferrer" target="_blank">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a aria-label="Visit my GitHub profile" data-language-attr="aria-label:hero.github" href="https://github.com/marekpavlus" rel="noopener noreferrer" target="_blank">
+              <i aria-hidden="true" class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="img-wrap">
+            <!-- <img class="hero-img" src="pro-pic.png" alt="Marek"> -->
+          </div>
+        </div>
+      </div>
+      <a aria-label="Go to About Me" class="section-next" data-language-attr="aria-label:ui.goToAbout" href="#about">
+        <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         ABOUT ME
+         ========================================== -->
+    <section class="full-section" id="about">
+      <div class="section-container">
+        <h2 data-language-html="about.title">My <span>Story</span></h2>
+        <div class="about-bio">
+          <p data-language-html="about.paragraphs.0">
+            I’m Marek, a <b>Software Technology Engineering</b> student at
+            <b>VIA University College</b> in Denmark.
+          </p>
+          <p data-language-html="about.paragraphs.1">
+            I have a passion for <b>problem-solving</b> and enjoy the process of designing
+            and implementing software solutions that are both efficient and maintainable.
+            My goal is to create applications that not only meet user needs but also adhere
+            to <b>best practices in software engineering</b>.
+          </p>
+          <div aria-hidden="true" class="about-more-content" id="about-more-content" inert="">
+            <div class="about-more-content-inner">
+              <p data-language-html="about.moreParagraphs.0">
+                I’m originally from <b>Slovakia</b>, and I have lived in
+                <b>Denmark since 2022</b>. Before starting my degree, I worked full-time
+                in manufacturing and logistics, an experience that taught me discipline,
+                reliability and how to work effectively in <b>international teams</b>.
+              </p>
+              <p data-language-html="about.moreParagraphs.1">
+                My journey into <b>software development</b> began with a curiosity for how
+                things work and a desire to create. I started learning programming through
+                online courses and personal projects, which led me to pursue formal
+                education in software engineering.
+              </p>
+              <p data-language-html="about.moreParagraphs.2">
+                Today, I’m continuously expanding my skills through
+                <b>university and personal projects</b>, exploring technologies such as
+                Spring Boot, .NET and distributed systems while strengthening my knowledge
+                of software architecture, databases and web development.
+              </p>
+              <p data-language-html="about.moreParagraphs.3">
+                I’m currently looking for <b>professional opportunities</b> where I can
+                gain experience, contribute to real-world software and continue developing
+                as a software engineer.
+              </p>
+            </div>
+          </div>
+          <button aria-controls="about-more-content" aria-expanded="false" class="about-more-toggle" data-language="about.readMore" data-language-attr="data-more-label:about.readMore;data-less-label:about.readLess" data-less-label="Read less -" data-more-label="Read more +" type="button">Read more +</button>
+        </div>
+        <a class="about-cv-link" download="CV - Marek Pavlus.pdf" href="./CV%20-%20Marek%20Pavlus.pdf">
+          CV <i aria-hidden="true" class="fa-solid fa-download"></i>
+        </a>
+      </div>
+      <div class="section-container skills-content">
+        <div aria-label="Skills" class="skill-groups" data-language-attr="aria-label:about.skillsLabel" id="skills">
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.0">Programming Languages</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"/><span>Java</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"/><span>C#</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/><span>Python</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/><span>JavaScript</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.1">Frontend</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/><span>HTML</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/><span>CSS</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.2">Backend &amp; APIs</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg"/><span>RabbitMQ</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/dotnet/512BD4"/><span>.NET</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/springboot/6DB33F"/><span>Spring Boot</span></div>
+              <div class="skill-item skill-rest"><i aria-hidden="true" class="fa-solid fa-code skill-symbol"></i><span>REST API</span></div>
+              <div class="skill-item skill-grpc"><i aria-hidden="true" class="fa-solid fa-share-nodes skill-symbol"></i><span>gRPC</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.3">Databases</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/><span>PostgreSQL</span></div>
+              <div class="skill-item skill-sql"><i aria-hidden="true" class="fa-solid fa-database skill-symbol"></i><span>SQL</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"/><span>SQL Server</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.4">Cloud &amp; DevOps</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"/><span>Docker</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"/><span>Azure</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.5">Collaboration Tools</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/github/181717"/><span>GitHub</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/><span>Git</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/gitlab/FCA121"/><span>GitLab</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/jira/0052CC"/><span>Jira</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.6">Marketing &amp; Analytics</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/facebook/4267B2"/><span>Facebook Ads</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/shopify/7AB55C"/><span>Shopify</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/googleanalytics/E37400"/><span>Google Analytics</span></div>
+              <div class="skill-item skill-looker"><i aria-hidden="true" class="fa-solid fa-chart-column skill-symbol"></i><span>Google Data Studio</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <a aria-label="Go to Technical Skills" class="section-next" data-language-attr="aria-label:ui.goSkills;data-label-after:ui.goProjects;data-label-before:ui.goSkills" data-label-after="Go to Projects" data-label-before="Go to Technical Skills" href="#skills">
+        <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+      </a>
+      <a aria-label="Go to top section" class="section-next section-prev" data-language-attr="aria-label:ui.goTop;data-label-after:ui.goAbout;data-label-before:ui.goTop" data-label-after="Go to About Me" data-label-before="Go to top section" href="#hero">
+        <i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         MY PROJECTS
+         ========================================== -->
+    <section class="full-section" id="portfolio">
+      <div class="section-container">
+        <h2 data-language-html="projects.title">My <span>Projects</span></h2>
+        <div class="projects-container">
+          <!-- ==========================================
+               01 - PERSONAL FINANCE API
+               ========================================== -->
+          <article class="project-showcase" id="project-finance-api">
+            <div class="project-image">
+              <div class="project-image-placeholder">
+                <i class="fa-solid fa-code"></i>
+                <span>Project screenshot coming soon</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <span class="project-status in-progress">
+                  <span class="status-dot"></span><span data-language-html="projects.items.finance_api.status">In Development</span></span>
+                  <span class="project-number">01</span>
+              </div>
+              <h3>Personal Finance API</h3>
+              <p data-language-html="projects.items.finance_api.description">
+                A backend application for managing personal finances, accounts and
+                transactions. Built to explore REST API design, layered architecture,
+                data persistence and backend development with Spring Boot.
+              </p>
+              <div class="project-tech">
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"/>
+                  Java
+                </span>
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.simpleicons.org/springboot/6DB33F"/>
+                  Spring Boot
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-code"></i>
+                  REST API
+                </span>
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/>
+                  PostgreSQL
+                </span>
+              </div>
+            </div>
+          </article>
+          <!-- ==========================================
+               02 - HOTEL AURORA CLIFFS
+               ========================================== -->
+          <article class="project-showcase" id="project-hotel">
+            <div class="project-image">
+              <div class="project-image-placeholder">
+                <i class="fa-solid fa-hotel"></i>
+                <span>Project screenshot coming soon</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <span class="project-status completed">
+                  <span class="status-dot"></span><span data-language-html="projects.items.hotel.status">Completed</span></span>
+                  <span class="project-number">02</span>
+              </div>
+              <h3>Hotel Aurora Cliffs</h3>
+              <p data-language-html="projects.items.hotel.description">
+                A multi-user hotel management and reservation system developed as a
+                university semester project. The application supports room searching,
+                reservations, check-in and check-out while connecting the client
+                application to a PostgreSQL database.
+              </p>
+              <div class="project-tech">
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"/>
+                  Java
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-desktop"></i>
+                  JavaFX
+                </span>
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/>
+                  PostgreSQL
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-diagram-project"></i>
+                  MVVM
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-flask"></i>
+                  JUnit
+                </span>
+              </div>
+            </div>
+          </article>
+          <!-- ==========================================
+               03 - BANK TRANSFER SYSTEM
+               ========================================== -->
+          <article class="project-showcase" id="project-bank">
+            <!-- Screenshot Carousel -->
+            <div class="project-image">
+              <div class="project-carousel">
+                <div class="project-carousel-track">
+                  <!-- Screenshot 1: Login -->
+                  <img alt="Bank Transfer System login screen" class="project-carousel-image active" src="./images/projects/bankingapp/login.png"/>
+                  <!-- Screenshot 2: Register -->
+                  <img alt="Bank Transfer System account registration screen" class="project-carousel-image" src="./images/projects/bankingapp/register.png"/>
+                  <!-- Screenshot 3: Empty dashboard -->
+                  <img alt="Bank Transfer System dashboard with an empty transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-empty.png"/>
+                  <!-- Screenshot 4: Dashboard with transactions -->
+                  <img alt="Bank Transfer System dashboard with transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-transactions.png"/>
+                </div>
+                <!-- Carousel Navigation Dots -->
+                <div aria-label="Bank Transfer System screenshots" class="project-carousel-dots">
+                  <button aria-label="Show screenshot 1" class="project-carousel-dot active" data-language-attr="aria-label:projects.carouselLabels.0" type="button"></button>
+                  <button aria-label="Show screenshot 2" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.1" type="button"></button>
+                  <button aria-label="Show screenshot 3" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.2" type="button"></button>
+                  <button aria-label="Show screenshot 4" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.3" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <!-- Project Information -->
+            <div class="project-info">
+              <div class="project-top">
+                <span class="project-status in-progress">
+                  <span class="status-dot"></span><span data-language-html="projects.items.bank.status">In Development</span></span>
+                  <span class="project-number">03</span>
+              </div>
+              <h3>Bank Transfer System</h3>
+              <p data-language-html="projects.items.bank.description">
+                A desktop banking application where users can create accounts,
+                manage balances and transfer money between clients. The project
+                focuses on object-oriented design, application logic and building
+                a structured JavaFX user interface.
+              </p>
+              <div class="project-tech">
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"/>
+                  Java
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-desktop"></i>
+                  JavaFX
+                </span>
+                <span>
+                  <i aria-hidden="true" class="fa-solid fa-cubes"></i>
+                  OOP
+                </span>
+              </div>
+            </div>
+          </article>
+          <!-- ==========================================
+               04 - KYRA. PORTFOLIO
+               ========================================== -->
+          <article class="project-showcase" id="project-kyra">
+            <div class="project-image">
+              <div class="project-carousel">
+                <div class="project-carousel-track">
+                  <img alt="KYRA. light mode logo" class="project-carousel-image active" src="./images/projects/kyra./Kyra. light.png"/>
+                  <img alt="KYRA. portfolio in light mode" class="project-carousel-image" src="./images/projects/kyra./Kyra. 1.png"/>
+                  <img alt="KYRA. dark mode logo" class="project-carousel-image" src="./images/projects/kyra./Kyra. dark.png"/>
+                  <img alt="KYRA. portfolio in dark mode" class="project-carousel-image" src="./images/projects/kyra./Kyra. 2.png"/>
+                </div>
+                <div aria-label="KYRA. Portfolio screenshots" class="project-carousel-dots">
+                  <button aria-label="Show KYRA. light logo" class="project-carousel-dot active" data-language-attr="aria-label:projects.carouselLabels.4" type="button"></button>
+                  <button aria-label="Show KYRA. light mode portfolio" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.5" type="button"></button>
+                  <button aria-label="Show KYRA. dark logo" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.6" type="button"></button>
+                  <button aria-label="Show KYRA. dark mode portfolio" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.7" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-top">
+                <span class="project-status in-progress">
+                  <span class="status-dot"></span><span data-language-html="projects.items.kyra.status">In Development</span></span>
+                  <span class="project-number">04</span>
+              </div>
+              <h3>KYRA. Portfolio</h3>
+              <p data-language-html="projects.items.kyra.description">
+                My personal developer portfolio, designed and built from scratch
+                to showcase my projects, skills and experience. The website includes
+                responsive layouts, dark mode, multilingual support, animations
+                and custom interactive components.
+              </p>
+              <div class="project-tech">
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/>
+                  HTML
+                </span>
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/>
+                  CSS
+                </span>
+                <span>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/>
+                  JavaScript
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Search Empty State -->
+        <p class="project-search-empty" data-language-html="projects.empty" hidden="">
+          No projects match your search.
+        </p>
+      </div>
+      <!-- Navigation -->
+      <a aria-label="Go to Contact" class="section-next" data-language-attr="aria-label:ui.goContact" href="#contact">
+        <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+      </a>
+      <a aria-label="Go to Technical Skills" class="section-next section-prev" data-language-attr="aria-label:ui.goSkills" href="#skills">
+        <i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         PROJECT IMAGE LIGHTBOX
+         ========================================== -->
+    <div aria-hidden="true" aria-label="Project screenshot preview" aria-modal="true" class="project-lightbox" id="project-lightbox" role="dialog">
+      <button aria-label="Close image preview" class="project-lightbox-close" data-language-attr="aria-label:ui.closePreview" type="button">
+        <i aria-hidden="true" class="fa-solid fa-xmark"></i>
+      </button>
+      <img alt="" class="project-lightbox-image" src=""/>
+      <button aria-label="Previous screenshot" class="project-lightbox-nav project-lightbox-previous" data-language-attr="aria-label:ui.previousScreenshot" type="button">
+        <i aria-hidden="true" class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button aria-label="Next screenshot" class="project-lightbox-nav project-lightbox-next" data-language-attr="aria-label:ui.nextScreenshot" type="button">
+        <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- ==========================================
+         CONTACT
+         ========================================== -->
+    <section class="full-section" id="contact">
+      <div class="section-container">
+        <h2 data-language-html="contact.title">Get In <span>Touch</span></h2>
+        <p data-language-html="contact.intro">Are you interested in collaborating? Write to me!</p>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-first-name"><span data-language-html="contact.firstName">First name </span><span aria-hidden="true" class="required-marker">*</span></label>
+              <input data-language-attr="placeholder:contact.firstPlaceholder" id="cf-first-name" name="firstName" placeholder="Your first name" required="" type="text"/>
+            </div>
+            <div class="form-field">
+              <label for="cf-last-name"><span data-language-html="contact.lastName">Last name </span><span aria-hidden="true" class="required-marker">*</span></label>
+              <input data-language-attr="placeholder:contact.lastPlaceholder" id="cf-last-name" name="lastName" placeholder="Your last name" required="" type="text"/>
+            </div>
+          </div>
+          <div class="form-field form-field-full">
+            <label for="cf-email"><span data-language-html="contact.email">Email </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <input data-language-attr="placeholder:contact.emailPlaceholder" id="cf-email" name="email" placeholder="email@example.com" required="" type="email"/>
+          </div>
+          <div class="form-field form-field-full">
+            <label for="cf-subject"><span data-language-html="contact.subject">Subject </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <input data-language-attr="placeholder:contact.subjectPlaceholder" id="cf-subject" name="subject" placeholder="Ex. project collaboration, job opportunity, etc." required="" type="text"/>
+          </div>
+          <div class="form-field form-field-full">
+            <label for="cf-message"><span data-language-html="contact.message">Message </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <textarea data-language-attr="placeholder:contact.messagePlaceholder" id="cf-message" name="message" placeholder="Your message..." required="" rows="5"></textarea>
+          </div>
+          <button class="header-btn contact-submit" data-language-html="contact.submit" type="submit">
+            Send Email
+          </button>
+        </form>
+      </div>
+      <a aria-label="Go to Portfolio" class="section-next section-prev" data-language-attr="aria-label:ui.goPortfolio" href="#portfolio">
+        <i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
+      </a>
+    </section>
+    
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="footer">
+      <a class="footer-logo" href="#hero">Kyra<span>.</span></a>
+      <p data-language-html="footer.copyright">© 2026 Kyra. All rights reserved.</p>
+      <div class="footer-contact">
+        <p><i class="fa-solid fa-envelope"></i><span class="footer-contact-label" data-language-html="footer.emailLabel">email:</span>  <a href="mailto:info@kyra.com">info@kyra.com</a></p>
+        <p><i class="fa-solid fa-phone"></i><span class="footer-contact-label" data-language-html="footer.phoneLabel">phone:</span>  <a href="tel:+4552751374">+45 52 75 13 74</a></p>
+      </div>
+    </footer>
+    <div aria-label="Page scroll progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="scroll-progress" data-language-attr="aria-label:ui.scrollProgress" role="progressbar">
+      <span class="scroll-progress-fill"></span>
+    </div>
+    <!-- JavaScript -->
+    <script src="translations.js"></script><script src="language.js"></script><script src="script.js"></script>
+  </body>
+</html>

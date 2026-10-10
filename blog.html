@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- META TAGS & VIEWPORT -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Kyra. | Blog</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="./images/kyra.favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/kyra.favicon.ico">
+   
+    <!-- RESTORE SAVED THEME BEFORE PAGE RENDERS -->
+    <script>
+    try {
+      if (localStorage.getItem('kyra-theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    } catch (error) {
+      console.error('Unable to restore the saved color theme.', error);
+    }
+    </script>
+
+    <!-- RESTORE SELECTED LANGUAGE BEFORE PAGE RENDERS -->
+    <script>
+(function () {
+  var supported = ['en', 'sk', 'da'];
+  var lang = 'en';
+  try {
+    var fromUrl = new URLSearchParams(window.location.search).get('lang');
+    if (fromUrl === 'dk') fromUrl = 'da';
+    var saved = localStorage.getItem('kyra-lang');
+    if (supported.indexOf(fromUrl) !== -1) { lang = fromUrl; localStorage.setItem('kyra-lang', lang); }
+    else if (supported.indexOf(saved) !== -1) { lang = saved; }
+  } catch (error) { console.error('Unable to read or save the selected language.', error); }
+  document.documentElement.lang = lang;
+  if (lang !== 'en') {
+    document.documentElement.classList.add('language-pending');
+    window.setTimeout(function () { document.documentElement.classList.remove('language-pending'); }, 2000);
+  }
+})();
+    </script>
+    
+    <!-- STYLESHEETS & ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body class="blog-loading-page">
+    <script>
+    if (document.documentElement.classList.contains('dark-mode')) {
+      document.body.classList.add('dark-mode');
+    }
+    </script>
+
+    <!-- ==========================================
+         BLOG HEADER & NAVIGATION
+         ========================================== -->
+    <header>
+      <a href="index.html?lang=en#hero" class="header-logo">Kyra<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="blog-navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <nav id="blog-navigation" aria-label="Main navigation">
+        <a href="index.html?lang=en#hero" class="nav-item" data-language="nav.home">Home</a>
+        <a href="index.html?lang=en#about" class="nav-item" data-language="nav.about">About Me</a>
+        <a href="index.html?lang=en#portfolio" class="nav-item" data-language="nav.projects">Projects</a>
+        <a href="blog.html" class="nav-item is-active" aria-current="page" data-language="nav.blog">Blog</a>
+        <a href="index.html?lang=en#contact" class="nav-item" data-language="nav.contact">Contact</a>
+
+        <!-- MOBILE LANGUAGE SWITCHER -->
+        <div class="lang-switcher mobile-lang">
+          <button class="lang-btn" type="button" aria-label="Change language" aria-expanded="false">
+            <img src="https://flagcdn.com/gb.svg" alt="English">
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="lang-dropdown">
+            <a href="?lang=en" data-lang="en" class="lang-option active" aria-current="page"><img src="https://flagcdn.com/gb.svg" alt="">EN - English</a>
+            <a href="?lang=sk" data-lang="sk" class="lang-option"><img src="https://flagcdn.com/sk.svg" alt="">SK - Slovenčina</a>
+            <a href="?lang=da" data-lang="da" class="lang-option"><img src="https://flagcdn.com/dk.svg" alt="">DA - Dansk</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- HEADER SEARCH -->
+      <div class="header-search" data-site-search
+        data-pages-label="Sections"
+        data-projects-label="Projects"
+        data-no-results="No matching pages or projects."
+        data-projects-empty="No projects match your search."
+        data-open-label="Open search"
+        data-close-label="Close search">
+        <input class="header-search-input" id="site-search" type="search" placeholder="Search..."
+        aria-label="Search projects and pages" autocomplete="off">
+        <button class="header-search-toggle" type="button" aria-label="Open search"
+          aria-expanded="false" aria-controls="site-search-results">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+        <div class="header-search-dropdown" id="site-search-results" aria-live="polite">
+          <div class="header-search-results"></div>
+        </div>
+      </div>
+
+      <a href="mailto:info@kyra.com" class="header-btn" data-language="header.contactMe">Contact Me</a>
+
+      <!-- THEME TOGGLE & DESKTOP LANGUAGE SWITCHER -->
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="fa-regular fa-lightbulb" aria-hidden="true"></i>
+        </button>
+        <div class="lang-switcher desktop-lang">
+          <button class="lang-btn" type="button" aria-label="Change language" aria-expanded="false">
+            <img src="https://flagcdn.com/gb.svg" alt="English">
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="lang-dropdown">
+            <a href="?lang=en" data-lang="en" class="lang-option active" aria-current="page"><img src="https://flagcdn.com/gb.svg" alt="">English</a>
+            <a href="?lang=sk" data-lang="sk" class="lang-option"><img src="https://flagcdn.com/sk.svg" alt="">Slovenčina</a>
+            <a href="?lang=da" data-lang="da" class="lang-option"><img src="https://flagcdn.com/dk.svg" alt="">Dansk</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==========================================
+         BLOG LOADING SCREEN
+         ========================================== -->
+    <main class="blog-loading-content" aria-labelledby="blog-loading-title">
+      <div class="blog-loading-indicator" role="status" aria-live="polite">
+        <h1 id="blog-loading-title" class="blog-loading-title" data-language="blog.loading">LOADING</h1>
+        <span class="blog-loading-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span>
+        <span class="blog-loading-track" role="progressbar" aria-label="The blog is loading" data-language-attr="aria-label:blog.loadingAria"></span>
+      </div>
+    </main>
+
+    <!-- TRANSLATIONS & BLOG INTERACTIONS -->
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="blog.js"></script>
+  </body>
+</html>

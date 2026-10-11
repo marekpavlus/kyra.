@@ -44,6 +44,20 @@ updateHeaderVisibility();
  * 02. SCROLL PROGRESS INDICATOR
  * ==========================================
  */
+// Measure the fixed navbar so the mobile/tablet progress track starts beneath it.
+const progressNavbar = document.querySelector('header');
+
+function updateProgressNavbarHeight() {
+  if (progressNavbar) {
+    document.documentElement.style.setProperty(
+      '--kyra-navbar-height', `${progressNavbar.getBoundingClientRect().height}px`
+    );
+  }
+}
+
+updateProgressNavbarHeight();
+window.addEventListener('resize', updateProgressNavbarHeight);
+
 const scrollProgress = document.querySelector('.scroll-progress');
 
 if (scrollProgress) {
@@ -235,8 +249,9 @@ function getMobileSkillSnapOffset() {
   }
 
   const header = document.querySelector('header');
+  const phoneExtraOffset = window.innerWidth <= 430 ? 35 : 0;
   return header instanceof HTMLElement
-    ? Math.ceil(header.getBoundingClientRect().bottom + 12)
+    ? Math.ceil(header.getBoundingClientRect().bottom + 12 + phoneExtraOffset)
     : 0;
 }
 

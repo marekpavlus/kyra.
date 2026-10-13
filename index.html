@@ -19,8 +19,9 @@
     <meta name="twitter:image" content="https://marekpavlus.github.io/kyra./images/og-preview.jpg"/>
     <title data-language="meta.title">Kyra. | Software Engineer</title>
     <!-- Favicon Icons -->
-    <link href="./images/kyra.favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="./images/kyra.favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-k-transparent-2026.png?v=2">
+    <link href="images/kyra-k-transparent-2026.ico?v=2" rel="icon" type="image/x-icon"/>
+    <link href="images/kyra-k-transparent-2026.ico?v=2" rel="shortcut icon" type="image/x-icon"/>
 
     <script>
       try {
@@ -68,7 +69,7 @@
          ========================================== -->
     <section class="home-hero" id="hero">
       <header>
-        <a class="header-logo" href="#hero">Kyra<span>.</span></a>
+        <a class="header-logo" href="#hero" aria-label="KYRA. – Home"><img class="brand-logo brand-logo-light" src="images/logo/kyra-official-logo-light.png" alt="KYRA."/><img class="brand-logo brand-logo-dark" src="images/logo/kyra-official-logo-dark.png" alt="" aria-hidden="true"/></a>
         <button aria-controls="mobile-menu" aria-expanded="false" class="menu-toggle" type="button">
           <i aria-hidden="true" class="fa-solid fa-bars"></i>
           <span class="sr-only" data-language="ui.openMenu">Open menu</span>
@@ -76,14 +77,23 @@
         <nav id="mobile-menu">
           <a class="nav-item is-active" data-language="nav.home" href="#hero">Home</a>
           <a class="nav-item" data-language="nav.about" data-language-attr="data-search-terms:nav.aboutTerms" data-search-terms="skills technical skills" href="#about">About Me</a>
-          <a class="nav-item" data-language="nav.projects" href="#portfolio">Projects</a>
+          <div class="projects-switcher">
+          <a class="nav-item projects-trigger" href="#portfolio" data-language="nav.projects">Projects</a>
+          <button type="button" class="projects-chevron" aria-label="Show projects" aria-expanded="false"><span class="kyra-chevron-pair" aria-hidden="true"><i class="fa-solid fa-chevron-down kyra-chevron-down"></i><i class="fa-solid fa-chevron-up kyra-chevron-up"></i></span></button>
+          <div class="projects-dropdown">
+            <a class="projects-option" href="projects/personal-finance-api.html">Personal Finance API</a>
+            <a class="projects-option" href="projects/hotel-aurora-cliffs.html">Aurora Cliffs Hotel System</a>
+            <a class="projects-option" href="projects/bank-transfer-system.html">KYRA. Bank System</a>
+            <a class="projects-option" href="projects/kyra-portfolio.html">KYRA. Portfolio</a>
+          </div>
+          </div>
           <a class="nav-item" data-language="nav.blog" data-language-attr="href:nav.blogHref" href="blog.html">Blog</a>
           <a class="nav-item" data-language="nav.contact" href="#contact">Contact</a>
           <!-- MOBILE LANGUAGE MENU -->
           <div class="lang-switcher mobile-lang">
-            <button aria-label="Change language" class="lang-btn" data-language-attr="aria-label:ui.changeLanguage" type="button">
+            <button aria-label="Change language" class="lang-btn" aria-expanded="false" data-language-attr="aria-label:ui.changeLanguage" type="button">
               <img alt="EN" src="https://flagcdn.com/gb.svg"/>
-              <i class="fa-solid fa-chevron-down"></i>
+              <span class="kyra-chevron-pair" aria-hidden="true"><i class="fa-solid fa-chevron-down kyra-chevron-down"></i><i class="fa-solid fa-chevron-up kyra-chevron-up"></i></span>
             </button>
             <div class="lang-dropdown">
               <a class="lang-option" data-lang="en" href="?lang=en">
@@ -114,9 +124,9 @@
             <i aria-hidden="true" class="fa-regular fa-lightbulb"></i>
           </button>
           <div class="lang-switcher desktop-lang">
-            <button aria-label="Change language" class="lang-btn" data-language-attr="aria-label:ui.changeLanguage" type="button">
+            <button aria-label="Change language" class="lang-btn" aria-expanded="false" data-language-attr="aria-label:ui.changeLanguage" type="button">
               <img alt="EN" src="https://flagcdn.com/gb.svg"/>
-              <i class="fa-solid fa-chevron-down"></i>
+              <span class="kyra-chevron-pair" aria-hidden="true"><i class="fa-solid fa-chevron-down kyra-chevron-down"></i><i class="fa-solid fa-chevron-up kyra-chevron-up"></i></span>
             </button>
             <div class="lang-dropdown">
               <a class="lang-option" data-lang="en" href="?lang=en">
@@ -134,12 +144,13 @@
       </header>
       <div class="content">
         <div class="left">
+          <div class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span><span data-language="hero.status">Open to work</span><span class="hero-status-separator" aria-hidden="true"></span><span class="hero-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Horsens, Denmark</span></div>
           <h3 aria-label="Hello, I’m Marek!" class="typing-greeting" data-language-attr="aria-label:hero.greeting"></h3>
           <h1 class="role-title"><span class="role-title-text"></span></h1>
           <p data-language-html="hero.intro">
             I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens.
             I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL).
-            I enjoy bridging the gap between robust backend logic and intuitive frontend design.
+            I enjoy bridging the gap between efficient backend logic and intuitive frontend design.
           </p>
           <p><i data-language="hero.quote">"Always learning, always coding."</i></p>
           <div class="cta-section">
@@ -161,7 +172,7 @@
         </div>
         <div class="right">
           <div class="img-wrap">
-            <!-- <img class="hero-img" src="pro-pic.png" alt="Marek"> -->
+            <img class="hero-img" src="images/pro-pic.png" alt="Marek" width="873" height="1000">
           </div>
         </div>
       </div>
@@ -236,16 +247,20 @@
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/><span>HTML</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/><span>CSS</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo blazor-dark-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blazor/blazor-original.svg"/><span>Blazor</span></div>
             </div>
           </section>
           <section class="skill-category">
             <h3 data-language="about.skillHeadings.2">Backend &amp; APIs</h3>
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg"/><span>RabbitMQ</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/dotnet/512BD4"/><span>.NET</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/springboot/6DB33F"/><span>Spring Boot</span></div>
-              <div class="skill-item skill-rest"><i aria-hidden="true" class="fa-solid fa-code skill-symbol"></i><span>REST API</span></div>
-              <div class="skill-item skill-grpc"><i aria-hidden="true" class="fa-solid fa-share-nodes skill-symbol"></i><span>gRPC</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo dotnet-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/dotnet/512BD4"/><span>.NET</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="images/tech/spring.svg"/><span>Spring Boot</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg"/><span>Maven</span></div>
+              
+              
+              <div class="skill-item skill-rest"><img alt="" aria-hidden="true" class="skill-logo" loading="lazy" src="images/tech/rest-api.png"/><span>REST API</span></div>
+              <div class="skill-item skill-grpc"><img alt="" aria-hidden="true" class="skill-logo" loading="lazy" src="https://grpc.io/img/logos/grpc-icon-color.png" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'"/><img class="skill-logo grpc-dark-logo" src="images/tech/grpc-dark-official.png" alt="" aria-hidden="true" loading="lazy"/><span class="grpc-fallback" style="display:none" aria-hidden="true">gRPC</span><span>gRPC</span></div>
             </div>
           </section>
           <section class="skill-category">
@@ -256,20 +271,21 @@
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"/><span>SQL Server</span></div>
             </div>
           </section>
+          <section class="skill-category"><h3>Testing</h3><div class="skill-list"><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"/><span>JUnit 5</span></div><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="images/tech/mockito-symbol.svg"/><span>Mockito</span></div><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"/><span>Postman</span></div></div></section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.5">Collaboration Tools</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo github-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/github/181717"/><span>GitHub</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/><span>Git</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/gitlab/FCA121"/><span>GitLab</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/jira/0052CC"/><span>Jira</span></div>
+            </div>
+          </section>
           <section class="skill-category">
             <h3 data-language="about.skillHeadings.4">Cloud &amp; DevOps</h3>
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"/><span>Docker</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"/><span>Azure</span></div>
-            </div>
-          </section>
-          <section class="skill-category">
-            <h3 data-language="about.skillHeadings.5">Collaboration Tools</h3>
-            <div class="skill-list">
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/github/181717"/><span>GitHub</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/><span>Git</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/gitlab/FCA121"/><span>GitLab</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/jira/0052CC"/><span>Jira</span></div>
             </div>
           </section>
           <section class="skill-category">
@@ -301,7 +317,7 @@
           <!-- ==========================================
                01 - PERSONAL FINANCE API
                ========================================== -->
-          <article class="project-showcase" id="project-finance-api">
+          <article class="project-showcase" id="project-finance-api" data-project-url="projects/personal-finance-api.html">
             <div class="project-image">
               <div class="project-image-placeholder">
                 <i class="fa-solid fa-code"></i>
@@ -326,11 +342,11 @@
                   Java
                 </span>
                 <span>
-                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.simpleicons.org/springboot/6DB33F"/>
+                  <img alt="" aria-hidden="true" loading="lazy" src="images/tech/spring.svg"/>
                   Spring Boot
                 </span>
                 <span>
-                  <i aria-hidden="true" class="fa-solid fa-code"></i>
+                  <img alt="" aria-hidden="true" loading="lazy" src="images/tech/rest-api.png"/>
                   REST API
                 </span>
                 <span>
@@ -339,11 +355,12 @@
                 </span>
               </div>
             </div>
+            <a class="project-view-link" href="projects/personal-finance-api.html" aria-label="View project: personal-finance-api"><span data-language="projects.viewProject">View Project</span> <i class="fa-solid fa-code" aria-hidden="true"></i></a>
           </article>
           <!-- ==========================================
                02 - HOTEL AURORA CLIFFS
                ========================================== -->
-          <article class="project-showcase" id="project-hotel">
+          <article class="project-showcase" id="project-hotel" data-project-url="projects/hotel-aurora-cliffs.html">
             <div class="project-image">
               <div class="project-image-placeholder">
                 <i class="fa-solid fa-hotel"></i>
@@ -356,7 +373,7 @@
                   <span class="status-dot"></span><span data-language-html="projects.items.hotel.status">Completed</span></span>
                   <span class="project-number">02</span>
               </div>
-              <h3>Hotel Aurora Cliffs</h3>
+              <h3>Aurora Cliffs Hotel System</h3>
               <p data-language-html="projects.items.hotel.description">
                 A multi-user hotel management and reservation system developed as a
                 university semester project. The application supports room searching,
@@ -377,35 +394,36 @@
                   PostgreSQL
                 </span>
                 <span>
-                  <i aria-hidden="true" class="fa-solid fa-diagram-project"></i>
+                  <img alt="" aria-hidden="true" loading="lazy" src="images/tech/mvvm.svg"/>
                   MVVM
                 </span>
                 <span>
-                  <i aria-hidden="true" class="fa-solid fa-flask"></i>
+                  <img alt="" aria-hidden="true" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"/>
                   JUnit
                 </span>
               </div>
             </div>
+            <a class="project-view-link" href="projects/hotel-aurora-cliffs.html" aria-label="View project: hotel-aurora-cliffs"><span data-language="projects.viewProject">View Project</span> <i class="fa-solid fa-code" aria-hidden="true"></i></a>
           </article>
           <!-- ==========================================
                03 - BANK TRANSFER SYSTEM
                ========================================== -->
-          <article class="project-showcase" id="project-bank">
+          <article class="project-showcase" id="project-bank" data-project-url="projects/bank-transfer-system.html">
             <!-- Screenshot Carousel -->
             <div class="project-image">
               <div class="project-carousel">
                 <div class="project-carousel-track">
                   <!-- Screenshot 1: Login -->
-                  <img alt="Bank Transfer System login screen" class="project-carousel-image active" src="./images/projects/bankingapp/login.png"/>
+                  <img alt="KYRA. Bank System login screen" class="project-carousel-image active" src="./images/projects/bankingapp/login.png"/>
                   <!-- Screenshot 2: Register -->
-                  <img alt="Bank Transfer System account registration screen" class="project-carousel-image" src="./images/projects/bankingapp/register.png"/>
+                  <img alt="KYRA. Bank System account registration screen" class="project-carousel-image" src="./images/projects/bankingapp/register.png"/>
                   <!-- Screenshot 3: Empty dashboard -->
-                  <img alt="Bank Transfer System dashboard with an empty transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-empty.png"/>
+                  <img alt="KYRA. Bank System dashboard with an empty transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-empty.png"/>
                   <!-- Screenshot 4: Dashboard with transactions -->
-                  <img alt="Bank Transfer System dashboard with transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-transactions.png"/>
+                  <img alt="KYRA. Bank System dashboard with transaction history" class="project-carousel-image" src="./images/projects/bankingapp/dashboard-transactions.png"/>
                 </div>
                 <!-- Carousel Navigation Dots -->
-                <div aria-label="Bank Transfer System screenshots" class="project-carousel-dots">
+                <div aria-label="KYRA. Bank System screenshots" class="project-carousel-dots">
                   <button aria-label="Show screenshot 1" class="project-carousel-dot active" data-language-attr="aria-label:projects.carouselLabels.0" type="button"></button>
                   <button aria-label="Show screenshot 2" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.1" type="button"></button>
                   <button aria-label="Show screenshot 3" class="project-carousel-dot" data-language-attr="aria-label:projects.carouselLabels.2" type="button"></button>
@@ -420,7 +438,7 @@
                   <span class="status-dot"></span><span data-language-html="projects.items.bank.status">In Development</span></span>
                   <span class="project-number">03</span>
               </div>
-              <h3>Bank Transfer System</h3>
+              <h3>KYRA. Bank System</h3>
               <p data-language-html="projects.items.bank.description">
                 A desktop banking application where users can create accounts,
                 manage balances and transfer money between clients. The project
@@ -442,11 +460,12 @@
                 </span>
               </div>
             </div>
+            <a class="project-view-link" href="projects/bank-transfer-system.html" aria-label="View project: bank-transfer-system"><span data-language="projects.viewProject">View Project</span> <i class="fa-solid fa-code" aria-hidden="true"></i></a>
           </article>
           <!-- ==========================================
                04 - KYRA. PORTFOLIO
                ========================================== -->
-          <article class="project-showcase" id="project-kyra">
+          <article class="project-showcase" id="project-kyra" data-project-url="projects/kyra-portfolio.html">
             <div class="project-image">
               <div class="project-carousel">
                 <div class="project-carousel-track">
@@ -491,6 +510,7 @@
                 </span>
               </div>
             </div>
+            <a class="project-view-link" href="projects/kyra-portfolio.html" aria-label="View project: kyra-portfolio"><span data-language="projects.viewProject">View Project</span> <i class="fa-solid fa-code" aria-hidden="true"></i></a>
           </article>
         </div>
         <!-- Search Empty State -->
@@ -533,24 +553,24 @@
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-field">
-              <label for="cf-first-name"><span data-language-html="contact.firstName">First name </span><span aria-hidden="true" class="required-marker">*</span></label>
+              <label for="cf-first-name"><span data-language-html="contact.firstName">First name</span> <span aria-hidden="true" class="required-marker">*</span></label>
               <input data-language-attr="placeholder:contact.firstPlaceholder" id="cf-first-name" name="firstName" placeholder="Your first name" required="" type="text"/>
             </div>
             <div class="form-field">
-              <label for="cf-last-name"><span data-language-html="contact.lastName">Last name </span><span aria-hidden="true" class="required-marker">*</span></label>
+              <label for="cf-last-name"><span data-language-html="contact.lastName">Last name</span> <span aria-hidden="true" class="required-marker">*</span></label>
               <input data-language-attr="placeholder:contact.lastPlaceholder" id="cf-last-name" name="lastName" placeholder="Your last name" required="" type="text"/>
             </div>
           </div>
           <div class="form-field form-field-full">
-            <label for="cf-email"><span data-language-html="contact.email">Email </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <label for="cf-email"><span data-language-html="contact.email">Email</span> <span aria-hidden="true" class="required-marker">*</span></label>
             <input data-language-attr="placeholder:contact.emailPlaceholder" id="cf-email" name="email" placeholder="email@example.com" required="" type="email"/>
           </div>
           <div class="form-field form-field-full">
-            <label for="cf-subject"><span data-language-html="contact.subject">Subject </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <label for="cf-subject"><span data-language-html="contact.subject">Subject</span> <span aria-hidden="true" class="required-marker">*</span></label>
             <input data-language-attr="placeholder:contact.subjectPlaceholder" id="cf-subject" name="subject" placeholder="Ex. project collaboration, job opportunity, etc." required="" type="text"/>
           </div>
           <div class="form-field form-field-full">
-            <label for="cf-message"><span data-language-html="contact.message">Message </span><span aria-hidden="true" class="required-marker">*</span></label>
+            <label for="cf-message"><span data-language-html="contact.message">Message</span> <span aria-hidden="true" class="required-marker">*</span></label>
             <textarea data-language-attr="placeholder:contact.messagePlaceholder" id="cf-message" name="message" placeholder="Your message..." required="" rows="5"></textarea>
           </div>
           <button class="header-btn contact-submit" data-language-html="contact.submit" type="submit">
@@ -567,7 +587,7 @@
          FOOTER
          ========================================== -->
     <footer id="footer">
-      <a class="footer-logo" href="#hero">Kyra<span>.</span></a>
+      <a class="footer-logo" href="#hero" aria-label="KYRA. – Home"><img class="brand-logo brand-logo-light" src="images/logo/kyra-official-watermark-light.png" alt="KYRA."/><img class="brand-logo brand-logo-dark" src="images/logo/kyra-official-watermark-dark.png" alt="" aria-hidden="true"/></a>
       <p data-language-html="footer.copyright">© 2026 Kyra. All rights reserved.</p>
       <div class="footer-contact">
         <p><i class="fa-solid fa-envelope"></i><span class="footer-contact-label" data-language-html="footer.emailLabel">email:</span>  <a href="mailto:info@kyra.com">info@kyra.com</a></p>
@@ -579,5 +599,47 @@
     </div>
     <!-- JavaScript -->
     <script src="translations.js"></script><script src="language.js"></script><script src="script.js"></script>
-  </body>
+  
+<script>
+/* Move the existing social links below the photo only in portrait tablet mode;
+   restore them to their original position in all other layouts. */
+(function () {
+  const hero = document.querySelector('#hero.home-hero > .content');
+  if (!hero) return;
+  const left = hero.querySelector(':scope > .left');
+  const social = left && left.querySelector(':scope > .social-section');
+  if (!social) return;
+  const anchor = document.createComment('social-links-original-position');
+  social.parentNode.insertBefore(anchor, social);
+  const portrait = window.matchMedia('(min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait)');
+  function update() {
+    if (portrait.matches) {
+      social.classList.add('portrait-social');
+      if (social.parentNode !== hero) hero.appendChild(social);
+    } else {
+      social.classList.remove('portrait-social');
+      if (social.parentNode !== left) anchor.parentNode.insertBefore(social, anchor.nextSibling);
+    }
+    /* Match Read more to the visible paragraph's actual left edge on iPad 13. */
+    const bio = document.querySelector('#about .about-bio');
+    const para = bio && bio.querySelector(':scope > p');
+    const toggle = bio && bio.querySelector(':scope > .about-more-toggle');
+    if (para && toggle) {
+      toggle.style.removeProperty('margin-left');
+      if (window.innerWidth >= 486 && window.innerWidth < 1680) {
+        const dx = para.getBoundingClientRect().left - toggle.getBoundingClientRect().left;
+        toggle.style.setProperty('margin-left', `${Math.round(dx * 10) / 10}px`, 'important');
+      }
+    }
+  }
+  update();
+  window.addEventListener('resize', update, { passive: true });
+  window.addEventListener('load', update);
+})();
+</script>
+
+
+<script id="kyra-cursor-glow-script">(function(){if(!matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const glow=document.createElement('div');glow.id='kyra-cursor-glow';document.body.appendChild(glow);document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1';},{passive:true});document.addEventListener('pointerleave',()=>glow.style.opacity='0');})();</script>
+<script src="loading.js" defer></script>
+</body>
 </html>

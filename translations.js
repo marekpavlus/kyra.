@@ -54,12 +54,13 @@ window.LANGUAGE = {
     },
     "hero": {
       "greeting": "Hello, I’m Marek!",
+      "status": "Open to work",
       "roles": [
         "SOFTWARE ENGINEER",
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens. I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL). I enjoy bridging the gap between robust backend logic and intuitive frontend design.",
+      "intro": "I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens. I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL). I enjoy bridging the gap between efficient <b>backend</b> logic and intuitive <b>frontend</b> design.",
       "quote": "\"Always learning, always coding.\"",
       "ctaProjects": "My Projects",
       "ctaHire": "Hire me",
@@ -92,6 +93,7 @@ window.LANGUAGE = {
       ]
     },
     "projects": {
+      "viewProject": "View Project",
       "title": "My <span>Projects</span>",
       "items": {
         "finance_api": {
@@ -196,7 +198,7 @@ window.LANGUAGE = {
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "Som študent odboru <b>Software Technology Engineering</b> na VIA University College v Horsens. Neustále si zlepšujem zručnosti vo <b>webovom vývoji</b> (HTML, CSS, JavaScript), <b>objektovo orientovanom programovaní</b> (Java, Python, C#) a <b>databázach</b> (SQL, PostgreSQL). Baví ma prepájať robustnú backendovú logiku s intuitívnym frontendovým dizajnom.",
+      "intro": "Som študent odboru <b>Software Technology Engineering</b> na VIA University College v Horsens. Neustále si zlepšujem zručnosti vo <b>webovom vývoji</b> (HTML, CSS, JavaScript), <b>objektovo orientovanom programovaní</b> (Java, Python, C#) a <b>databázach</b> (SQL, PostgreSQL). Baví ma prepájať efektívnu <b>backendovú</b> logiku s intuitívnym <b>frontendovým</b> dizajnom.",
       "quote": "\"Neustále sa učím, neustále kódujem.\"",
       "ctaProjects": "Moje Projekty",
       "ctaHire": "Ozvite sa mi",
@@ -229,6 +231,7 @@ window.LANGUAGE = {
       ]
     },
     "projects": {
+      "viewProject": "Zobraziť Projekt",
       "title": "Moje <span>Projekty</span>",
       "items": {
         "finance_api": {
@@ -237,11 +240,11 @@ window.LANGUAGE = {
         },
         "hotel": {
           "status": "Dokončené",
-          "description": "Viacpoužívateľský systém na správu hotela a rezervácií vytvorený ako semestrálny univerzitný projekt. Umožňuje vyhľadávanie izieb, rezervácie, check-in a check-out a prepája klientsku aplikáciu s databázou PostgreSQL."
+          "description": "Systém pre viac používateľov na správu hotela a rezervácií vytvorený ako semestrálny univerzitný projekt. Umožňuje vyhľadávanie izieb, rezervácie, check-in a check-out a prepája klientsku aplikáciu s databázou PostgreSQL."
         },
         "bank": {
           "status": "Vo vývoji",
-          "description": "Banková desktopová aplikácia, v ktorej môžu používatelia vytvárať účty, spravovať zostatky a prevádzať peniaze medzi klientmi. Projekt sa zameriava na objektovo orientovaný návrh, aplikačnú logiku a tvorbu prehľadného používateľského rozhrania v JavaFX."
+          "description": "Desktopová aplikácia bankového systému, v ktorej môžu používatelia vytvárať účty, spravovať zostatky a prevádzať peniaze medzi klientmi. Projekt sa zameriava na objektovo orientovaný návrh, aplikačnú logiku a tvorbu prehľadného používateľského rozhrania v JavaFX."
         },
         "kyra": {
           "status": "Vo vývoji",
@@ -328,12 +331,13 @@ window.LANGUAGE = {
     },
     "hero": {
       "greeting": "Hej, jeg er Marek!",
+      "status": "Søger job",
       "roles": [
         "SOFTWARE ENGINEER",
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "Jeg er studerende i <b>Software Technology Engineering</b> på VIA University College i Horsens. Jeg udvikler løbende mine færdigheder inden for <b>webudvikling</b> (HTML, CSS, JavaScript), <b>objektorienteret programmering</b> (Java, Python, C#) og <b>databaser</b> (SQL, PostgreSQL). Jeg nyder at bygge bro mellem robust backend-logik og intuitivt frontend-design.",
+      "intro": "Jeg er studerende i <b>Software Technology Engineering</b> på VIA University College i Horsens. Jeg udvikler løbende mine færdigheder inden for <b>webudvikling</b> (HTML, CSS, JavaScript), <b>objektorienteret programmering</b> (Java, Python, C#) og <b>databaser</b> (SQL, PostgreSQL). Jeg nyder at bygge bro mellem effektiv <b>backend</b>-logik og intuitivt <b>frontend</b>-design.",
       "quote": "\"Altid i gang med at lære, altid i gang med at kode.\"",
       "ctaProjects": "Mine Projekter",
       "ctaHire": "Ansæt mig",
@@ -366,6 +370,7 @@ window.LANGUAGE = {
       ]
     },
     "projects": {
+      "viewProject": "Se Projekt",
       "title": "Mine <span>Projekter</span>",
       "items": {
         "finance_api": {

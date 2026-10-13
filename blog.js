@@ -95,8 +95,8 @@ if (siteSearch) {
   const homePage = `index.html?lang=${document.documentElement.lang}`;
   const projects = [
     'Personal Finance API',
-    'Hotel Aurora Cliffs',
-    'Bank Transfer System',
+    'Aurora Cliffs Hotel System',
+    'KYRA. Bank System',
     'KYRA. Portfolio'
   ].map((label, index) => ({
     href: `${homePage}#${['project-finance-api', 'project-hotel', 'project-bank', 'project-kyra'][index]}`,
@@ -170,15 +170,22 @@ if (siteSearch) {
     );
   }
 
-  siteSearch.addEventListener('pointerenter', () => updateSearchVisibility(true));
+  // Match index.html: on phones and tablets the search opens only by click.
+  // Desktop retains its original hover behavior.
+  const desktopSearchHover = window.matchMedia('(min-width: 1680px) and (hover: hover) and (pointer: fine)');
+  siteSearch.addEventListener('pointerenter', () => {
+    if (desktopSearchHover.matches) updateSearchVisibility(true);
+  });
   siteSearch.addEventListener('pointerleave', () => {
-    if (!searchPinnedOpen && !siteSearch.contains(document.activeElement)) {
+    if (desktopSearchHover.matches && !searchPinnedOpen && !siteSearch.contains(document.activeElement)) {
       updateSearchVisibility(false);
     }
   });
-  siteSearch.addEventListener('focusin', () => updateSearchVisibility(true));
+  siteSearch.addEventListener('focusin', () => {
+    if (desktopSearchHover.matches) updateSearchVisibility(true);
+  });
   siteSearch.addEventListener('focusout', (event) => {
-    if (!searchPinnedOpen && !siteSearch.contains(event.relatedTarget)) {
+    if (desktopSearchHover.matches && !searchPinnedOpen && !siteSearch.contains(event.relatedTarget)) {
       updateSearchVisibility(false);
     }
   });
@@ -216,3 +223,120 @@ if (siteSearch) {
 document.querySelectorAll('a[href^="index.html?lang=en#"]').forEach((link) => {
   link.href = link.href.replace('lang=en', `lang=${document.documentElement.lang}`);
 });
+
+// Keep the blog navigation in sync with index.html when menus are dismissed.
+function closeBlogDesktopDropdowns() {
+  if (window.innerWidth < 1680) return;
+  document.querySelectorAll('.lang-switcher.is-open, .projects-switcher.is-open').forEach(el => {
+    el.classList.remove('is-open');
+    el.querySelector('.lang-btn, .projects-chevron')?.setAttribute('aria-expanded', 'false');
+  });
+}
+header.addEventListener('mouseleave', () => {
+  if (window.scrollY > 40) closeBlogDesktopDropdowns();
+});
+document.addEventListener('pointermove', event => {
+  if (window.innerWidth >= 1680 && window.scrollY > 40 && event.clientY > 100 && !header.matches(':hover')) {
+    closeBlogDesktopDropdowns();
+  }
+});
+menuToggle.addEventListener('click', () => {
+  if (!header.classList.contains('mobile-menu-open') && siteSearch) {
+    siteSearch.classList.remove('is-open');
+    siteSearch.querySelector('.header-search-toggle')?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+
+/* KYRA shared navigation: close popovers when the desktop header hides. */
+(function () {
+  const navHeader = document.querySelector('header');
+  if (!navHeader) return;
+  function closePopovers() {
+    if (window.innerWidth < 1680) return;
+    navHeader.querySelectorAll('.projects-switcher.is-open, .lang-switcher.is-open').forEach((el) => {
+      el.classList.remove('is-open');
+      el.querySelector('.projects-chevron, .lang-btn')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+  navHeader.addEventListener('mouseleave', () => {
+    if (window.scrollY > 40) closePopovers();
+  });
+  document.addEventListener('pointermove', (event) => {
+    if (window.scrollY > 40 && event.clientY > 100 && !navHeader.matches(':hover')) closePopovers();
+  }, {passive: true});
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40 && !document.body.classList.contains('header-peek')) closePopovers();
+  }, {passive: true});
+  document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+    navHeader.querySelectorAll('.lang-switcher.is-open, .projects-switcher.is-open').forEach((el) => {
+      el.classList.remove('is-open');
+      el.querySelector('.lang-btn, .projects-chevron')?.setAttribute('aria-expanded','false');
+    });
+  });
+})();
+
+/* Close both desktop popovers on the very frame the scroll navbar hides. */
+(() => {
+  const nav = document.querySelector('header');
+  if (!nav) return;
+  const close = () => {
+    if (window.innerWidth < 1680 || window.scrollY <= 40) return;
+    nav.querySelectorAll('.projects-switcher.is-open, .lang-switcher.is-open').forEach((box) => {
+      box.classList.remove('is-open');
+      box.querySelector('.projects-chevron, .lang-btn')?.setAttribute('aria-expanded', 'false');
+    });
+  };
+  const observer = new MutationObserver(() => {
+    if (!document.body.classList.contains('header-peek')) close();
+  });
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('scroll', () => {
+    if (!document.body.classList.contains('header-peek')) close();
+  }, { passive: true });
+})();
+
+
+/* Integrated Projects dropdown behavior (formerly projects-menu.js). */
+/* Projects dropdown: click only on all devices. */
+(() => {
+  const desktop = window.matchMedia('(min-width: 1680px) and (hover: hover) and (pointer: fine)');
+  document.querySelectorAll('.projects-switcher').forEach((box) => {
+    const button = box.querySelector('.projects-chevron');
+    const label = box.querySelector('.projects-trigger');
+    const setOpen = (open) => {
+      box.classList.remove('was-open');
+      box.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Hide projects' : 'Show projects');
+    };
+    if (!button) return;
+    button.addEventListener('click', (event) => {
+      event.preventDefault(); event.stopPropagation();
+      setOpen(!box.classList.contains('is-open'));
+    });
+    // Click only: hover never opens the project list.
+    label.addEventListener('click', () => setOpen(false));
+    document.addEventListener('click', (event) => { if (!box.contains(event.target)) setOpen(false); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
+    desktop.addEventListener('change', () => setOpen(false));
+    const hamburger = document.querySelector('.menu-toggle');
+    hamburger?.addEventListener('click', () => setOpen(false));
+  });
+})();
+
+/* Keep Projects and Language mutually exclusive without interrupting their fade transitions. */
+(() => {
+  document.addEventListener('click', (event) => {
+    const projectsToggle = event.target.closest('.projects-chevron');
+    const languageToggle = event.target.closest('.lang-btn');
+    if (!projectsToggle && !languageToggle) return;
+    const selector = projectsToggle ? '.lang-switcher.is-open' : '.projects-switcher.is-open';
+    document.querySelectorAll(selector).forEach((box) => {
+      box.classList.remove('is-open');
+      const button = box.querySelector('.lang-btn, .projects-chevron');
+      if (button) button.setAttribute('aria-expanded', 'false');
+    });
+  }, true);
+})();
+

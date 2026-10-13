@@ -1,7 +1,7 @@
 /* ==========================================================================
    IMPORTS & BASE RESETS
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 * {
   padding: 0;
@@ -18,7 +18,7 @@
 :root {
   --light-page-gradient: linear-gradient(
     90deg,
-    white 0%,
+     white 0%,
     white 50%,
     rgba(255, 126, 45, 0.2) 100%
   );
@@ -33,7 +33,7 @@
 :root {
   --light-page-gradient: linear-gradient(
     90deg,
-    white 0%,
+     white 0%,
     white 50%,
     rgba(255, 126, 45, 0.2) 100%
   );
@@ -216,7 +216,7 @@ body.dark-mode .blog-loading-track {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 485px) {
   .blog-loading-indicator {
     --blog-loading-font-size: clamp(2rem, 9vw, 2.5rem);
   }
@@ -400,7 +400,7 @@ nav {
   display: none;
 }
 
-@media (min-width: 1200px) and (hover: hover) and (pointer: fine) {
+@media (min-width: 1200px) {
   .header-search {
     position: relative;
     z-index: 12;
@@ -428,8 +428,6 @@ nav {
     transition: width 0.25s ease, padding 0.25s ease, opacity 0.15s ease, background-color 0.25s ease, border-color 0.25s ease;
   }
 
-  .header-search:hover .header-search-input,
-  .header-search:focus-within .header-search-input,
   .header-search.is-open .header-search-input {
     width: 250px;
     padding: 0 48px 0 14px;
@@ -487,8 +485,6 @@ nav {
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
   }
 
-  .header-search:hover .header-search-dropdown,
-  .header-search:focus-within .header-search-dropdown,
   .header-search.is-open .header-search-dropdown {
     opacity: 1;
     visibility: visible;
@@ -539,9 +535,7 @@ nav {
     color: white;
   }
 
-  body.dark-mode .header-search:hover .header-search-input,
-  body.dark-mode .header-search:focus-within .header-search-input,
-  body.dark-mode .header-search.is-open .header-search-input,
+  body.dark-mode body.dark-mode body.dark-mode .header-search.is-open .header-search-input,
   body.dark-mode .header-search-dropdown {
     border-color: rgba(255, 255, 255, 0.2);
     background: #2b3a55;
@@ -1069,7 +1063,7 @@ h1 span {
 }
 
 /* Between 1200px and 1399px the navbar stays fixed and visible. */
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
   body .scroll-progress {
     top: var(--kyra-navbar-height, 70px);
     height: calc(100vh - var(--kyra-navbar-height, 70px));
@@ -1738,7 +1732,7 @@ body.dark-mode .project-kyra-logo {
    PROJECTS - RESPONSIVE
    ========================================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 485px) {
 
   .projects-container {
     width: min(92%, 600px);
@@ -2544,7 +2538,7 @@ body.dark-mode .theme-toggle i {
    MEDIA QUERIES
    ========================================================================== */
 /* DESKTOP / TABLET SCREEN LAYOUT (< 1199px) */
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1679px) {
   body { padding: 0 5%; }
 
   html { scroll-behavior: smooth; scroll-padding-top: 0; }
@@ -2848,13 +2842,13 @@ body.dark-mode .theme-toggle i {
 }
 
 /* MID-SIZE SCREEN LAYOUT (601px - 1199px)*/
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
   header nav {
     gap: 35px;
   }
 }
 
-@media screen and (min-width: 601px) and (max-width: 1199px) {
+@media screen and (min-width: 486px) and (max-width: 1679px) {
   body { padding: 0 5%; }
 
   header {
@@ -2930,7 +2924,7 @@ body.dark-mode .theme-toggle i {
 }
 
 /* MOBILE SCREEN LAYOUT (< 600px) */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 485px) {
   .full-section {
     padding: 90px 0 40px;
   }
@@ -2993,7 +2987,7 @@ body.dark-mode .theme-toggle i {
   }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
   header {
     transform: none;
   }
@@ -3010,3 +3004,4078 @@ html.language-pending body {
 }
 
 .footer-contact .footer-contact-label { color: inherit; }
+
+/* Preserve original light-mode footer divider; subtle in dark mode. */
+body.dark-mode footer { border-top-color: rgba(255, 255, 255, 0.09); }
+
+/* KYRA: full-viewport footer divider with gently fading edges. */
+footer { border-top: 0; }
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: linear-gradient(to right, transparent 0%, rgba(43, 58, 85, 0.05) 12%, rgba(43, 58, 85, 0.05) 88%, transparent 100%);
+}
+body.dark-mode footer::before {
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.075) 12%, rgba(255, 255, 255, 0.075) 88%, transparent 100%);
+}
+
+/* Consistent skill-card heights across each responsive grid row. */
+.skill-category { align-self: stretch; height: 100%; }
+
+/* KYRA — targeted skill icon and availability refinements */
+.github-skill-logo { transition: filter .2s ease, transform .2s ease; }
+body.dark-mode .github-skill-logo, html.dark-mode .github-skill-logo { filter: brightness(0) invert(1); }
+body.dark-mode .skill-rest .skill-symbol, html.dark-mode .skill-rest .skill-symbol { color: #63b7f5; }
+.hero-status { display:inline-flex; align-items:center; gap:10px; width:max-content; max-width:100%; padding:9px 16px; margin-bottom:19px; border-radius:999px; border:1px solid rgba(43,58,85,.13); background:rgba(255,255,255,.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font-size:13px; font-weight:600; letter-spacing:.015em; color:inherit; }
+.hero-status-dot { position:relative; flex:none; width:9px; height:9px; border-radius:50%; background:#29bd72; box-shadow:0 0 0 3px rgba(41,189,114,.12); }
+.hero-status-dot::after { content:""; position:absolute; inset:-5px; border:1px solid #29bd72; border-radius:50%; animation:kyraStatusPulse 2.5s ease-out infinite; }
+@keyframes kyraStatusPulse { 0%{transform:scale(.55);opacity:.7} 80%,100%{transform:scale(1.5);opacity:0} }
+body.dark-mode .hero-status, html.dark-mode .hero-status { background:rgba(255,255,255,.055); border-color:rgba(255,255,255,.14); }
+@media(prefers-reduced-motion:reduce){.hero-status-dot::after{animation:none}}
+
+/* KYRA: .NET brand colors + compact hero without hiding social links */
+.dotnet-skill-logo { filter: none; }
+body.dark-mode .dotnet-skill-logo,
+html.dark-mode .dotnet-skill-logo { filter: brightness(0) invert(1); }
+
+/* KYRA hero: restore the original vertical rhythm while accommodating status. */
+#hero .left { gap: 24px; padding-top: 34px; padding-bottom: 34px; }
+#hero .hero-status { margin-bottom: 0; }
+#hero .content p { margin-top: 6px; }
+#hero .cta-section { margin-top: 8px; }
+#hero .social-section { margin-top: 18px; }
+@media (min-width: 1200px) {
+  .home-hero .content { padding-top: 74px; }
+}
+@media (max-width: 1679px) {
+  #hero .left { gap: 19px; padding-top: 22px; padding-bottom: 22px; }
+  #hero .social-section { margin-top: 14px; }
+}
+@media (max-width: 485px) {
+  #hero .left { gap: 14px; padding-top: 12px; padding-bottom: 18px; }
+  #hero .hero-status { padding: 7px 12px; font-size: 12px; }
+  #hero .content p { line-height: 1.55; margin-top: 0; }
+  #hero .cta-section { gap: 10px; margin-top: 2px; }
+  #hero .cta-1, #hero .cta-2 { min-height: 44px; }
+  #hero .social-section { margin-top: 12px; }
+}
+
+/* KYRA: Open-to-work enters with the other hero elements. */
+#hero .hero-status {
+  opacity: 0;
+  animation: bottomIn 1.4s ease-in-out 0.1s forwards;
+}
+
+/* Mobile hero: restore generous, intentional vertical rhythm.
+   The social row occupies the bottom of the hero when space permits. */
+@media screen and (max-width: 485px) {
+  #hero { min-height: 100svh; }
+  #hero .content {
+    flex: 1;
+    padding-top: 14px;
+  }
+  #hero .left {
+    flex: 1;
+    width: 100%;
+    gap: clamp(13px, 2.4vh, 23px);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: flex-start;
+  }
+  #hero .hero-status { margin-bottom: 0; }
+  #hero .cta-section {
+    gap: 13px;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  #hero .social-section {
+    margin-top: 0;
+    padding-top: 19px;
+    justify-content: center;
+    gap: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero-status { animation: none; opacity: 1; }
+}
+
+/* Mobile: status stays in normal flow; spacing is handled by hero padding. */
+
+/* Mobile hero fine-tuning: lower the availability badge without moving socials. */
+@media screen and (max-width: 485px) {
+  #hero .hero-status {
+    position: relative;
+    top: 8px;
+  }
+  #hero .typing-greeting {
+    align-self: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+/* Mobile: center greeting and availability badge; preserve all vertical spacing. */
+@media screen and (max-width: 485px) {
+  #hero .typing-greeting { align-self: center; text-align: center; width: 100%; }
+  #hero .hero-status { align-self: center; margin-left: auto; margin-right: auto; }
+}
+
+/* Mobile hero: balanced heading spacing without shifting CTA/social row.
+   Keep the original flex layout and bottom anchoring intact. */
+@media screen and (max-width: 485px) {
+  #hero .content { padding-top: 14px; }
+  #hero .left { row-gap: 14px; padding-top: 30px; }
+  #hero .hero-status { top: 0; margin-top: 0; margin-bottom: 0; }
+  #hero .typing-greeting,
+  #hero .role-title { margin-top: 0; margin-bottom: 0; }
+  #hero .social-section { margin-top: 0; padding-top: 19px; }
+}
+
+/* KYRA tablet hero: preserve the original left/right two-column layout.
+   Only the badge is centered relative to the greeting; keep actions visible. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero { min-height: 100svh; padding-top: 76px; }
+  #hero .content, #hero.home-hero .content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    align-items: center;
+    gap: clamp(18px, 3vw, 36px);
+    padding-top: 8px;
+    min-height: calc(100svh - 110px);
+  }
+  #hero .left {
+    width: 100%; min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: center;
+    gap: clamp(10px, 1.7svh, 17px);
+    padding: clamp(8px, 1.6svh, 18px) 0;
+  }
+  #hero .hero-status {
+    align-self: flex-start;
+    margin: 0;
+    /* Center the badge over the greeting without centering the entire column. */
+    margin-left: clamp(14px, 3.5vw, 40px);
+  }
+  #hero .typing-greeting, #hero .role-title {
+    align-self: flex-start; text-align: left; margin: 0;
+  }
+  #hero .typing-greeting { font-size: clamp(1.6rem, 3.2vw, 2.35rem); }
+  #hero .role-title { font-size: clamp(2rem, 4.3vw, 3.3rem); }
+  #hero .content p { margin: 0; line-height: 1.45; font-size: clamp(13px, 1.5vw, 16px); }
+  #hero .cta-section { margin-top: 8px; padding-top: 0; justify-content: flex-start; gap: 12px; }
+  #hero .cta-1, #hero .cta-2 { min-width: 0; padding-inline: 16px; }
+  #hero .social-section { margin-top: 4px; padding-top: 8px; justify-content: flex-start; gap: 25px; }
+}
+/* Short tablet viewports, including iPad mini landscape. */
+@media screen and (min-width: 486px) and (max-width: 1679px) and (max-height: 760px) {
+  #hero { padding-top: 70px; }
+  #hero .content, #hero.home-hero .content { min-height: calc(100svh - 85px); }
+  #hero .left { gap: clamp(7px, 1.15svh, 11px); padding: 3px 0; }
+  #hero .hero-status { padding: 6px 11px; }
+  #hero .content p { line-height: 1.3; }
+  #hero .cta-section { margin-top: 2px; }
+  #hero .social-section { padding-top: 3px; }
+}
+
+/* Tablet hero: center the three headline elements inside the LEFT column.
+   Keep the two-column layout, CTA and social icons untouched. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero .hero-status,
+  #hero .typing-greeting,
+  #hero .role-title {
+    align-self: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-4px);
+  }
+  #hero .typing-greeting,
+  #hero .role-title { width: 100%; }
+  #hero .hero-status { margin-top: 0; margin-bottom: 0; }
+}
+
+/* Tablet: lift only the Open to Work badge slightly; preserve layout. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero .hero-status { position: relative; top: -6px; }
+}
+
+/* Tablet: consistent rhythm from availability badge through intro text.
+   Keep the existing two-column hero and lower CTA/social placement. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero .left { row-gap: clamp(12px, 1.7svh, 17px); }
+  #hero .hero-status,
+  #hero .typing-greeting,
+  #hero .role-title {
+    position: static;
+    top: auto;
+    transform: none;
+    margin-block: 0;
+  }
+  #hero .left > p:first-of-type { margin-block: 0; }
+}
+
+/* KYRA refresh: clean animated two-stroke navigation icon (phone + tablet). */
+@media screen and (max-width: 1679px) {
+  header .menu-toggle {
+    position: relative;
+    border: 1px solid rgba(43,58,85,.14);
+    border-radius: 13px;
+    background: rgba(255,126,45,.045);
+    transition: background .25s ease, border-color .25s ease;
+  }
+  header .menu-toggle > i { display: none; }
+  header .menu-toggle::before,
+  header .menu-toggle::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 19px;
+    height: 2px;
+    border-radius: 3px;
+    background: currentColor;
+    transition: transform .3s ease, top .3s ease, background .3s ease;
+    transform: translateX(-50%);
+  }
+  header .menu-toggle::before { top: calc(50% - 5px); }
+  header .menu-toggle::after { top: calc(50% + 4px); }
+  header.mobile-menu-open .menu-toggle {
+    border-color: rgba(255,126,45,.35);
+    background: rgba(255,126,45,.1);
+  }
+  header.mobile-menu-open .menu-toggle::before {
+    top: calc(50% - 1px);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  header.mobile-menu-open .menu-toggle::after {
+    top: calc(50% - 1px);
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  body.dark-mode header .menu-toggle { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.045); }
+  body.dark-mode header.mobile-menu-open .menu-toggle { background: rgba(255,126,45,.12); }
+}
+
+/* Consistent paragraph edges on phone/tablet; headings and controls retain alignment. */
+@media screen and (max-width: 1679px) {
+  #hero .left > p:first-of-type,
+  .about-bio > p,
+  .about-more-content p {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+  }
+  #contact .form-field,
+  #contact .form-field input,
+  #contact .form-field textarea { min-width: 0; max-width: 100%; box-sizing: border-box; }
+  #contact .form-field input,
+  #contact .form-field textarea { width: 100%; }
+}
+
+/* KYRA: minimal asymmetric hamburger, no surrounding frame. */
+@media screen and (max-width: 1679px) {
+  header .menu-toggle,
+  body.dark-mode header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  body.dark-mode header.mobile-menu-open .menu-toggle {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  header .menu-toggle > i { display: none; }
+  header .menu-toggle::before,
+  header .menu-toggle::after {
+    width: 23px;
+    height: 2.5px;
+    left: 50%;
+    border-radius: 10px;
+    background: currentColor;
+    transition: width .25s ease, top .25s ease, transform .25s ease;
+  }
+  header .menu-toggle::before { top: calc(50% - 5px); }
+  header .menu-toggle::after { top: calc(50% + 5px); width: 15px; }
+  header.mobile-menu-open .menu-toggle::before,
+  header.mobile-menu-open .menu-toggle::after {
+    top: calc(50% - 1px);
+    width: 23px;
+  }
+  header.mobile-menu-open .menu-toggle::before { transform: translateX(-50%) rotate(45deg); }
+  header.mobile-menu-open .menu-toggle::after { transform: translateX(-50%) rotate(-45deg); }
+}
+/* Justified mobile/tablet paragraphs without splitting words into hyphenated fragments. */
+@media screen and (max-width: 1679px) {
+  #hero .left > p:first-of-type,
+  .about-bio > p,
+  .about-more-content p {
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+}
+/* Keep full original contact placeholders; use a smaller font on narrow phones. */
+@media screen and (max-width: 485px) {
+  #contact .form-field input::placeholder { font-size: clamp(10px, 2.7vw, 12px); }
+  #contact .form-field input { padding-left: 10px; padding-right: 8px; }
+}
+
+/* Refinement: natural paragraph spacing, without automatic word hyphenation. */
+@media screen and (max-width: 1679px) {
+  #hero .left > p:first-of-type,
+  .about-bio > p,
+  .about-more-content p {
+    text-align: left;
+    text-justify: auto;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+  /* Two equally long strokes, no frame; same orange hover as theme bulb. */
+  header .menu-toggle::before,
+  header .menu-toggle::after {
+    width: 23px;
+    transition: width .25s ease, top .25s ease, transform .25s ease,
+                background-color .3s ease;
+  }
+  header .menu-toggle { transition: color .3s ease, transform .3s ease; }
+  header .menu-toggle:hover { color: rgb(255, 126, 45); }
+  body.dark-mode header .menu-toggle:hover { color: rgb(255, 126, 45); }
+}
+/* Consistent placeholder font size across ALL contact inputs and textarea.
+   Preserve the full original strings in each language. */
+@media screen and (max-width: 485px) {
+  #contact .form-field input::placeholder,
+  #contact .form-field textarea::placeholder {
+    font-size: clamp(12px, 3.05vw, 13px);
+  }
+  #contact .form-field input,
+  #contact .form-field textarea {
+    padding-left: 9px;
+    padding-right: 7px;
+  }
+}
+
+/* KYRA 2026-10-12: Orange emphasis instead of heavy bold in body copy. */
+#hero .left > p b,
+.about-bio b,
+.about-more-content b {
+  color: rgb(255, 126, 45);
+  font-weight: 600;
+}
+/* Natural spacing and intact words on phone and tablet. */
+@media screen and (max-width: 1679px) {
+  #hero .left > p:first-of-type,
+  .about-bio > p,
+  .about-more-content p {
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+}
+/* Matching, larger placeholder typography across the contact form. */
+@media screen and (max-width: 485px) {
+  #contact .form-field input::placeholder,
+  #contact .form-field textarea::placeholder {
+    font-size: 14px;
+  }
+  /* Extra-long subject example needs to scale on narrow screens. */
+  #contact #cf-subject::placeholder {
+    font-size: clamp(10px, 3.25vw, 14px);
+  }
+}
+
+/* Unified contact placeholders: 15px on mobile/tablet, including Subject and Message. */
+@media screen and (max-width: 1679px) {
+  #contact .form-field input::placeholder,
+  #contact .form-field textarea::placeholder,
+  #contact #cf-subject::placeholder { font-size: 15px; }
+}
+
+/* iPad refinement: left-align the three hero headings, preserving two columns. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  #hero .hero-status, #hero .typing-greeting, #hero .role-title {
+    align-self: flex-start;
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+/* iPad 13-inch: match the compact tablet navigation without changing hero columns. */
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header { position: fixed; top: 0; left: 0; right: 0; transform: none !important;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding: 12px 5%; gap: 0; min-height: 68px; text-align: center; }
+  .header-logo { grid-column: 2; grid-row: 1; }
+  header .menu-toggle { display: flex; grid-column: 3; grid-row: 1; justify-self: end;
+    align-items: center; justify-content: center; width: 48px; height: 48px;
+    position: relative; border: 0; background: transparent; color: inherit; cursor: pointer; }
+  header .menu-toggle > i { display: none; }
+  header .menu-toggle::before, header .menu-toggle::after { content: ""; position: absolute;
+    left: 50%; width: 23px; height: 2.5px; border-radius: 10px; background: currentColor;
+    transform: translateX(-50%); transition: top .3s, transform .3s, background-color .3s; }
+  header .menu-toggle::before { top: calc(50% - 5px); }
+  header .menu-toggle::after { top: calc(50% + 5px); }
+  header.mobile-menu-open .menu-toggle::before, header.mobile-menu-open .menu-toggle::after { top: calc(50% - 1px); }
+  header.mobile-menu-open .menu-toggle::before { transform: translateX(-50%) rotate(45deg); }
+  header.mobile-menu-open .menu-toggle::after { transform: translateX(-50%) rotate(-45deg); }
+  header .menu-toggle:hover { color: rgb(255,126,45); }
+  header .header-btn, header .desktop-lang { display: none; }
+  header .header-controls { display: contents; }
+  header .theme-toggle { grid-column: 1; grid-row: 1; justify-self: start; }
+  header nav { grid-column: 1 / -1; grid-row: 2; width: 100%; flex: none;
+    flex-direction: column; align-items: center; gap: 15px; padding-bottom: 8px;
+    opacity: 0; visibility: hidden; max-height: 0; overflow: hidden;
+    pointer-events: none; transform: translateY(-8px);
+    transition: opacity .3s, transform .3s, max-height .35s, visibility .35s; }
+  header.mobile-menu-open nav { opacity: 1; visibility: visible; max-height: 600px;
+    pointer-events: auto; transform: translateY(-5px); padding-top: 12px; }
+  header.mobile-menu-open { background: var(--light-page-gradient); }
+  body.dark-mode header.mobile-menu-open { background: var(--dark-page-gradient); }
+  header .mobile-lang { display: flex; flex-direction: column; align-items: center; margin-top: 10px; }
+  header .mobile-lang .lang-dropdown { position: static; box-shadow: none; background: transparent;
+    max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; display: flex; flex-direction: column; }
+  header .mobile-lang.is-open .lang-dropdown { max-height: 200px; opacity: 1; visibility: visible; }
+}
+/* Tablet search uses the desktop visual style, with click-only interaction. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .header-search {
+    display: block; position: absolute; right: calc(5% + 53px);
+    top: 50%; transform: translateY(-50%); width: 44px; height: 45px; z-index: 12;
+  }
+  header.mobile-menu-open .header-search { top: 34px; }
+  header .header-search-toggle {
+    display: flex; position: absolute; right: 0; top: 0; z-index: 2;
+    width: 44px; height: 45px; align-items: center; justify-content: center;
+    border: 0; border-radius: 5px; background: transparent;
+    color: rgba(43, 58, 85, .9); font-size: 18px; cursor: pointer;
+    transition: color .2s ease;
+  }
+  header .header-search-toggle:hover, header .header-search-toggle:focus-visible {
+    color: rgb(255,126,45);
+  }
+  header .header-search-input {
+    position: absolute; right: 0; top: 0; z-index: 1;
+    width: 44px; height: 45px; padding: 0 44px 0 0;
+    border: 1px solid transparent; border-radius: 5px;
+    background: transparent; color: rgba(43,58,85,.9);
+    font-size: 15px; opacity: 0; box-sizing: border-box;
+    transition: width .25s ease, padding .25s ease, opacity .15s ease, background-color .25s ease, border-color .25s ease;
+  }
+  header .header-search.is-open .header-search-input {
+    width: min(250px, 48vw); padding: 0 48px 0 14px;
+    border-color: rgba(43,58,85,.25); background: white; opacity: 1;
+  }
+  header .header-search-input:focus { outline: 2px solid rgb(255,126,45); outline-offset: 2px; }
+  header .header-search-dropdown {
+    position: absolute; top: 100%; right: 0; z-index: 20;
+    width: min(320px, calc(100vw - 24px)); max-height: min(360px, calc(100vh - 90px));
+    padding: 12px; overflow-y: auto; border: 1px solid rgba(43,58,85,.12);
+    border-radius: 8px; background: white; box-shadow: 0 8px 24px rgba(43,58,85,.16);
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-4px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  header .header-search.is-open .header-search-dropdown {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0);
+  }
+  body.dark-mode header .header-search-toggle { color: white; }
+  body.dark-mode header .header-search.is-open .header-search-input,
+  body.dark-mode header .header-search.is-open .header-search-dropdown {
+    border-color: rgba(255,255,255,.2); background: #2b3a55; color: white;
+  }
+}
+/* Orange search result category labels in both themes and all screen sizes. */
+@media (min-width: 486px) {
+  header .header-search-group h4,
+  body.dark-mode header .header-search-group h4 { color: rgb(255,126,45); }
+}
+
+/* Tablet search: use the same desktop components and geometry at every iPad width. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .header-search { box-sizing: border-box; top: 34px; transform: translateY(-50%); }
+  header.mobile-menu-open .header-search { top: 34px; }
+  header .header-search-input { box-sizing: border-box; cursor: pointer; }
+  header .header-search.is-open .header-search-input { cursor: text; }
+  header .header-search-group + .header-search-group { margin-top: 10px; }
+  header .header-search-group h4 { padding: 4px 8px; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  header .header-search-group ul { list-style: none; margin: 0; padding: 0; }
+  header .header-search-group a { display: block; padding: 7px 8px; border-radius: 5px; color: rgba(43,58,85,.9); font-size: .9rem; text-decoration: none; }
+  header .header-search-group a:hover, header .header-search-group a:focus-visible { outline: none; background: rgba(255,126,45,.12); color: rgb(224,96,24); }
+  header .header-search-empty { padding: 8px; color: grey; font-size: .9rem; }
+  body.dark-mode header .header-search-group a { color: white; }
+  body.dark-mode header .header-search-group a:hover, body.dark-mode header .header-search-group a:focus-visible { background: rgba(255,126,45,.2); color: rgb(255,126,45); }
+  /* Both buttons use an identical 44px centerline, independent of header layout. */
+  header .menu-toggle { width: 44px; height: 44px; align-self: center; }
+  header .menu-toggle::before { top: calc(50% - 5px); }
+  header .menu-toggle::after { top: calc(50% + 5px); }
+  header.mobile-menu-open .menu-toggle::before,
+  header.mobile-menu-open .menu-toggle::after { top: calc(50% - 1px); }
+}
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .header-search { top: 50%; }
+  header.mobile-menu-open .header-search { top: 34px; }
+}
+/* Orange headings on all search result dropdowns, including desktop. */
+header .header-search-group h4, body.dark-mode header .header-search-group h4 { color: rgb(255,126,45); }
+
+
+/* Final search refinements: same orange active state in light and dark themes. */
+@media (min-width: 486px) {
+  header .header-search-toggle:hover,
+  header .header-search-toggle:focus-visible,
+  header .header-search.is-open .header-search-toggle,
+  body.dark-mode header .header-search-toggle:hover,
+  body.dark-mode header .header-search-toggle:focus-visible,
+  body.dark-mode header .header-search.is-open .header-search-toggle {
+    color: rgb(255, 126, 45);
+  }
+}
+/* Tablet: stable icon positions regardless of whether the menu is open. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    position: absolute;
+    top: 34px;
+    right: calc(5% + 53px);
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    margin: 0;
+  }
+  header .header-search-toggle,
+  header .header-search-input {
+    top: 0;
+    height: 44px;
+  }
+  header .menu-toggle {
+    height: 44px;
+    width: 44px;
+    margin: 0;
+  }
+  header .header-search.is-open .header-search-input {
+    text-align: left;
+  }
+  /* Align dropdown's left edge with the opened search field. */
+  header .header-search.is-open .header-search-dropdown {
+    right: auto;
+    left: calc(44px - min(250px, 48vw));
+  }
+}
+
+/* Tablet search: desktop-style leftward expansion, click-only activation.
+   Keep the right edge (magnifier) fixed; input grows toward the left. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    overflow: visible;
+  }
+  header .header-search-input,
+  header .header-search.is-open .header-search-input {
+    left: auto;
+    right: 0;
+    transform: none;
+    transform-origin: right center;
+    text-align: left;
+    box-sizing: border-box;
+  }
+  header .header-search.is-open .header-search-input {
+    width: min(250px, calc(100vw - 90px));
+    padding-left: 14px;
+    padding-right: 48px;
+  }
+  header .header-search-dropdown,
+  header .header-search.is-open .header-search-dropdown {
+    left: auto;
+    right: 0;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  header .header-search-toggle { left: auto; right: 0; }
+}
+
+/* KYRA final tablet navigation refinements (iPad mini / 11 / 13). */
+@media (min-width: 486px) and (max-width: 1679px) {
+  /* All first-row controls share the same 44px vertical centre. */
+  header { --tablet-nav-control: 44px; }
+  header .header-controls .theme-toggle,
+  header .theme-toggle,
+  header .menu-toggle {
+    box-sizing: border-box;
+    width: var(--tablet-nav-control);
+    height: var(--tablet-nav-control);
+    min-height: var(--tablet-nav-control);
+    align-self: center;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    top: 50%;
+    transform: translateY(-50%);
+    height: var(--tablet-nav-control);
+  }
+  header .header-search-toggle,
+  header .header-search-input { height: var(--tablet-nav-control); }
+  header .header-logo { align-self: center; margin-block: 0; }
+  /* The language divider uses the footer's full-width, fading-edge treatment. */
+  header .mobile-lang {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    border-top: 0;
+    padding-top: 16px;
+    box-sizing: border-box;
+  }
+  header .mobile-lang::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(to right, transparent 0%, rgba(43,58,85,.05) 12%, rgba(43,58,85,.05) 88%, transparent 100%);
+  }
+  body.dark-mode header .mobile-lang::before {
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,.075) 12%, rgba(255,255,255,.075) 88%, transparent 100%);
+  }
+  /* Search results panel exactly matches the opened search field width. */
+  header .header-search-dropdown,
+  header .header-search.is-open .header-search-dropdown {
+    width: min(250px, calc(100vw - 90px));
+    max-width: min(250px, calc(100vw - 90px));
+    left: auto;
+    right: 0;
+  }
+}
+/* Desktop: dropdown aligns with the 250px opened input. */
+@media (min-width: 1680px) {
+  header .header-search-dropdown { width: 250px; box-sizing: border-box; }
+}
+
+/* Tablet navbar: one shared first-row anchor for both 44x44 controls.
+   The iPad mini/11 navbar has 14px vertical padding; the 13-inch has 12px.
+   Keep the controls anchored to the navbar, not to the expanding menu. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header { --tablet-icon-top: 14px; }
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    position: absolute;
+    top: var(--tablet-icon-top);
+    left: auto;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transform: none;
+    align-self: auto;
+  }
+  header .menu-toggle, header.mobile-menu-open .menu-toggle {
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 13;
+  }
+  header .header-search, header.mobile-menu-open .header-search {
+    right: calc(5% + 53px);
+    z-index: 12;
+  }
+  header .header-search-toggle {
+    top: 0; right: 0; left: auto;
+    width: 44px; height: 44px;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+  }
+  header .header-search-toggle > i {
+    display: block;
+    line-height: 1;
+    transform: none;
+  }
+  header .header-search-input { top: 0; height: 44px; }
+}
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header { --tablet-icon-top: 12px; }
+}
+
+/* Tablet optical alignment: lift only the hamburger artwork to the magnifier's visual centre.
+   Keep both 44px hit areas and their absolute anchors unchanged. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .menu-toggle::before { top: calc(50% - 11px); }
+  header .menu-toggle::after  { top: calc(50% - 1px); }
+  header.mobile-menu-open .menu-toggle::before,
+  header.mobile-menu-open .menu-toggle::after { top: calc(50% - 7px); }
+}
+
+/* Tablet navbar: geometrically center both icons within the SAME header row.
+   Hamburger strokes straddle the exact button midpoint, rather than relying
+   on inherited pseudo-element offsets or baseline positioning. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header { --kyra-nav-height: 72px; min-height: var(--kyra-nav-height); box-sizing: border-box; }
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    position: absolute !important;
+    top: calc(var(--kyra-nav-height) / 2) !important;
+    bottom: auto !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateY(-50%) !important;
+    box-sizing: border-box;
+    align-self: auto;
+  }
+  header .menu-toggle, header.mobile-menu-open .menu-toggle {
+    right: 5% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 13;
+  }
+  header .header-search, header.mobile-menu-open .header-search {
+    right: calc(5% + 53px) !important;
+    z-index: 12;
+  }
+  header .header-search-toggle {
+    position: absolute;
+    inset: 0 0 auto auto;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+  }
+  header .header-search-toggle > i {
+    display: block;
+    line-height: 1 !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  header .menu-toggle::before,
+  header .menu-toggle::after {
+    content: "";
+    position: absolute;
+    left: 50% !important;
+    height: 2.5px;
+    width: 23px !important;
+    border-radius: 10px;
+    background: currentColor;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+  /* Midpoint of the two strokes is exactly 50% of the 44px button. */
+  header .menu-toggle::before { top: calc(50% - 5px) !important; }
+  header .menu-toggle::after  { top: calc(50% + 5px) !important; }
+  header.mobile-menu-open .menu-toggle::before,
+  header.mobile-menu-open .menu-toggle::after { top: 50% !important; }
+  header.mobile-menu-open .menu-toggle::before {
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+  }
+  header.mobile-menu-open .menu-toggle::after {
+    transform: translate(-50%, -50%) rotate(-45deg) !important;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header { --kyra-nav-height: 68px; }
+}
+
+
+/* Tablet navbar diagnostic: anchor BOTH 44px boxes by their top edge,
+   not by transforms (which were being overridden by earlier rules). */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    top: 14px !important;
+    bottom: auto !important;
+    transform: none !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+  header .header-search-toggle { top: 0 !important; height: 44px !important; }
+}
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  header .header-search,
+  header.mobile-menu-open .header-search { top: 12px !important; }
+}
+
+/* TABLET DEBUG CORRECTION — observed in Safari screenshots:
+   hamburger hitbox is 14px lower than search hitbox despite the shared
+   nominal top rule. Compensate the actual rendered offset on the menu
+   button ONLY. Keep diagnostic axes for visual confirmation. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle {
+    top: 0px !important; /* was 14px; physically raises hamburger by 14px */
+  }
+}
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle {
+    top: 0px !important; /* was 12px; physically raises hamburger by 12px */
+  }
+}
+
+/* TABLET NAVBAR — single measured centreline for every first-row element.
+   Replaces previous mismatched top offsets; keeps debug outlines for verification. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header {
+    --kyra-tablet-header-height: 72px;
+    height: var(--kyra-tablet-header-height) !important;
+    min-height: var(--kyra-tablet-header-height) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+  header .menu-toggle,
+  header.mobile-menu-open .menu-toggle,
+  header .header-search,
+  header.mobile-menu-open .header-search {
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    height: 44px !important;
+    min-height: 44px !important;
+  }
+  header .header-search-toggle {
+    top: 0 !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  header .header-controls {
+    position: absolute !important;
+    top: 50% !important;
+    left: 5% !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  header .header-controls .theme-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important;
+  }
+  header .header-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translate(-50%, -50%) !important;
+    line-height: 1.2 !important;
+    align-self: auto !important;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1679px) {
+  header {
+    --kyra-tablet-header-height: 68px;
+  }
+}
+
+/* Tablet logo: center against the entire navbar, not the remaining grid/flex space.
+   Preserve the vertical centering and icon positions from the approved version. */
+@media (min-width: 486px) and (max-width: 1679px) {
+  header > .header-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: max-content !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: translateY(-50%) !important;
+    justify-self: unset !important;
+  }
+}
+
+/* TABLET NAVBAR: full-viewport independent layout (not hero's two columns).
+   Logo anchored to the true viewport midpoint; controls remain at both ends.
+   Hero .content remains its own desktop-style left/right grid. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero > header {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+  #hero > header > .header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    width: max-content !important;
+    margin: 0 !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    grid-column: auto !important;
+  }
+  #hero > header > .header-controls {
+    left: 5% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  #hero > header > .header-search,
+  #hero > header > .menu-toggle {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+/* KYRA 2026-10-12: tablet dropdown scrolls like the phone menu.
+   Keep the navbar fixed and the controls in place when opening the menu. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero > header { overflow: visible !important; }
+  #hero > header nav#mobile-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    max-height: 0 !important;
+    padding: 0 5% !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) !important;
+    transition: max-height .35s ease, opacity .3s ease, transform .3s ease, visibility .35s ease !important;
+  }
+  #hero > header.mobile-menu-open nav#mobile-menu {
+    max-height: calc(100dvh - var(--kyra-tablet-header-height, 72px)) !important;
+    padding: 16px 5% 22px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    background: var(--light-page-gradient) !important;
+  }
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu {
+    background: var(--dark-page-gradient) !important;
+  }
+  #hero > header .header-logo,
+  #hero > header .header-controls,
+  #hero > header .header-search,
+  #hero > header .menu-toggle { flex-shrink: 0 !important; }
+}
+
+/* KYRA: hide search control only in the intermediate 451–800px layout.
+   <=450px keeps the complete phone layout; >=801px keeps tablet search. */
+@media screen and (min-width: 486px) and (max-width: 800px) {
+  #hero > header .header-search,
+  #hero > header .header-search-toggle,
+  #hero > header .header-search-panel {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* iPad 13-inch (1200–1679px): same two-column hero rhythm as iPad 11.
+   Reserve the lower part of the left column for social links without
+   shrinking the introduction relative to the My Story body text. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero {
+    min-height: 100svh;
+    box-sizing: border-box;
+  }
+  #hero.home-hero > .content {
+    box-sizing: border-box;
+    min-height: calc(100svh - 76px);
+    padding-top: 8px;
+    padding-bottom: clamp(18px, 2.4svh, 28px);
+    align-items: stretch;
+  }
+  #hero.home-hero > .content > .left {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    justify-content: flex-start;
+    gap: clamp(12px, 1.65svh, 18px);
+    padding-top: clamp(14px, 2.3svh, 26px);
+    padding-bottom: 0;
+  }
+  #hero.home-hero .left > p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  #hero.home-hero .left > .cta-section {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  #hero.home-hero .left > .social-section {
+    margin-top: 0;
+    padding-top: clamp(14px, 2svh, 22px);
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* iPad 13-inch: improve hero title and introduction readability while keeping
+   the established bottom-anchored social links and spacing. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero .left .role-title {
+    font-size: clamp(32px, 2.75vw, 43px) !important;
+    line-height: 1.13 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: 17px !important;
+    line-height: 1.43 !important;
+  }
+}
+
+/* iPad 13-inch: match iPad 11-inch flow: text immediately followed by CTAs,
+   while social links remain pinned to the bottom of the left column. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero > .content > .left {
+    gap: clamp(9px, 1.15svh, 14px) !important;
+  }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(48px, 3.9vw, 64px) !important;
+    line-height: 1.08 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: 1.2rem !important;
+    line-height: 1.48 !important;
+    max-width: 100% !important;
+  }
+  #hero.home-hero .left > .cta-section {
+    margin-top: 4px !important;
+    padding-top: 0 !important;
+  }
+  #hero.home-hero .left > .social-section {
+    margin-top: auto !important;
+    padding-top: clamp(10px, 1.4svh, 18px) !important;
+  }
+}
+
+/* iPad 13-inch: match published hero typography and distribute available
+   vertical space evenly, including the social row at the bottom. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero > .content > .left {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: clamp(8px, 1.1svh, 14px) !important;
+    padding-top: clamp(12px, 2svh, 22px) !important;
+    padding-bottom: clamp(12px, 2svh, 22px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+  }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  #hero.home-hero .left > p { margin-block: 0 !important; }
+  #hero.home-hero > .content {
+    min-height: calc(100svh - 76px) !important;
+    padding-bottom: clamp(14px, 2svh, 24px) !important;
+  }
+}
+
+/* iPad 13-inch: larger rotating role title; keep the approved evenly spaced layout. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero .left .role-title {
+    font-size: clamp(56px, 4.5vw, 72px) !important;
+    line-height: 1.06 !important;
+  }
+}
+
+/* iPad 13-inch: slightly larger rotating title and availability badge.
+   Preserve the approved hero flex spacing and visible social icons. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero.home-hero .left .role-title {
+    font-size: clamp(62px, 5.15vw, 80px) !important;
+    line-height: 1.04 !important;
+  }
+  #hero.home-hero .left .hero-status {
+    font-size: 14px !important;
+    padding: 10px 18px !important;
+  }
+}
+
+/* Tablet 801–1199px: continue the approved 1200+ home composition.
+   Remove the large blank area above the status badge and keep social links
+   at the bottom of the first screen, with proportional typography. */
+@media screen and (min-width: 801px) and (max-width: 1199px) {
+  #hero.home-hero {
+    min-height: 100svh !important;
+    box-sizing: border-box;
+    padding-top: 72px !important;
+  }
+  #hero.home-hero > .content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) !important;
+    gap: clamp(18px, 2.5vw, 32px) !important;
+    flex: 1 0 auto;
+    min-height: calc(100svh - 72px) !important;
+    padding-top: 8px !important;
+    padding-bottom: clamp(14px, 2svh, 24px) !important;
+    align-items: stretch !important;
+    box-sizing: border-box;
+  }
+  #hero.home-hero > .content > .left {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-self: stretch !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: clamp(10px, 1.6svh, 20px) !important;
+    padding-bottom: clamp(10px, 1.6svh, 20px) !important;
+    gap: clamp(7px, 1svh, 13px) !important;
+  }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(38px, 4.8vw, 58px) !important;
+    line-height: 1.06 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: clamp(15px, 1.6vw, 18px) !important;
+    line-height: 1.45 !important;
+    margin-block: 0 !important;
+    max-width: 100% !important;
+  }
+  #hero.home-hero .left .hero-status {
+    font-size: 13px !important;
+    padding: 9px 15px !important;
+  }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* KYRA: intermediate 486–800px hero – remove oversized header-to-status gap.
+   Follow the same compact vertical rhythm as the 801–1199px tablet layout,
+   while allowing the narrower layout to retain its existing column behavior. */
+@media screen and (min-width: 486px) and (max-width: 800px) {
+  #hero.home-hero {
+    box-sizing: border-box !important;
+    padding-top: 72px !important;
+    min-height: 100svh !important;
+  }
+  #hero.home-hero > .content {
+    box-sizing: border-box !important;
+    min-height: calc(100svh - 72px) !important;
+    padding-top: 8px !important;
+    padding-bottom: clamp(12px, 2svh, 22px) !important;
+    align-items: stretch !important;
+  }
+  #hero.home-hero > .content > .left {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+    padding-top: clamp(8px, 1.5svh, 18px) !important;
+    padding-bottom: clamp(8px, 1.5svh, 18px) !important;
+    gap: clamp(7px, 1svh, 12px) !important;
+  }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(31px, 5.2vw, 43px) !important;
+    line-height: 1.08 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: clamp(14px, 1.9vw, 16px) !important;
+    line-height: 1.45 !important;
+    max-width: 100% !important;
+    margin-block: 0 !important;
+  }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Tablet side gutters: 800px→40px, 1024px→50px,
+   1180px→60px, 1366px→65px. Interpolate smoothly between sizes. */
+@media screen and (min-width: 486px) and (max-width: 800px) {
+  body { padding-left: 40px !important; padding-right: 40px !important; }
+}
+@media screen and (min-width: 801px) and (max-width: 1024px) {
+  body { padding-left: calc(40px + (100vw - 800px) * 10 / 224) !important;
+         padding-right: calc(40px + (100vw - 800px) * 10 / 224) !important; }
+}
+@media screen and (min-width: 1025px) and (max-width: 1180px) {
+  body { padding-left: calc(50px + (100vw - 1024px) * 10 / 156) !important;
+         padding-right: calc(50px + (100vw - 1024px) * 10 / 156) !important; }
+}
+@media screen and (min-width: 1181px) and (max-width: 1366px) {
+  body { padding-left: calc(60px + (100vw - 1180px) * 5 / 186) !important;
+         padding-right: calc(60px + (100vw - 1180px) * 5 / 186) !important; }
+}
+@media screen and (min-width: 1367px) and (max-width: 1679px) {
+  body { padding-left: 65px !important; padding-right: 65px !important; }
+}
+
+/* iPad 13-inch: match the iPad 11-inch scroll arrow and navbar icon scale.
+   Keep existing header alignment and all other layouts unchanged. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  .section-next {
+    width: 36px;
+    height: 36px;
+    right: 5%;
+    bottom: 20px;
+  }
+  .section-next.section-prev { bottom: 64px; }
+  #contact .section-next.section-prev { bottom: 20px; }
+
+  #hero > header .header-search-toggle { font-size: 18px !important; }
+  #hero > header .header-controls .theme-toggle i,
+  body.dark-mode #hero > header .header-controls .theme-toggle i { font-size: 24px !important; }
+  #hero > header .menu-toggle::before,
+  #hero > header .menu-toggle::after { width: 23px !important; height: 2.5px !important; }
+}
+
+/* iPad 13-inch: scale the iPad 11-inch hero controls proportionally to the
+   larger viewport while retaining the approved spacing and social links. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #hero > .section-next,
+  #hero > .section-next.section-prev {
+    width: clamp(39px, 3.5vw, 48px) !important;
+    height: clamp(39px, 3.5vw, 48px) !important;
+    right: 5% !important;
+  }
+  #hero > .section-next { bottom: clamp(20px, 2.2svh, 28px) !important; }
+  #hero > .section-next.section-prev { bottom: clamp(70px, 7svh, 84px) !important; }
+  #hero > header .header-search-toggle { font-size: clamp(20px, 1.65vw, 23px) !important; }
+  #hero > header .header-controls .theme-toggle i,
+  body.dark-mode #hero > header .header-controls .theme-toggle i {
+    font-size: clamp(26px, 2vw, 29px) !important;
+  }
+  #hero > header .menu-toggle::before,
+  #hero > header .menu-toggle::after {
+    width: clamp(25px, 2vw, 29px) !important;
+    height: 2.5px !important;
+  }
+}
+/* Phone: only the original language-bar divider remains. It already uses
+   the same full-width fading gradient as the footer. */
+@media screen and (max-width: 485px) {
+  #hero > header.mobile-menu-open nav#mobile-menu::after { content: none !important; display: none !important; }
+  #hero > header .mobile-lang { border-top: 0 !important; }
+}
+
+/* iPad 13-inch: scale the visual system from the iPad 11-inch design.
+   Apply consistently to ALL sections; do not stretch the whole document,
+   which would break fixed navigation and scrolling. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  /* All section navigation arrows share exactly one size and edge inset. */
+  #hero > .section-next,
+  #hero > .section-next.section-prev,
+  .full-section > .section-next,
+  .full-section > .section-next.section-prev,
+  #contact .section-next.section-prev {
+    width: clamp(40px, 3.5vw, 48px) !important;
+    height: clamp(40px, 3.5vw, 48px) !important;
+    right: 5% !important;
+  }
+  #hero > .section-next:not(.section-prev),
+  .full-section > .section-next:not(.section-prev),
+  #contact .section-next.section-prev {
+    bottom: clamp(22px, 2.4svh, 29px) !important;
+  }
+  #hero > .section-next.section-prev,
+  .full-section > .section-next.section-prev:not(#contact .section-next.section-prev) {
+    bottom: clamp(72px, 7.5svh, 88px) !important;
+  }
+  .section-next svg,
+  .section-next i { font-size: clamp(17px, 1.6vw, 22px) !important; }
+
+  /* Social icons scale with the larger tablet, preserving their spacing. */
+  #hero.home-hero .social-section { gap: clamp(30px, 2.55vw, 36px) !important; }
+  #hero.home-hero .social-section i {
+    width: clamp(42px, 3.75vw, 50px) !important;
+    height: clamp(42px, 3.75vw, 50px) !important;
+    font-size: clamp(19px, 1.7vw, 23px) !important;
+  }
+
+  /* Typography and key controls throughout About, Skills, Projects, Contact. */
+  .full-section .section-container { width: min(100%, 1360px) !important; }
+  .full-section .section-container h2 { font-size: clamp(4rem, 5.45vw, 5rem) !important; }
+  .full-section .section-container p,
+  .full-section .about-bio p { font-size: clamp(1.2rem, 1.62vw, 1.38rem) !important; }
+  .full-section .skill-category h3 { font-size: clamp(1.05rem, 1.45vw, 1.25rem) !important; }
+  #hero.home-hero .left .hero-status {
+    font-size: clamp(14px, 1.12vw, 16px) !important;
+    padding: clamp(10px, 0.9vw, 12px) clamp(18px, 1.5vw, 21px) !important;
+  }
+  #hero.home-hero .left .cta-1,
+  #hero.home-hero .left .cta-2 {
+    font-size: clamp(18px, 1.55vw, 21px) !important;
+    min-height: clamp(50px, 4.4vw, 58px) !important;
+  }
+}
+
+/* iPad 13-inch refinements: give the biography room for complete school name,
+   scale the Read more control and the centered navbar wordmark. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #about .about-bio {
+    width: min(100%, 920px) !important;
+    max-width: 920px !important;
+  }
+  #about .about-more-toggle {
+    font-size: 1.18rem !important;
+    line-height: 1.4 !important;
+    margin-top: 15px !important;
+  }
+  #hero > header > .header-logo {
+    font-size: 30px !important;
+  }
+}
+/* Phone hamburger: keep ONLY the language separator, styled exactly as
+   the tablet's fading divider; disable other menu-edge dividers. */
+@media screen and (max-width: 485px) {
+  #hero > header nav#mobile-menu::before,
+  #hero > header nav#mobile-menu::after {
+    content: none !important;
+    display: none !important;
+    border: 0 !important;
+    background: none !important;
+  }
+  #hero > header nav#mobile-menu .mobile-lang {
+    position: relative !important;
+    width: 100% !important;
+    max-width: none !important;
+    border: 0 !important;
+    border-top: 0 !important;
+    padding-top: 16px !important;
+    margin-top: 12px !important;
+  }
+  #hero > header nav#mobile-menu .mobile-lang::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    width: 100vw !important;
+    height: 1px !important;
+    transform: translateX(-50%) !important;
+    pointer-events: none !important;
+    background: linear-gradient(to right, transparent 0%, rgba(43,58,85,.05) 12%, rgba(43,58,85,.05) 88%, transparent 100%) !important;
+  }
+  body.dark-mode #hero > header nav#mobile-menu .mobile-lang::before {
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,.075) 12%, rgba(255,255,255,.075) 88%, transparent 100%) !important;
+  }
+}
+
+
+/* iPad 13-inch: widen the ACTUAL story text column and keep Read more
+   aligned with the first character of the paragraphs. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #about > .section-container { width: min(100%, 1360px) !important; }
+  #about > .section-container > .about-bio {
+    width: min(100%, 1080px) !important;
+    max-width: 1080px !important;
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #about .about-bio > p { max-width: none !important; width: 100% !important; }
+  #about .about-bio > .about-more-toggle { margin-left: 0 !important; align-self: flex-start !important; }
+}
+/* Phone and tablet: contact details first, then logo, then copyright.
+   Desktop footer retains its original three-part layout. */
+@media screen and (max-width: 1679px) {
+  footer#footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+  }
+  footer#footer .footer-contact {
+    order: 1 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 0 10px !important;
+    text-align: center !important;
+  }
+  footer#footer .footer-logo {
+    order: 2 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  footer#footer > p { order: 3 !important; margin: 0 !important; }
+}
+
+
+/* KYRA refinement: the expandable biography must use the same measure as
+   its visible paragraphs, including the grid animation's inner wrapper. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #about .about-bio,
+  #about .about-bio > .about-more-content,
+  #about .about-more-content-inner,
+  #about .about-more-content-inner > p {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  #about .about-bio { max-width: 1080px !important; }
+  #about .about-more-toggle { margin-left: 0 !important; }
+}
+
+/* Portrait iPad 13-inch (1032 × 1376 CSS pixels) and tall tablets:
+   keep the 11-inch two-column proportions without the excessive empty
+   space that viewport-height distribution creates in portrait. */
+@media screen and (min-width: 801px) and (max-width: 1199px) and (min-height: 1133px) and (orientation: portrait) {
+  #hero.home-hero { min-height: 100svh !important; padding-top: 72px !important; }
+  #hero.home-hero > .content {
+    min-height: calc(100svh - 72px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) !important;
+    align-items: center !important;
+    gap: clamp(18px, 3vw, 36px) !important;
+    padding-top: 18px !important;
+    padding-bottom: 42px !important;
+  }
+  #hero.home-hero > .content > .left {
+    align-self: center !important;
+    justify-content: flex-start !important;
+    gap: clamp(15px, 1.8svh, 25px) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #hero.home-hero .left .role-title { font-size: clamp(38px, 4.6vw, 56px) !important; }
+  #hero.home-hero .left > p { font-size: clamp(16px, 1.75vw, 19px) !important; }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section { margin-top: 0 !important; }
+  #hero.home-hero .hero-img { max-width: 100% !important; }
+  #about .about-bio,
+  #about .about-more-content,
+  #about .about-more-content-inner { width: 100% !important; max-width: 100% !important; }
+}
+
+/* iPhone SE: preserve the phone composition but scale typography and
+   spacing to its narrow 375px-class viewport. */
+@media screen and (max-width: 375px) {
+  #hero.home-hero .left .role-title { font-size: clamp(30px, 9.4vw, 35px) !important; line-height: 1.08 !important; }
+  #hero.home-hero .left .typing-greeting { font-size: clamp(23px, 6.5vw, 27px) !important; }
+  #hero.home-hero .left > p { font-size: 14px !important; line-height: 1.45 !important; }
+  #hero.home-hero .left .hero-status { font-size: 11px !important; padding: 7px 11px !important; }
+  #hero.home-hero .left { gap: clamp(9px, 1.4svh, 14px) !important; }
+  #hero.home-hero .left .cta-section { gap: 10px !important; }
+  #hero.home-hero .left .cta-1,
+  #hero.home-hero .left .cta-2 { font-size: 14px !important; min-height: 40px !important; }
+  .full-section .section-container h2 { font-size: clamp(34px, 10vw, 39px) !important; }
+  #about .about-bio p,
+  #about .about-more-content p,
+  .full-section .section-container p { font-size: 14px !important; line-height: 1.55 !important; }
+}
+
+/* 2026-10-12: iPad portrait (mini 744×1133, 11 820×1180,
+   13 1024×1366). Keep a continuous two-column hero with status at
+   the top and social links at the bottom of the visible first screen. */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero {
+    box-sizing: border-box !important;
+    min-height: 100svh !important;
+    padding-top: 72px !important;
+  }
+  #hero.home-hero > .content {
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr) !important;
+    gap: clamp(16px, 2.5vw, 32px) !important;
+    min-height: calc(100svh - 72px) !important;
+    height: calc(100svh - 72px) !important;
+    padding-top: clamp(12px, 1.5svh, 22px) !important;
+    padding-bottom: clamp(20px, 3svh, 38px) !important;
+    align-items: stretch !important;
+  }
+  #hero.home-hero > .content > .left {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-self: stretch !important;
+    justify-content: space-between !important;
+    gap: clamp(8px, 1.2svh, 17px) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #hero.home-hero .left .hero-status { flex-shrink: 0 !important; }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(39px, 5vw, 58px) !important;
+    line-height: 1.06 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: clamp(16px, 1.75vw, 19px) !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section {
+    flex-shrink: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #hero.home-hero .left > .social-section { margin-top: auto !important; }
+  #hero.home-hero > .content > .right { min-width: 0 !important; align-self: center !important; }
+}
+
+/* iPad 13-inch My Story: keep all paragraphs and expanded content in
+   exactly the same centered column, with Read more at its left edge. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #about > .section-container > .about-bio {
+    width: min(100%, 1080px) !important;
+    max-width: 1080px !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    text-align: left !important;
+  }
+  #about .about-bio > p,
+  #about .about-bio > .about-more-content,
+  #about .about-more-content-inner,
+  #about .about-more-content-inner > p {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+  #about .about-bio > .about-more-toggle {
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* iPhone SE: restore the breathing room above the footer divider. */
+@media screen and (max-width: 375px) {
+  #contact.full-section { padding-bottom: clamp(105px, 15svh, 155px) !important; }
+}
+
+
+/* Portrait iPads: single-column hero, without stretching the gap between
+   CTA buttons and social icons. Applies to mini, 11-inch and 13-inch. */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content {
+    display: block !important;
+    grid-template-columns: none !important;
+    height: auto !important;
+    min-height: calc(100svh - 72px) !important;
+    padding-top: clamp(24px, 3.2svh, 45px) !important;
+    padding-bottom: clamp(38px, 5svh, 65px) !important;
+  }
+  #hero.home-hero > .content > .right { display: none !important; }
+  #hero.home-hero > .content > .left {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin-inline: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: start !important;
+    justify-content: flex-start !important;
+    gap: clamp(16px, 2svh, 27px) !important;
+  }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(52px, 7vw, 84px) !important;
+    line-height: 1.06 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: clamp(18px, 2.05vw, 23px) !important;
+    line-height: 1.52 !important;
+  }
+  #hero.home-hero .left > .cta-section,
+  #hero.home-hero .left > .social-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: static !important;
+  }
+  #hero.home-hero .left > .social-section {
+    margin-top: clamp(8px, 1.2svh, 17px) !important;
+  }
+}
+/* iPad 13-inch My Story: the old 800px max-width and auto margins on
+   .section-container p centered paragraphs INSIDE the wider biography.
+   Remove that constraint so Read more and ALL paragraphs share an edge. */
+@media screen and (min-width: 1200px) and (max-width: 1679px) {
+  #about > .section-container > .about-bio > p,
+  #about > .section-container > .about-bio > .about-more-content,
+  #about > .section-container > .about-bio .about-more-content-inner,
+  #about > .section-container > .about-bio .about-more-content-inner > p {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #about > .section-container > .about-bio > .about-more-toggle {
+    display: inline-flex !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    align-self: flex-start !important;
+  }
+}
+/* iPhone SE: halve the added contact-to-footer breathing room. */
+@media screen and (max-width: 375px) {
+  #contact.full-section { padding-bottom: clamp(52px, 7.5svh, 78px) !important; }
+}
+
+
+/* Final portrait tablet composition: status at top, social links at the bottom,
+   with the main content occupying the intervening space naturally. */
+@media (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: calc(100svh - 72px) !important;
+    height: calc(100svh - 72px) !important;
+    padding-top: clamp(24px, 3.2svh, 44px) !important;
+    padding-bottom: clamp(28px, 3.5svh, 48px) !important;
+    box-sizing: border-box !important;
+  }
+  #hero.home-hero > .content > .left {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-inline: auto !important;
+    gap: clamp(15px, 1.9svh, 26px) !important;
+    justify-content: flex-start !important;
+  }
+  #hero.home-hero > .content > .right { display: none !important; }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(66px, 8.4vw, 100px) !important;
+    line-height: 1.05 !important;
+  }
+  #hero.home-hero .left .hero-status {
+    font-size: clamp(15px, 1.8vw, 19px) !important;
+    padding: clamp(11px, 1.3vw, 15px) clamp(20px, 2.4vw, 27px) !important;
+  }
+  #hero.home-hero .left > .social-section {
+    margin-top: auto !important;
+    padding-top: clamp(18px, 2svh, 26px) !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* iPad 13-inch landscape: one shared centered measure for ALL My Story
+   paragraphs (including expanded text) and the Read more control. */
+@media (min-width: 1200px) and (max-width: 1679px) {
+  #about > .section-container > .about-bio {
+    width: min(100%, 940px) !important;
+    max-width: 940px !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+  #about > .section-container > .about-bio > p,
+  #about > .section-container > .about-bio > .about-more-content,
+  #about > .section-container > .about-bio .about-more-content-inner,
+  #about > .section-container > .about-bio .about-more-content-inner > p {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+  #about > .section-container > .about-bio > .about-more-toggle {
+    align-self: flex-start !important;
+    justify-self: start !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+}
+
+/* iPhone SE: position the separator halfway between the contact action
+   and the first footer contact line, accounting for footer top padding. */
+@media (max-width: 375px) {
+  #contact.full-section { padding-bottom: 44px !important; }
+  footer#footer { padding-top: 44px !important; }
+}
+
+/* iPad portrait preview: restore the original two-column hero and photo. */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: center !important;
+    flex-direction: unset !important;
+    gap: clamp(12px, 2vw, 32px) !important;
+  }
+  #hero.home-hero > .content > .left {
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    min-width: 0 !important;
+  }
+  #hero.home-hero > .content > .right {
+    display: flex !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    align-self: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap { width: 100% !important; display: flex !important; justify-content: center !important; }
+  #hero.home-hero > .content > .right .hero-img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+  #hero.home-hero .left .role-title { font-size: clamp(42px, 5.5vw, 72px) !important; }
+}
+
+/* 2026-10-12: tablet orientation-specific photo composition. */
+@media screen and (min-width: 486px) and (max-width: 1679px) and (orientation: landscape) {
+  #hero.home-hero > .content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) !important;
+    align-items: center !important;
+    gap: clamp(20px, 3vw, 56px) !important;
+  }
+  #hero.home-hero > .content > .left { min-width: 0 !important; width: 100% !important; }
+  #hero.home-hero > .content > .right {
+    display: flex !important; min-width: 0 !important; width: 100% !important;
+    align-items: center !important; justify-content: center !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap { display: flex !important; width: 100% !important; justify-content: center !important; }
+  #hero.home-hero > .content > .right .hero-img {
+    display: block !important; width: 100% !important; max-width: min(100%, 540px) !important;
+    height: auto !important; object-fit: contain !important;
+  }
+}
+/* Portrait iPads: restore stacked composition, photo below the left content. */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero { height: auto !important; min-height: 100svh !important; }
+  #hero.home-hero > .content {
+    display: flex !important; flex-direction: column !important;
+    height: auto !important; min-height: calc(100svh - 72px) !important;
+    gap: clamp(20px, 3svh, 40px) !important;
+    align-items: center !important; justify-content: flex-start !important;
+    padding-bottom: clamp(40px, 5svh, 70px) !important;
+  }
+  #hero.home-hero > .content > .left {
+    flex: 0 0 auto !important; width: 100% !important; max-width: 900px !important;
+    height: auto !important; min-height: 0 !important;
+    margin-inline: auto !important; gap: clamp(12px, 1.7svh, 23px) !important;
+    justify-content: flex-start !important;
+  }
+  #hero.home-hero .left > .social-section { margin-top: clamp(10px, 1.5svh, 20px) !important; }
+  #hero.home-hero > .content > .right {
+    display: flex !important; flex: 0 0 auto !important; width: 100% !important;
+    max-width: 680px !important; align-self: center !important;
+    justify-content: center !important; margin: 0 auto !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap { display: flex !important; width: 100% !important; justify-content: center !important; }
+  #hero.home-hero > .content > .right .hero-img {
+    display: block !important; width: auto !important; max-width: min(75%, 440px) !important;
+    max-height: clamp(230px, 33svh, 400px) !important;
+    height: auto !important; object-fit: contain !important;
+  }
+}
+/* iPhone SE: fit the complete contact form in one viewport. */
+@media screen and (max-width: 375px) and (max-height: 750px) {
+  #contact.full-section {
+    min-height: 100svh !important; height: auto !important;
+    padding-top: 50px !important; padding-bottom: 24px !important;
+    box-sizing: border-box !important;
+  }
+  #contact .section-container h2 { margin-bottom: 7px !important; }
+  #contact .contact-form { margin-top: 10px !important; gap: 7px !important; }
+  #contact .form-row { gap: 8px !important; }
+  #contact .form-field { gap: 2px !important; }
+  #contact .form-field input { min-height: 36px !important; padding-top: 7px !important; padding-bottom: 7px !important; }
+  #contact .form-field textarea { min-height: 52px !important; max-height: 70px !important; }
+  #contact .section-container p { line-height: 1.35 !important; }
+  footer#footer { padding-top: 30px !important; }
+}
+
+/* Final tablet composition refinements */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content > .social-section.portrait-social {
+    display: flex !important; position: relative !important; order: 3 !important;
+    align-self: center !important; justify-content: center !important;
+    width: 100% !important; margin: 0 auto !important;
+    padding: 0 0 clamp(15px, 2svh, 28px) !important;
+  }
+  #hero.home-hero > .content > .right { order: 2 !important; }
+  #hero.home-hero > .content > .left { order: 1 !important; }
+}
+/* Thin orange fading separator centered in the landscape column gap. */
+@media screen and (min-width: 486px) and (max-width: 1679px) and (orientation: landscape) {
+  #hero.home-hero > .content { position: relative !important; }
+  #hero.home-hero > .content::after {
+    content: "" !important; position: absolute !important;
+    left: 54% !important; top: 18% !important; bottom: 18% !important;
+    width: 1px !important; pointer-events: none !important;
+    background: linear-gradient(to bottom, transparent, rgba(242,115,35,.38) 22%, rgba(242,115,35,.38) 78%, transparent) !important;
+  }
+}
+/* Compact iPhone SE contact placeholders by ~3px, without shrinking labels. */
+@media screen and (max-width: 375px) and (max-height: 750px) {
+  #contact .contact-form input::placeholder,
+  #contact .contact-form textarea::placeholder { font-size: 12px !important; }
+}
+
+/* October 12: portrait iPads - keep the links at the very bottom after photo. */
+@media screen and (min-width: 486px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero { min-height: 100svh !important; }
+  #hero.home-hero > .content {
+    min-height: calc(100svh - 72px) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  #hero.home-hero > .content > .left,
+  #hero.home-hero > .content > .right { flex-shrink: 0 !important; }
+  #hero.home-hero > .content > .social-section.portrait-social {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    flex: 0 0 auto !important;
+    padding-top: clamp(12px, 1.8svh, 25px) !important;
+    padding-bottom: clamp(8px, 1.2svh, 17px) !important;
+  }
+}
+/* Remove the trial orange vertical separator between landscape hero columns. */
+@media screen and (min-width: 486px) and (max-width: 1679px) and (orientation: landscape) {
+  #hero.home-hero > .content::after { content: none !important; display: none !important; }
+}
+/* Warm orange, fading horizontal dividers in footer and hamburger (all themes/sizes). */
+footer#footer::before,
+body.dark-mode footer#footer::before,
+header .mobile-lang::before,
+body.dark-mode header .mobile-lang::before,
+#hero > header nav#mobile-menu .mobile-lang::before,
+body.dark-mode #hero > header nav#mobile-menu .mobile-lang::before {
+  background: linear-gradient(to right, transparent 0%, rgba(242,115,35,.28) 12%, rgba(242,115,35,.28) 88%, transparent 100%) !important;
+}
+/* Story: no extra paragraph horizontal indentation; leave vertical rhythm intact. */
+@media screen and (min-width: 801px) and (max-width: 1679px) {
+  #about .about-bio > p,
+  #about .about-bio .about-more-content-inner > p { text-indent: 0 !important; }
+}
+
+
+/* October 12: iPhone SE placeholder text +1px (previously 12px). */
+@media screen and (max-width: 375px) and (max-height: 750px) {
+  #contact .contact-form input::placeholder,
+  #contact .contact-form textarea::placeholder { font-size: 13px !important; }
+}
+
+/* iPad mini portrait (744 x 1133): budget vertical space for the entire
+   home composition, including the social links after the photo. */
+@media screen and (min-width: 700px) and (max-width: 799px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero { height: 100svh !important; min-height: 100svh !important; overflow: hidden !important; }
+  #hero.home-hero > .content {
+    height: calc(100svh - 72px) !important;
+    min-height: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 18px !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+  }
+  #hero.home-hero > .content > .left { gap: 7px !important; flex: 0 1 auto !important; }
+  #hero.home-hero .left .role-title { font-size: clamp(40px, 6vw, 47px) !important; line-height: 1.02 !important; }
+  #hero.home-hero .left > p { font-size: 15px !important; line-height: 1.35 !important; }
+  #hero.home-hero .left .hero-status { padding: 8px 15px !important; font-size: 13px !important; }
+  #hero.home-hero > .content > .right { flex: 0 1 auto !important; min-height: 0 !important; }
+  #hero.home-hero > .content > .right .hero-img {
+    max-height: min(22svh, 225px) !important;
+    max-width: min(65%, 330px) !important;
+    object-fit: contain !important;
+  }
+  #hero.home-hero > .content > .social-section.portrait-social {
+    margin-top: auto !important;
+    padding-top: 4px !important;
+    padding-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    gap: 25px !important;
+  }
+  #hero.home-hero > .content > .social-section.portrait-social i {
+    width: 40px !important; height: 40px !important; font-size: 18px !important;
+  }
+}
+
+/* iPad 13 portrait (1024 x 1366): scale up iPad 11 typography and socials,
+   while keeping the photo above the bottom-aligned icons. */
+@media screen and (min-width: 980px) and (max-width: 1100px) and (min-height: 1200px) and (orientation: portrait) {
+  #hero.home-hero > .content { gap: clamp(16px, 1.7svh, 24px) !important; }
+  #hero.home-hero > .content > .left { gap: clamp(12px, 1.25svh, 18px) !important; }
+  #hero.home-hero .left .role-title { font-size: clamp(66px, 7.4vw, 80px) !important; line-height: 1.05 !important; }
+  #hero.home-hero .left > p { font-size: clamp(19px, 2vw, 22px) !important; line-height: 1.48 !important; }
+  #hero.home-hero .left .hero-status { font-size: 18px !important; padding: 13px 25px !important; }
+  #hero.home-hero > .content > .social-section.portrait-social { gap: 36px !important; margin-top: auto !important; }
+  #hero.home-hero > .content > .social-section.portrait-social i {
+    width: 52px !important; height: 52px !important; font-size: 24px !important;
+  }
+}
+
+
+/* Unified iPad portrait Home: same iPad 11 composition at mini / 11 / 13.
+   Scale elements, never change their order or crop the social row. */
+@media screen and (min-width: 700px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero { height: 100svh !important; min-height: 100svh !important; overflow: visible !important; }
+  #hero.home-hero > .content {
+    display: flex !important; flex-direction: column !important;
+    height: calc(100svh - 72px) !important; min-height: 0 !important;
+    box-sizing: border-box !important;
+    padding-top: clamp(10px, 1.4svh, 20px) !important;
+    padding-bottom: clamp(16px, 2.2svh, 30px) !important;
+    gap: clamp(9px, 1.25svh, 18px) !important;
+    justify-content: flex-start !important; align-items: center !important;
+    overflow: visible !important;
+  }
+  #hero.home-hero > .content > .left {
+    order: 1 !important; display: flex !important; flex-direction: column !important;
+    flex: 0 1 auto !important; width: 100% !important; max-width: 900px !important;
+    min-height: 0 !important; height: auto !important;
+    gap: clamp(8px, 1.1svh, 15px) !important;
+    margin-inline: auto !important;
+  }
+  #hero.home-hero > .content > .right {
+    order: 2 !important; display: flex !important; flex: 0 1 auto !important;
+    min-height: 0 !important; width: 100% !important; max-width: 680px !important;
+    margin-inline: auto !important; align-items: center !important; justify-content: center !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap {
+    display: flex !important; width: 100% !important; min-height: 0 !important;
+    align-items: center !important; justify-content: center !important;
+  }
+  #hero.home-hero > .content > .right .hero-img {
+    display: block !important; width: auto !important; height: auto !important;
+    max-width: min(68%, 440px) !important;
+    max-height: clamp(195px, 26svh, 345px) !important;
+    object-fit: contain !important;
+  }
+  #hero.home-hero > .content > .social-section.portrait-social {
+    order: 3 !important; display: flex !important; position: relative !important;
+    flex: 0 0 auto !important; width: 100% !important;
+    align-self: center !important; justify-content: center !important;
+    margin: auto auto 0 !important;
+    padding: 0 !important; gap: clamp(24px, 3vw, 38px) !important;
+  }
+  #hero.home-hero > .content > .social-section.portrait-social i {
+    width: clamp(40px, 4.6vw, 52px) !important;
+    height: clamp(40px, 4.6vw, 52px) !important;
+    font-size: clamp(18px, 2.05vw, 24px) !important;
+  }
+  #hero.home-hero .left .role-title {
+    font-size: clamp(45px, 6.6vw, 72px) !important;
+    line-height: 1.04 !important;
+  }
+  #hero.home-hero .left > p {
+    font-size: clamp(15px, 1.9vw, 20px) !important;
+    line-height: 1.42 !important;
+  }
+  #hero.home-hero .left .hero-status {
+    font-size: clamp(13px, 1.65vw, 18px) !important;
+    padding: clamp(8px, 1.1vw, 13px) clamp(15px, 2.3vw, 25px) !important;
+  }
+}
+/* The mini has less vertical room: proportional sizing, same order and spacing system. */
+@media screen and (min-width: 700px) and (max-width: 799px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content { gap: 9px !important; padding-top: 10px !important; padding-bottom: 16px !important; }
+  #hero.home-hero > .content > .left { gap: 8px !important; }
+  #hero.home-hero .left .role-title { font-size: 46px !important; }
+  #hero.home-hero > .content > .right .hero-img { max-height: 215px !important; max-width: min(65%, 320px) !important; }
+  #hero.home-hero > .content > .social-section.portrait-social i { width: 40px !important; height: 40px !important; font-size: 18px !important; }
+}
+/* Larger iPad: same iPad 11 arrangement with appropriately scaled typography/photo. */
+@media screen and (min-width: 980px) and (max-width: 1100px) and (min-height: 1200px) and (orientation: portrait) {
+  #hero.home-hero .left .role-title { font-size: 72px !important; }
+  #hero.home-hero .left > p { font-size: 20px !important; }
+  #hero.home-hero .left .hero-status { font-size: 18px !important; padding: 13px 25px !important; }
+  #hero.home-hero > .content > .right .hero-img { max-height: 335px !important; max-width: min(68%, 440px) !important; }
+  #hero.home-hero > .content > .social-section.portrait-social i { width: 52px !important; height: 52px !important; font-size: 24px !important; }
+}
+
+/* Portrait tablets: use the free space BETWEEN text and socials for the photo.
+   Three grid rows prevent the previous large empty gap under the image. */
+@media screen and (min-width: 700px) and (max-width: 1100px) and (min-height: 1050px) and (orientation: portrait) {
+  #hero.home-hero > .content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto minmax(0, 1fr) auto !important;
+    align-content: stretch !important;
+    justify-items: center !important;
+    row-gap: clamp(9px, 1.3svh, 18px) !important;
+  }
+  #hero.home-hero > .content > .left {
+    grid-row: 1 !important;
+    width: 100% !important;
+  }
+  #hero.home-hero > .content > .right {
+    grid-row: 2 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  #hero.home-hero > .content > .right .hero-img {
+    width: auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+    max-width: min(78%, 530px) !important;
+    object-fit: contain !important;
+  }
+  #hero.home-hero > .content > .social-section.portrait-social {
+    grid-row: 3 !important;
+    margin: 0 !important;
+    align-self: end !important;
+  }
+}
+
+/* iPad 13-inch: bring navigation affordances up to the iPad 11 visual scale. */
+@media screen and (min-width: 980px) and (max-width: 1100px) and (min-height: 1200px) and (orientation: portrait),
+       screen and (min-width: 1200px) and (max-width: 1679px) and (orientation: landscape) {
+  #hero > .section-next, .full-section > .section-next,
+  #hero > .section-next.section-prev, .full-section > .section-next.section-prev {
+    width: 52px !important; height: 52px !important;
+  }
+  .section-next i, .section-next svg { font-size: 24px !important; }
+  #hero > header .header-controls .theme-toggle i { font-size: 28px !important; }
+  #hero > header .header-search-toggle { font-size: 24px !important; }
+  #hero > header .menu-toggle::before,
+  #hero > header .menu-toggle::after { width: 26px !important; height: 3px !important; }
+}
+/* On non-desktop layouts, the portrait arrives after the hero copy instead
+   of appearing before the text. Desktop keeps the original timing. */
+@media screen and (max-width: 1679px) {
+  #hero.home-hero .hero-img {
+    animation-delay: 0.85s !important;
+    animation-duration: 1.35s !important;
+  }
+}
+
+/* Project technology labels match each project's description; keep original brand-color SVG logos. */
+.project-info .project-tech span { color: grey; }
+body.dark-mode .project-info .project-tech span { color: rgba(255, 255, 255, 0.65); }
+/* Icon fonts are monochrome: use the same neutral icon treatment as in Skills,
+   while external and local SVG brand logos retain their original colors. */
+.project-info .project-tech i { color: #4479a1; }
+body.dark-mode .project-info .project-tech i { color: #4479a1; }
+
+/* Project technology labels: original KYRA orange; individual technology icons use their brand colors. */
+.project-info .project-tech span, body.dark-mode .project-info .project-tech span { color: rgb(255, 126, 45) !important; }
+
+/* OOP project icon: preserve the original dark navy SVG strokes in light mode. */
+.project-info .project-tech img[src$="oop.svg"] { filter: none !important; }
+
+/* Brand refresh: KYRA geometric monogram alongside original wordmark. */
+.header-logo { display: inline-flex !important; align-items: center !important; gap: clamp(5px,.6vw,9px) !important; }
+.header-logo .kyra-mark { display: block !important; flex: none !important; width: clamp(25px,2.5vw,35px) !important; height: clamp(25px,2.5vw,35px) !important; object-fit: contain !important; }
+@media (max-width: 485px) { .header-logo .kyra-mark { width: 25px !important; height: 25px !important; } }
+/* Brand-color technology icons: no inherited orange text styling or CSS tint. */
+.project-tech img[src$="oop.svg"] { filter: none !important; opacity: 1 !important; }
+.project-tech img[src$="javafx.svg"] { width: 35px !important; height: 24px !important; flex-basis: 35px !important; object-fit: contain !important; filter: none !important; }
+body.dark-mode .project-tech img[src$="oop.svg"] { filter: brightness(0) invert(1) !important; }
+
+/* Restore the classic KYRA wordmark; remove experimental monogram. */
+.header-logo .kyra-mark { display: none !important; }
+/* JavaFX text mark instead of a hard-to-read image. */
+.project-tech .javafx-wordmark { display: inline-flex !important; align-items: baseline; flex: 0 0 auto; white-space: nowrap; font-size: 15px; line-height: 1; letter-spacing: -0.7px; font-family: Arial, sans-serif; margin-right: 3px; }
+.project-tech .javafx-wordmark b { color: #ed7824 !important; font-weight: 800; }
+.project-tech .javafx-wordmark strong { color: #64bde7 !important; font-weight: 900; }
+/* Technology icon sizing consistent with other Skills logos. */
+.skill-item.skill-rest .skill-logo, .skill-item.skill-grpc .skill-logo { display: block; object-fit: contain; }
+.skill-item.skill-grpc .grpc-fallback { font-weight: 800; color: #20a9c6; font-size: 16px; letter-spacing: -.5px; }
+/* OOP monitor follows the project description color in both themes. */
+.project-tech img[src$="oop.svg"] { filter: brightness(0) saturate(100%) invert(24%) sepia(11%) saturate(1276%) hue-rotate(175deg) brightness(91%) !important; }
+body.dark-mode .project-tech img[src$="oop.svg"] { filter: brightness(0) invert(1) opacity(.78) !important; }
+
+/* Brand reference artwork: light/dark logo from supplied design. */
+#hero > header > .header-logo { display: flex !important; align-items: center !important; justify-content: center !important; line-height: 1 !important; }
+#hero > header > .header-logo .brand-logo { display: block; height: clamp(44px, 5.5vw, 64px); width: auto; object-fit: contain; }
+#hero > header > .header-logo .brand-logo-dark { display: none; }
+body.dark-mode #hero > header > .header-logo .brand-logo-light { display: none; }
+body.dark-mode #hero > header > .header-logo .brand-logo-dark { display: block; }
+@media (max-width: 485px) { #hero > header > .header-logo .brand-logo { height: 43px; } }
+@media (min-width: 486px) and (max-width: 1199px) { #hero > header > .header-logo .brand-logo { height: 51px; } }
+/* Location alongside availability badge. */
+#hero .left .hero-location { display: inline-flex; align-items: center; gap: 6px; margin-left: 13px; font-size: clamp(12px, 1vw, 15px); font-weight: 500; color: var(--text-color, #344052); vertical-align: middle; }
+#hero .left .hero-location i { color: #ef7824; font-size: .92em; }
+body.dark-mode #hero .left .hero-location { color: #d7dbe3; }
+@media (max-width: 485px) { #hero .left .hero-location { margin-left: 9px; font-size: 11px; } }
+/* Restore original neutral computer icons for JavaFX and OOP. */
+.project-tech i.fa-desktop { color: inherit !important; filter: none !important; }
+
+/* Open to Work and location: same horizontal row on all viewports. */
+#hero.home-hero .left > .hero-status-row {
+  display: flex !important; align-items: center !important; justify-content: flex-start !important;
+  flex-wrap: nowrap !important; gap: clamp(8px, 1.5vw, 18px) !important;
+  width: 100% !important; min-width: 0 !important; align-self: stretch !important;
+}
+#hero.home-hero .hero-status-row > .hero-status {
+  flex: 0 0 auto !important; margin: 0 !important; top: auto !important;
+  align-self: center !important; transform: none !important;
+}
+#hero.home-hero .hero-status-row > .hero-location {
+  display: inline-flex !important; align-items: center !important; gap: 5px !important;
+  flex: 0 1 auto !important; min-width: 0 !important; margin: 0 !important;
+  font-size: clamp(10px, 1.2vw, 14px) !important; white-space: nowrap !important;
+  opacity: .85;
+}
+#hero.home-hero .hero-status-row > .hero-location i { color: #ff792e; }
+@media (max-width: 485px) {
+ #hero.home-hero .left > .hero-status-row { justify-content: center !important; gap: 9px !important; }
+ #hero.home-hero .hero-status-row > .hero-location { font-size: 10px !important; }
+}
+/* Classic OOP desktop icon, matching the original Font Awesome treatment. */
+.project-tech i.fa-desktop { filter: none !important; }
+
+/* KYRA brand + Claude-inspired unified status pill and form card */
+#hero.home-hero .hero-status-row { display:flex !important; align-items:center !important; width:max-content; max-width:100%; margin-bottom:19px !important; }
+#hero.home-hero .hero-status-row > .hero-status { display:inline-flex !important; flex-flow:row nowrap !important; align-items:center !important; justify-content:flex-start !important; width:max-content !important; max-width:100% !important; gap:9px !important; padding:10px 16px !important; margin:0 !important; border:1px solid rgba(43,58,85,.14) !important; border-radius:999px !important; background:rgba(255,255,255,.55) !important; white-space:nowrap !important; font-size:clamp(11px,1.05vw,14px) !important; }
+#hero.home-hero .hero-status-row .hero-status-separator { display:inline-block; width:1px; height:16px; margin:0 4px; background:rgba(43,58,85,.24); flex:none; }
+#hero.home-hero .hero-status-row .hero-location { display:inline-flex !important; align-items:center !important; gap:6px !important; margin:0 !important; padding:0 !important; border:0 !important; background:none !important; white-space:nowrap !important; font:inherit !important; color:inherit !important; }
+#hero.home-hero .hero-status-row .hero-location i { color:#ff7e2d !important; }
+body.dark-mode #hero.home-hero .hero-status-row > .hero-status { background:rgba(255,255,255,.045) !important; border-color:rgba(255,255,255,.19) !important; }
+body.dark-mode #hero.home-hero .hero-status-row .hero-status-separator { background:rgba(255,255,255,.26); }
+@media (max-width:485px) { #hero.home-hero .hero-status-row > .hero-status { font-size:11px !important; gap:6px !important; padding:8px 10px !important; } #hero.home-hero .hero-status-row .hero-status-separator { margin:0 2px; } }
+#footer > .footer-logo { display:flex !important; align-items:center !important; justify-content:center !important; width:auto !important; height:auto !important; font-size:0 !important; text-shadow:none !important; }
+#footer > .footer-logo .brand-logo { display:block; width:auto !important; height:clamp(42px,4.3vw,62px) !important; max-width:180px; object-fit:contain; }
+#footer > .footer-logo .brand-logo-dark { display:none; }
+body.dark-mode #footer > .footer-logo .brand-logo-light { display:none; }
+body.dark-mode #footer > .footer-logo .brand-logo-dark { display:block; }
+@media (max-width:800px) { #footer > .footer-logo .brand-logo { height:48px !important; } }
+@media (max-width:485px) { #footer > .footer-logo .brand-logo { height:43px !important; } }
+#contact .contact-form { box-sizing:border-box !important; width:min(100%,760px) !important; max-width:760px !important; padding:clamp(18px,2.4vw,30px) !important; background:rgba(43,58,85,.03) !important; border:1px solid rgba(43,58,85,.12) !important; border-radius:16px !important; box-shadow:0 8px 30px rgba(43,58,85,.025); }
+body.dark-mode #contact .contact-form { background:rgba(255,255,255,.035) !important; border-color:rgba(255,255,255,.14) !important; }
+@media (max-width:485px) { #contact .contact-form { padding:13px !important; gap:8px !important; border-radius:12px !important; } }
+@media (max-width:375px) and (max-height:720px) { #contact .contact-form { padding:9px 12px !important; gap:6px !important; margin-top:10px !important; } }
+
+/* Final polish: transparent form card and original status placement/entrance. */
+#contact .contact-form,
+body.dark-mode #contact .contact-form {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+/* The wrapper should take exactly the space of the former standalone badge. */
+#hero.home-hero .left > .hero-status-row {
+  margin: 0 !important;
+  padding: 0 !important;
+  align-self: flex-start !important;
+  opacity: 0;
+  animation: bottomIn 1.4s ease-in-out .1s forwards;
+}
+#hero.home-hero .hero-status-row > .hero-status {
+  opacity: 1 !important;
+  animation: none !important;
+}
+@media (max-width:485px) {
+  #hero.home-hero .left > .hero-status-row { align-self: center !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row { opacity: 1 !important; animation: none !important; }
+}
+
+/* Consistent spacing between availability/location pill and greeting.
+   Explicit sibling spacing avoids variation from the different tablet/phone flex gaps. */
+#hero.home-hero .left > .hero-status-row { margin-bottom: 0 !important; }
+#hero.home-hero .left > .hero-status-row + .typing-greeting {
+  margin-top: 0 !important;
+}
+@media screen and (max-width: 485px) {
+  #hero.home-hero .left > .hero-status-row + .typing-greeting { margin-top: 0 !important; }
+  /* Anchor logo at the physical vertical midpoint of the mobile navbar. */
+  #hero > header { position: fixed !important; }
+  #hero > header > .header-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+  }
+  #hero > header > .header-logo .brand-logo { display: block; object-fit: contain; }
+  #hero > header > .header-logo .brand-logo-dark { display: none; }
+  body.dark-mode #hero > header > .header-logo .brand-logo-light { display: none; }
+  body.dark-mode #hero > header > .header-logo .brand-logo-dark { display: block; }
+}
+
+/* 2026-10-12: status badge spacing and the original staggered hero reveal. */
+#hero.home-hero .left > .hero-status-row {
+  margin-bottom: 0 !important;
+}
+/* Equal visual breathing room: navbar-to-badge and badge-to-greeting.
+   Match the spacing of the first two hero elements to the header clearance. */
+@media screen and (max-width: 1679px) {
+  #hero.home-hero .left > .hero-status-row + .typing-greeting {
+    margin-top: clamp(14px, 2svh, 24px) !important;
+  }
+}
+@media screen and (min-width: 1680px) {
+  #hero.home-hero .left > .hero-status-row + .typing-greeting {
+    margin-top: 20px !important;
+  }
+}
+/* Form card and contents enter together: animate the parent, not each child. */
+#contact .contact-form { opacity: 0 !important; }
+#contact .contact-form > * { opacity: 1 !important; animation: none !important; }
+#contact.in-view .contact-form {
+  animation: bottomIn 0.9s ease-in-out 0.32s forwards !important;
+}
+#contact.in-view .contact-form > * { animation: none !important; opacity: 1 !important; }
+/* Technology labels use exactly the same palette as project descriptions. */
+.project-info .project-tech > span { color: grey !important; }
+body.dark-mode .project-info .project-tech > span { color: rgba(255,255,255,.65) !important; }
+/* OOP: restore three-cube symbol with the existing technology-icon treatment. */
+.project-tech i.fa-cubes-stacked { color: #4479a1 !important; filter: none !important; }
+/* The logo is anchored to the viewport, independent of the expanded menu. */
+@media screen and (max-width: 485px) {
+  #hero > header > .header-logo,
+  #hero > header.mobile-menu-open > .header-logo {
+    position: fixed !important;
+    top: var(--kyra-logo-center-y, 34px) !important;
+    left: 50vw !important;
+    right: auto !important;
+    width: max-content !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    z-index: 10010 !important;
+    transition: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #contact .contact-form, #contact .contact-form > * { opacity: 1 !important; animation: none !important; }
+}
+
+/* 2026-10-12 verified fixes: avoid invisible form caused by opacity:0
+   waiting for an observer class; animate the entire card only when visible. */
+#contact .contact-form,
+#contact .contact-form > * { opacity: 1 !important; }
+#contact .contact-form > * { animation: none !important; }
+#contact.in-view .contact-form {
+  animation: kyraContactReveal .8s ease-out .12s both !important;
+}
+@keyframes kyraContactReveal {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #contact.in-view .contact-form { animation: none !important; }
+}
+/* Technology text follows the project TITLE, not the description. */
+.project-info .project-tech > span { color: rgba(43,58,85,.9) !important; }
+body.dark-mode .project-info .project-tech > span { color: rgba(255,255,255,.9) !important; }
+/* Font Awesome's broadly available cubes glyph (instead of unsupported cubes-stacked). */
+.project-tech i.fa-cubes { color: currentColor !important; filter: none !important; }
+/* Position availability pill centrally in the space between header and greeting,
+   without moving the greeting or changing the approved hero layout. */
+#hero.home-hero .left > .hero-status-row {
+  position: relative;
+  top: var(--kyra-status-balance, 0px) !important;
+}
+
+/* 2026-10-12: ensure the form reveals AFTER the contact heading and intro. */
+#contact.in-view .contact-form {
+  animation: kyraContactReveal .8s ease-out .8s both !important;
+}
+/* Consistent dark-navy navigation labels in light mode; preserve dark-mode contrast. */
+body:not(.dark-mode) #hero > header nav a.nav-item,
+body:not(.dark-mode) #hero > header nav a.nav-item:visited {
+  color: #2b3a55 !important;
+}
+
+/* 2026-10-12: stable status positioning and contact reveal sequence. */
+#hero.home-hero .left > .hero-status-row {
+  top: var(--kyra-status-balance, 0px) !important;
+}
+/* Keep the entire card hidden until the heading and intro have entered.
+   Animation fill-mode BOTH prevents a pre-animation flash. */
+#contact .contact-form {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
+}
+#contact.in-view .contact-form {
+  visibility: visible !important;
+  animation: kyraContactReveal 0.85s ease-out 1.05s both !important;
+}
+#contact .contact-form > *,
+#contact.in-view .contact-form > * {
+  opacity: 1 !important;
+  animation: none !important;
+}
+/* Match the actual site's main navy, used in the hero and dark background. */
+body:not(.dark-mode) #hero > header nav a.nav-item,
+body:not(.dark-mode) #hero > header nav a.nav-item:visited {
+  color: #2b3a55 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #contact .contact-form, #contact.in-view .contact-form {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+  }
+}
+
+/* Final targeted repairs: status center, contact reveal and nav hover. */
+#hero.home-hero .left > .hero-status-row {
+  top: var(--kyra-status-balance, 0px) !important;
+  animation: kyraStatusFade 1.05s ease-out .12s both !important;
+}
+@keyframes kyraStatusFade { from { opacity:0; } to { opacity:1; } }
+/* Do not allow an earlier contact animation or visibility rule to hide the form. */
+#contact .contact-form,
+#contact.in-view .contact-form {
+  visibility: visible !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+#contact.kyra-contact-reveal .contact-form,
+#contact.in-view.kyra-contact-reveal .contact-form {
+  visibility: visible !important;
+  animation: kyraContactReveal .85s ease-out 1.05s both !important;
+}
+#contact .contact-form > * { opacity: 1 !important; animation: none !important; }
+body:not(.dark-mode) #hero > header nav a.nav-item:hover,
+body:not(.dark-mode) #hero > header nav a.nav-item:focus-visible,
+body.dark-mode #hero > header nav a.nav-item:hover,
+body.dark-mode #hero > header nav a.nav-item:focus-visible {
+  color: rgb(255, 126, 45) !important;
+  text-shadow: 0 4px 3px rgba(255,126,45,.3);
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row { animation:none !important; opacity:1 !important; }
+  #contact .contact-form, #contact.in-view .contact-form { opacity:1 !important; animation:none !important; }
+}
+
+/* 2026-10-12: stable placement; no layout-dependent transform in badge animation. */
+#hero.home-hero .left > .hero-status-row {
+  top: var(--kyra-status-balance, 0px) !important;
+  animation: kyraStatusFade 1.05s ease-out .12s both !important;
+}
+/* Explicit state machine avoids competing animations and invisible contact form. */
+#contact .contact-form,
+#contact.in-view .contact-form,
+#contact.kyra-contact-reveal .contact-form,
+#contact.in-view.kyra-contact-reveal .contact-form {
+  opacity: 0 !important;
+  visibility: visible !important;
+  transform: translateY(26px) !important;
+  animation: none !important;
+  transition: opacity .85s ease, transform .85s cubic-bezier(.22,1,.36,1) !important;
+}
+#contact .contact-form > *, #contact.in-view .contact-form > * {
+  opacity: 1 !important; animation: none !important;
+}
+#contact.kyra-form-visible .contact-form,
+#contact.in-view.kyra-form-visible .contact-form {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+@media (prefers-reduced-motion:reduce) {
+  #contact .contact-form, #contact.in-view .contact-form { opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* Desktop: position the availability badge from a single viewport-space measurement.
+   Other responsive layouts keep their established placement. */
+@media (min-width: 1680px) {
+  #hero.home-hero .left > .hero-status-row {
+    position: relative !important;
+    top: var(--kyra-status-balance, 0px) !important;
+  }
+}
+
+/* 2026-10-12: restore badge's original in-flow placement and bottomIn entrance
+   from user-provided Kyra. 2.zip. Remove dynamic offsets and viewport re-measuring. */
+#hero.home-hero .left > .hero-status-row {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none;
+  margin-top: 0 !important;
+  margin-bottom: 19px !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  align-self: flex-start !important;
+  opacity: 0 !important;
+  animation: bottomIn 1.4s ease-in-out .1s forwards !important;
+}
+#hero.home-hero .hero-status-row > .hero-status { margin-bottom: 0 !important; }
+@media (max-width: 485px) {
+  #hero.home-hero .left > .hero-status-row { align-self: center !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row { animation: none !important; opacity: 1 !important; }
+}
+
+/* 2026-10-12: fix invisible status pill. Animate ONLY the outer wrapper;
+   the inner pill was still opacity:0 from the original standalone animation. */
+#hero.home-hero .left > .hero-status-row {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  opacity: 0 !important;
+  animation: bottomIn 1.4s ease-in-out .1s forwards !important;
+}
+#hero.home-hero .left > .hero-status-row > .hero-status {
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row { opacity:1 !important; animation:none !important; }
+}
+
+/* Final badge visibility repair: !important opacity:0 was overriding keyframe opacity.
+   Animate only wrapper with the reference bottomIn entrance and retain natural flow. */
+#hero.home-hero .left > .hero-status-row {
+  display: flex !important;
+  position: static !important;
+  top: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  animation: kyraBadgeArrive 1.4s ease-in-out .1s both !important;
+}
+#hero.home-hero .left > .hero-status-row > .hero-status {
+  display: inline-flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+}
+@keyframes kyraBadgeArrive {
+  from { transform: translateY(200px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row { animation: none !important; transform: none !important; }
+}
+
+
+
+/* Hero animation timing matched to the supplied Kyra. 2(1).zip.
+   Animate the same elements as the original, not their parents/links. */
+#hero.home-hero .left > .hero-status-row {
+  position: static !important; top: auto !important; bottom: auto !important;
+  opacity: 1 !important; visibility: visible !important;
+  animation: kyraReferenceBadgeIn 1.4s ease-in-out .1s both !important;
+}
+#hero.home-hero .hero-status-row > .hero-status {
+  opacity: 1 !important; animation: none !important; transform: none !important;
+}
+@keyframes kyraReferenceBadgeIn {
+  from { opacity: 0; transform: translateY(200px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+#hero.home-hero .content h3 {
+  opacity: 0; animation: bottomIn 1.4s ease-in-out .2s forwards !important;
+}
+#hero.home-hero .content h1,
+#hero.home-hero .role-title {
+  opacity: 0; animation: bottomIn 1.4s ease-in-out .3s forwards !important;
+}
+#hero.home-hero .content .left > p {
+  opacity: 0; animation: bottomIn 1.4s ease-in-out .4s forwards !important;
+}
+#hero.home-hero .cta-section .cta-btn,
+#hero.home-hero .cta-section a {
+  animation: bottomIn 1.4s ease-in-out .5s forwards !important;
+}
+#hero.home-hero .social-section i {
+  animation: bottomIn 1.4s ease-in-out .6s forwards !important;
+}
+#hero.home-hero .social-section a { animation: none !important; }
+#hero.home-hero .hero-img {
+  animation: imgIn 1.4s ease-in-out .2s forwards !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .left > .hero-status-row,
+  #hero.home-hero .content h3, #hero.home-hero .content h1,
+  #hero.home-hero .role-title, #hero.home-hero .content .left > p,
+  #hero.home-hero .cta-section .cta-btn, #hero.home-hero .cta-section a,
+  #hero.home-hero .social-section i, #hero.home-hero .hero-img {
+    opacity: 1 !important; transform: none !important; animation: none !important;
+  }
+}
+
+/* Keep the original navbar footprint after switching from text to PNG branding.
+   Image intrinsic height must never enlarge the header or shift hero geometry. */
+@media (min-width: 1680px) {
+  #hero > header {
+    height: 80px !important;
+    min-height: 80px !important;
+    box-sizing: border-box !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    align-items: center !important;
+  }
+  #hero > header > .header-logo .brand-logo { height: 54px !important; max-height: 54px !important; }
+}
+@media (min-width: 486px) and (max-width: 1679px) {
+  #hero > header {
+    height: 68px !important;
+    min-height: 68px !important;
+    box-sizing: border-box !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #hero > header > .header-logo .brand-logo { height: 48px !important; max-height: 48px !important; }
+}
+@media (max-width: 485px) {
+  #hero > header {
+    height: 58px !important;
+    min-height: 58px !important;
+    box-sizing: border-box !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #hero > header > .header-logo .brand-logo { height: 38px !important; max-height: 38px !important; }
+  /* Preserve the stable horizontal centering even while menu is open. */
+  #hero > header > .header-logo,
+  #hero > header.mobile-menu-open > .header-logo {
+    top: 29px !important;
+    left: 50vw !important;
+  }
+}
+
+/* Remove spacing margins between status badge and greeting, across breakpoints. */
+#hero.home-hero .left > .hero-status-row,
+#hero.home-hero .left > .hero-status-row > .hero-status {
+  margin-bottom: 0 !important;
+}
+#hero.home-hero .left > h3.typing-greeting {
+  margin-top: 0 !important;
+}
+
+/* Direct status pill: restore the same DOM/animation structure as Kyra. 2(2).zip.
+   No animated wrapper, no JS positioning or forced opacity:1. */
+#hero.home-hero .content .left > .hero-status {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  margin-bottom: 0 !important;
+  opacity: 0;
+  animation: bottomIn 1.4s ease-in-out 0.1s forwards !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero.home-hero .content .left > .hero-status {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Match the original Kyra. 2(2) navbar footprint while keeping the PNG logo
+   and the working direct hero-status animation unchanged. */
+@media (min-width: 1680px) {
+  #hero > header { height: 78px !important; min-height: 78px !important;
+    padding-top: 20px !important; padding-bottom: 20px !important; }
+  #hero > header > .header-logo .brand-logo { height: 38px !important; max-height: 38px !important; }
+}
+@media (min-width: 486px) and (max-width: 1679px) {
+  #hero > header { height: 72px !important; min-height: 72px !important;
+    --kyra-tablet-header-height: 72px; --kyra-nav-height: 72px; }
+}
+@media (max-width: 485px) {
+  #hero > header { height: 68px !important; min-height: 68px !important;
+    --kyra-tablet-header-height: 68px; --kyra-nav-height: 68px; }
+  #hero > header > .header-logo,
+  #hero > header.mobile-menu-open > .header-logo {
+    top: 34px !important; left: 50vw !important;
+  }
+}
+
+/* Desktop navbar matches the 100px scroll-reveal hover zone in script.js.
+   Keep mobile/tablet header and all hero animations untouched. */
+@media (min-width: 1680px) {
+  #hero > header {
+    height: 100px !important;
+    min-height: 100px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+  }
+  #hero > header > .header-logo .brand-logo {
+    height: 62px !important;
+    max-height: 62px !important;
+    width: auto !important;
+  }
+}
+
+/* Desktop-only fine tuning: preserve the approved hero entrance animations. */
+@media (min-width: 1680px) {
+  /* Shift the badge visually into the larger gap introduced by the 100px navbar.
+     Relative top does not change its layout box or its bottomIn transform animation. */
+  #hero.home-hero .content .left > .hero-status {
+    position: relative !important;
+    top: 15px !important;
+  }
+  /* Let the portrait meet the bottom edge of the hero instead of stopping
+     above it; do not transform the image (which has its own imgIn animation). */
+  #hero.home-hero > .content > .right {
+    align-self: stretch !important;
+    align-items: flex-end !important;
+  }
+  #hero.home-hero > .content > .right .img-wrap {
+    margin-bottom: -7px !important;
+    align-items: flex-end !important;
+  }
+}
+
+/* Blog header matches the index navbar and brand-logo layout. */
+body.blog-loading-page > header { box-sizing: border-box; }
+@media (min-width: 1680px) {
+  body.blog-loading-page > header {
+    height: 100px !important; min-height: 100px !important;
+    padding-top: 12px !important; padding-bottom: 12px !important;
+    display: flex !important; align-items: center !important;
+  }
+  body.blog-loading-page > header > .header-logo .brand-logo {
+    height: 62px !important; max-height: 62px !important; width: auto !important;
+  }
+}
+@media (min-width: 486px) and (max-width: 1679px) {
+  body.blog-loading-page > header {
+    height: 72px !important; min-height: 72px !important;
+    --kyra-tablet-header-height: 72px; --kyra-nav-height: 72px;
+  }
+}
+@media (max-width: 485px) {
+  body.blog-loading-page > header {
+    height: 68px !important; min-height: 68px !important;
+    --kyra-tablet-header-height: 68px; --kyra-nav-height: 68px;
+  }
+  body.blog-loading-page > header > .header-logo,
+  body.blog-loading-page > header.mobile-menu-open > .header-logo {
+    position: absolute !important; left: 50vw !important;
+    top: 34px !important; transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+}
+
+/* Blog visual parity with the main page: a SINGLE brand image, swapped by theme. */
+
+
+body.blog-loading-page > header { box-sizing: border-box !important; }
+body.blog-loading-page > header .blog-brand-logo { display: block !important; width: auto !important; object-fit: contain !important; content: url("images/logo/kyra-reference-light.png"); }
+html.dark-mode body.blog-loading-page > header .blog-brand-logo { content: url("images/logo/kyra-reference-dark.png"); }
+@media (min-width: 1680px) { body.blog-loading-page > header .blog-brand-logo { height: 62px !important; max-height: 62px !important; } }
+@media (min-width: 486px) and (max-width: 1679px) { body.blog-loading-page > header .blog-brand-logo { height: 51px !important; max-height: 51px !important; } }
+@media (max-width: 485px) { body.blog-loading-page > header .blog-brand-logo { height: 43px !important; max-height: 43px !important; } }
+
+
+/* Unified page backgrounds: index.html and blog.html use the SAME rules.
+   The header's fixed gradient uses the same viewport coordinates as the page. */
+body, body.blog-loading-page {
+  background: var(--light-page-gradient) !important;
+  background-attachment: fixed !important;
+  background-size: 100vw 100vh !important;
+}
+header, body.blog-loading-page > header, body.blog-loading-page > header.mobile-menu-open {
+  background: var(--light-page-gradient) !important;
+  background-attachment: fixed !important;
+  background-size: 100vw 100vh !important;
+}
+html.dark-mode body, html.dark-mode body.blog-loading-page, body.blog-loading-page.dark-mode {
+  background: var(--dark-page-gradient) no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: 100vw 100vh !important;
+  background-color: rgb(43, 58, 85) !important;
+}
+html.dark-mode header, html.dark-mode body.blog-loading-page > header,
+html.dark-mode body.blog-loading-page > header.mobile-menu-open {
+  background: var(--dark-page-gradient) !important;
+  background-attachment: fixed !important;
+  background-size: 100vw 100vh !important;
+}
+
+/* Blog navbar links: identical colors and interaction states to index.html. */
+body.blog-loading-page:not(.dark-mode) > header nav a.nav-item,
+body.blog-loading-page:not(.dark-mode) > header nav a.nav-item:visited {
+  color: #2b3a55 !important;
+}
+html.dark-mode body.blog-loading-page > header nav a.nav-item,
+body.blog-loading-page.dark-mode > header nav a.nav-item {
+  color: rgba(255, 255, 255, .8) !important;
+}
+body.blog-loading-page > header nav a.nav-item:hover,
+body.blog-loading-page > header nav a.nav-item:focus-visible,
+html.dark-mode body.blog-loading-page > header nav a.nav-item:hover,
+html.dark-mode body.blog-loading-page > header nav a.nav-item:focus-visible {
+  color: rgb(255, 126, 45) !important;
+  text-shadow: 0 4px 3px rgba(255,126,45,.3);
+}
+
+/* Blog navigation hover: same orange text, shadow and underline as index.html.
+   Specificity also overrides blog-specific normal and visited link colors. */
+body.blog-loading-page > header nav a.nav-item:is(:hover, :focus-visible),
+body.blog-loading-page > header nav a.nav-item:visited:is(:hover, :focus-visible),
+html.dark-mode body.blog-loading-page > header nav a.nav-item:is(:hover, :focus-visible),
+html.dark-mode body.blog-loading-page > header nav a.nav-item:visited:is(:hover, :focus-visible) {
+  color: rgb(255, 126, 45) !important;
+  text-shadow: 0 4px 3px rgba(255, 126, 45, .3) !important;
+}
+body.blog-loading-page > header nav a.nav-item:is(:hover, :focus-visible)::after {
+  opacity: 1 !important;
+  transform: scaleX(1) !important;
+  background-color: rgb(255, 126, 45) !important;
+}
+
+/* Official KYRA brand assets: theme-specific navbar logos and footer watermark */
+body:not(.dark-mode) .blog-brand-logo.brand-logo-dark { display:none; }
+body.dark-mode .blog-brand-logo.brand-logo-light { display:none; }
+body.dark-mode .blog-brand-logo.brand-logo-dark { display:block; }
+#footer .footer-logo .brand-logo { object-fit:contain; }
+
+/* Official KYRA brand corrections: preserve original typography, one blog logo. */
+body.blog-loading-page > header .blog-brand-logo {
+  display: block !important;
+  content: url("images/logo/kyra-official-logo-light.png") !important;
+  width: auto !important; object-fit: contain !important;
+}
+html.dark-mode body.blog-loading-page > header .blog-brand-logo,
+body.blog-loading-page.dark-mode > header .blog-brand-logo {
+  content: url("images/logo/kyra-official-logo-dark.png") !important;
+}
+/* Footer watermark must remain visible in both themes. */
+body:not(.dark-mode) #footer > .footer-logo > .brand-logo-light {display:block !important;}
+body:not(.dark-mode) #footer > .footer-logo > .brand-logo-dark {display:none !important;}
+body.dark-mode #footer > .footer-logo > .brand-logo-light {display:none !important;}
+body.dark-mode #footer > .footer-logo > .brand-logo-dark {display:block !important;}
+#footer > .footer-logo { visibility:visible !important; opacity:1 !important; min-width:110px !important; min-height:44px !important; }
+#footer > .footer-logo > .brand-logo {visibility:visible !important; opacity:1 !important; width:clamp(125px, 12vw, 190px) !important; max-width:none !important; height:auto !important; max-height:75px !important; object-fit:contain !important;}
+
+/* Official KYRA final adjustments */
+#hero.home-hero > header > .header-logo .brand-logo,
+body.blog-loading-page > header > .header-logo .blog-brand-logo {height:60px !important;max-height:60px !important;width:auto !important;object-fit:contain !important;}
+@media(max-width:485px){#hero.home-hero > header > .header-logo .brand-logo,body.blog-loading-page > header > .header-logo .blog-brand-logo{height:min(60px, calc(100% - 8px)) !important;max-height:60px !important;}}
+#hero.home-hero .hero-status > .hero-status-separator {display:inline-block !important;flex:0 0 1px !important;width:1px !important;height:16px !important;margin:0 4px !important;background:rgba(43,58,85,.38) !important;align-self:center !important;}
+body.dark-mode #hero.home-hero .hero-status > .hero-status-separator{background:rgba(255,255,255,.42) !important;}
+#footer > .footer-logo > img.brand-logo{display:block;object-fit:contain !important;height:auto !important;width:clamp(115px,13vw,205px) !important;max-height:62px !important;}
+body:not(.dark-mode) #footer > .footer-logo > img.brand-logo-dark{display:none !important;}
+body.dark-mode #footer > .footer-logo > img.brand-logo-light{display:none !important;}
+/* Soft orange cursor tip glow; never blocks clicking. */
+#kyra-cursor-glow{position:fixed;z-index:999999;pointer-events:none;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,rgba(255,102,0,.36) 0%,rgba(255,102,0,.13) 38%,transparent 75%);transform:translate3d(-50%,-50%,0);opacity:0;transition:opacity .15s ease;will-change:transform;}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){#kyra-cursor-glow{display:none !important;}}
+
+/* KYRA final footer watermark: original subtle, compact appearance. */
+#footer > a.footer-logo { opacity: .45 !important; transition: opacity .3s ease !important; }
+#footer > a.footer-logo:hover { opacity: 1 !important; }
+#footer > a.footer-logo > img.brand-logo { width: clamp(82px, 8vw, 115px) !important; height: auto !important; max-height: 36px !important; max-width: 115px !important; object-fit: contain !important; }
+
+/* gRPC logo: preserve its original light-mode appearance; white in dark mode. */
+body.dark-mode .skill-item.skill-grpc .skill-logo, html.dark-mode .skill-item.skill-grpc .skill-logo, [data-theme="dark"] .skill-item.skill-grpc .skill-logo { filter: brightness(0) invert(1) !important; }
+body.dark-mode .skill-item.skill-grpc .grpc-fallback, html.dark-mode .skill-item.skill-grpc .grpc-fallback, [data-theme="dark"] .skill-item.skill-grpc .grpc-fallback { color: #fff !important; }
+
+/* gRPC dark theme: retain turquoise arrow while lettering stays white. */
+.skill-item.skill-grpc .grpc-dark-logo { display:none !important; }
+body.dark-mode .skill-item.skill-grpc .skill-logo:not(.grpc-dark-logo) {display:none !important;}
+body.dark-mode .skill-item.skill-grpc .grpc-dark-logo {display:block !important;filter:none !important;object-fit:contain;}
+/* Entire project card is a future detail-page link; nested controls still work. */
+#portfolio .project-showcase.project-card-clickable {cursor:pointer;}
+#portfolio .project-showcase.project-card-clickable:focus-visible {outline:2px solid #ff6600;outline-offset:5px;}
+
+/* Projects menu: same chevron and dropdown language as language switcher. */
+.projects-switcher {position:relative;display:inline-flex;align-items:center;gap:5px;flex-shrink:0;}
+.projects-trigger {background:transparent;border:0;padding:0;font:inherit;font-size:18px;font-weight:600;letter-spacing:1px;cursor:pointer;}
+.projects-chevron {background:transparent;border:0;padding:7px 2px;color:inherit;cursor:pointer;font-size:12px;transition:color .2s ease;}
+.projects-switcher:hover .projects-chevron,.projects-switcher.is-open .projects-chevron {color:#ff6600;}
+.projects-chevron i {transition:transform .25s ease;display:inline-block;}
+.projects-switcher.is-open .projects-chevron i {transform:rotate(180deg);}
+
+
+.projects-option {display:block;text-decoration:none;color:#2b3a55;font-size:14px;font-weight:600;padding:12px 13px;border-radius:5px;white-space:nowrap;transition:background .2s,color .2s;}
+.projects-option:hover,.projects-option:focus-visible {background:rgba(255,102,0,.09);color:#ff6600;}
+
+body.dark-mode .projects-option {color:#f4f4f4;}
+body.dark-mode .projects-option:hover,body.dark-mode .projects-option:focus-visible {color:#ff6600;}
+@media(max-width:1199px){
+ #mobile-menu .projects-switcher {display:flex;width:100%;justify-content:center;flex-wrap:wrap;gap:8px;}
+ #mobile-menu .projects-dropdown {position:relative;top:auto;left:auto;flex-basis:100%;min-width:0;width:min(290px,100%);margin:0 auto;display:none;opacity:1;visibility:visible;transform:none;box-shadow:0 3px 14px rgba(0,0,0,.12);}
+ #mobile-menu .projects-switcher.is-open .projects-dropdown {display:flex;}
+}
+
+/* Projects navigation matches other navbar links, including their hover effect. */
+header nav .projects-trigger {
+  display:inline-flex; align-items:center; color:inherit; text-decoration:none;
+  font:inherit; font-size:18px; font-weight:600; letter-spacing:1px;
+}
+header nav .projects-trigger:hover, header nav .projects-trigger:focus-visible {
+  color:rgb(255,126,45) !important; text-shadow:0 4px 3px rgba(255,126,45,.3);
+}
+body:not(.dark-mode) header nav .projects-trigger {color:#2b3a55;}
+body.dark-mode header nav .projects-trigger {color:rgba(255,255,255,.8);}
+body:not(.dark-mode) header nav .projects-trigger:hover,
+body.dark-mode header nav .projects-trigger:hover,
+body:not(.dark-mode) header nav .projects-trigger:focus-visible,
+body.dark-mode header nav .projects-trigger:focus-visible {color:rgb(255,126,45) !important;}
+/* Match language dropdown and search panel in dark mode. */
+
+/* Keep menu open when mouse moves from trigger into its dropdown. */
+@media (min-width: 1680px) and (hover:hover) and (pointer:fine) {
+  
+  .projects-switcher::after {content:"";position:absolute;top:100%;left:0;right:0;height:15px;}
+}
+
+/* 2026-10-12: center and lengthen the Open to Work / location separator. */
+#hero.home-hero .hero-status > .hero-status-separator {
+  height: 23px !important;
+  margin-left: 10px !important;
+  margin-right: 4px !important;
+}
+@media (max-width: 485px) {
+  #hero.home-hero .hero-status > .hero-status-separator {
+    height: 21px !important;
+    margin-left: 7px !important;
+    margin-right: 3px !important;
+  }
+}
+/* Tablet and phone: same full-width menu, click-only expansion. */
+@media (max-width: 1199px) {
+  #mobile-menu .projects-switcher {
+    box-sizing: border-box;
+    display: flex !important;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    min-width: 0;
+    flex: 0 0 100%;
+    gap: 7px;
+  }
+  #mobile-menu .projects-trigger { flex: 0 0 auto; width: auto !important; }
+  #mobile-menu .projects-chevron { flex: 0 0 auto; }
+  #mobile-menu .projects-dropdown {
+    box-sizing: border-box;
+    position: static !important;
+    flex: 0 0 100%;
+    width: min(290px, 100%) !important;
+    max-width: 100%;
+    margin: 0 auto;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: none !important;
+    pointer-events: none;
+  }
+  #mobile-menu .projects-switcher.is-open > .projects-dropdown {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+  }
+  #mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  #mobile-menu .projects-switcher::after { display: none !important; }
+}
+
+/* KYRA 2026-10-12: tablet and phone menus are click-only, even with a mouse. */
+@media (max-width: 1679px) {
+  .projects-switcher:hover:not(.is-open) > .projects-dropdown,
+  .projects-switcher:hover:not(.hover-dismissed):not(.is-open) > .projects-dropdown {
+    opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;
+  }
+  .projects-switcher:not(.is-open) .projects-chevron i { transform: rotate(0deg) !important; }
+  #mobile-menu .projects-switcher { flex-shrink: 0 !important; }
+  #mobile-menu .projects-switcher::after { display:none !important; }
+}
+/* The phone hamburger should always be tappable and expand the same menu as on tablets. */
+@media (max-width: 485px) {
+  #hero > header .menu-toggle { position: relative !important; z-index: 1102 !important; pointer-events: auto !important; cursor: pointer !important; }
+  #hero > header nav#mobile-menu {
+    position: absolute !important; top: 100% !important; left: 0 !important; right: 0 !important;
+    box-sizing: border-box !important; width: 100% !important; overflow-x: hidden !important;
+    overflow-y: auto !important; max-height: 0 !important; opacity: 0 !important;
+    visibility: hidden !important; pointer-events: none !important;
+  }
+  #hero > header.mobile-menu-open nav#mobile-menu {
+    max-height: calc(100dvh - 65px) !important; overflow-y: auto !important;
+    opacity: 1 !important; visibility: visible !important; pointer-events: auto !important;
+  }
+  #hero > header nav#mobile-menu .projects-switcher {
+    display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
+    align-items: center !important; justify-content: center !important;
+    width: 100% !important; max-width: 100% !important; min-width: 0 !important;
+    flex: 0 0 auto !important;
+  }
+  #hero > header nav#mobile-menu .projects-trigger { width: auto !important; flex: 0 0 auto !important; }
+  #hero > header nav#mobile-menu .projects-chevron { flex: 0 0 auto !important; }
+  #hero > header nav#mobile-menu .projects-dropdown {
+    flex: 0 0 100% !important; width: min(290px, 100%) !important;
+    box-sizing: border-box !important; position: static !important;
+  }
+}
+
+
+/* KYRA: restore the phone hamburger's background, matching the tablet palette.
+   Light: softly translucent; dark: opaque. Keep the working mobile toggle intact. */
+@media screen and (max-width: 485px) {
+  #hero > header.mobile-menu-open nav#mobile-menu {
+    background: rgba(246, 248, 252, .86) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode #hero > header.mobile-menu-open nav#mobile-menu {
+    background: #2b3a55 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* iPad 11 and iPad 13: Projects expands across the hamburger menu's
+   entire usable width, not the old 290px compact popup. */
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #hero > header nav#mobile-menu .projects-switcher {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+  #hero > header nav#mobile-menu .projects-dropdown {
+    box-sizing: border-box !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* KYRA navigation refinement: phone hamburger retains the user's reference
+   look, and all tablet widths (including 1200–1679px) use one full-width list. */
+@media screen and (max-width: 485px) {
+  #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: rgba(246, 248, 252, .86) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+  html.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header.mobile-menu-open nav#mobile-menu {
+    background: #2b3a55 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+@media screen and (min-width: 486px) and (max-width: 1679px) {
+  #mobile-menu .projects-switcher,
+  #hero > header nav#mobile-menu .projects-switcher,
+  body.blog-loading-page > header nav#mobile-menu .projects-switcher {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    gap: 7px !important;
+    text-align: center !important;
+  }
+  #mobile-menu .projects-trigger {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    text-align: center !important;
+  }
+  #mobile-menu .projects-chevron { flex: 0 0 auto !important; }
+  #mobile-menu .projects-dropdown,
+  #hero > header nav#mobile-menu .projects-dropdown,
+  body.blog-loading-page > header nav#mobile-menu .projects-dropdown {
+    box-sizing: border-box !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+  #mobile-menu .projects-switcher:not(.is-open) > .projects-dropdown,
+  #mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  #mobile-menu .projects-switcher.is-open > .projects-dropdown {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  #mobile-menu .projects-switcher::after { display: none !important; }
+}
+
+/* KYRA: tablet and phone Projects dropdown opens ONLY via chevron click.
+   Override earlier hover selectors, including iPad widths 1200–1679px. */
+@media (max-width: 1679px) {
+  .projects-switcher:not(.is-open) > .projects-dropdown,
+  .projects-switcher:hover:not(.is-open) > .projects-dropdown,
+  .projects-switcher:hover:not(.hover-dismissed):not(.is-open) > .projects-dropdown {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .projects-switcher.is-open > .projects-dropdown,
+  .projects-switcher.is-open:hover > .projects-dropdown {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  .projects-switcher:not(.is-open) .projects-chevron i { transform: rotate(0deg) !important; }
+  .projects-switcher.is-open .projects-chevron i { transform: rotate(180deg) !important; }
+}
+/* Match the phone hamburger panel to the tablet hamburger's surface. */
+@media (max-width: 485px) {
+  #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: rgba(246, 248, 252, .86) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: #2b3a55 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* KYRA — October 12: animate Projects expansion like the hamburger.
+   Override older display:none rules so the height can transition. */
+@media (max-width: 1679px) {
+  #mobile-menu .projects-switcher > .projects-dropdown,
+  #hero > header nav#mobile-menu .projects-switcher > .projects-dropdown,
+  body.blog-loading-page > header nav#mobile-menu .projects-switcher > .projects-dropdown,
+  #mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown {
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: none !important;
+    transition: max-height .48s ease, padding .48s ease, opacity .38s ease, visibility .48s ease !important;
+  }
+  #mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  #hero > header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  body.blog-loading-page > header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  #mobile-menu .projects-switcher.is-open:hover > .projects-dropdown {
+    display: flex !important;
+    max-height: 350px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+/* Phone: same full-page gradient panel as the iPad hamburger, not transparent
+   over the hero photo. Light/dark backgrounds follow existing theme variables. */
+@media (max-width: 485px) {
+  #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: var(--light-page-gradient) !important;
+    background-color: #f5f7fb !important;
+    background-size: 100vw 100vh !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header.mobile-menu-open nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: var(--dark-page-gradient) !important;
+    background-color: #2b3a55 !important;
+    background-size: 100vw 100vh !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+
+/* KYRA navigation consistency: mobile and tablet hamburger panels share
+   the same full-viewport width and themed panel surface. */
+@media screen and (max-width: 1679px) {
+  #hero > header,
+  body.blog-loading-page > header { overflow: visible !important; }
+
+  #hero > header nav#mobile-menu,
+  body.blog-loading-page > header nav#mobile-menu,
+  body.blog-loading-page > header nav#blog-navigation {
+    box-sizing: border-box !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    right: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    margin: 0 !important;
+    transform: translateX(-50%) !important;
+    background: var(--light-page-gradient) !important;
+    background-color: #f5f7fb !important;
+    background-size: 100vw 100vh !important;
+    background-repeat: no-repeat !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-radius: 0 !important;
+    overflow-x: hidden !important;
+  }
+  body.dark-mode #hero > header nav#mobile-menu,
+  html.dark-mode #hero > header nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header nav#blog-navigation,
+  html.dark-mode body.blog-loading-page > header nav#blog-navigation {
+    background: var(--dark-page-gradient) !important;
+    background-color: #2b3a55 !important;
+    background-size: 100vw 100vh !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#blog-navigation {
+    transform: translateX(-50%) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  /* The blog logo must remain centered independently of menu controls. */
+  body.blog-loading-page > header > a.header-logo,
+  body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%) !important;
+    z-index: 5 !important;
+  }
+  body.blog-loading-page > header > a.header-logo img {
+    display: block !important;
+    max-height: 60px !important;
+    width: auto !important;
+  }
+}
+
+
+/* FINAL: phone menu uses the same two-zone translucent light gradient as iPad.
+   Avoid a solid background-color behind the translucent orange half. */
+@media screen and (max-width: 485px) {
+  #hero > header nav#mobile-menu,
+  body.blog-loading-page > header nav#mobile-menu,
+  body.blog-loading-page > header nav#blog-navigation {
+    background: linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.96) 50%, rgba(255,126,45,.20) 100%) !important;
+    background-color: transparent !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
+  }
+  body.dark-mode #hero > header nav#mobile-menu,
+  html.dark-mode #hero > header nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header nav#blog-navigation,
+  html.dark-mode body.blog-loading-page > header nav#blog-navigation {
+    background: var(--dark-page-gradient) !important;
+    background-color: #2b3a55 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+/* Only desktop (1680px+) can open Projects by hovering.
+   On tablets and phones the arrow's .is-open state is the sole trigger. */
+@media screen and (max-width: 1679px) {
+  #mobile-menu .projects-switcher:not(.is-open) > .projects-dropdown,
+  #mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown,
+  #hero > header nav#mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown,
+  body.blog-loading-page > header nav#mobile-menu .projects-switcher:hover:not(.is-open) > .projects-dropdown,
+  .projects-switcher:hover:not(.is-open) > .projects-dropdown {
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  #mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  #hero > header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  body.blog-loading-page > header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown {
+    max-height: 350px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* KYRA responsive navbar: one shared navigation system for Home and Blog.
+   Touch/tablet never open Projects on hover; only the chevron toggles .is-open. */
+@media screen and (max-width: 1679px) {
+  header nav#mobile-menu .projects-switcher > .projects-dropdown,
+  header nav#mobile-menu .projects-switcher:hover > .projects-dropdown,
+  header nav#mobile-menu .projects-switcher:focus-within > .projects-dropdown {
+    display: flex !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+    transition: max-height .48s ease, padding .48s ease, opacity .38s ease, visibility .48s ease !important;
+  }
+  header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown,
+  header nav#mobile-menu .projects-switcher.is-open:hover > .projects-dropdown,
+  header nav#mobile-menu .projects-switcher.is-open:focus-within > .projects-dropdown {
+    max-height: 350px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  /* Use the exact existing tablet page gradient on phones as well. */
+  #hero > header nav#mobile-menu,
+  body.blog-loading-page > header nav#mobile-menu,
+  #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page > header.mobile-menu-open nav#mobile-menu {
+    background: var(--light-page-gradient) !important;
+    background-color: #f5f7fb !important;
+    background-size: 100vw 100vh !important;
+    background-attachment: fixed !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  body.dark-mode #hero > header nav#mobile-menu,
+  body.dark-mode #hero > header.mobile-menu-open nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header nav#mobile-menu,
+  body.blog-loading-page.dark-mode > header.mobile-menu-open nav#mobile-menu {
+    background: var(--dark-page-gradient) !important;
+    background-color: #2b3a55 !important;
+    background-size: 100vw 100vh !important;
+    background-attachment: fixed !important;
+  }
+  body.blog-loading-page > header > .header-logo {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    justify-self: auto !important;
+  }
+  body.blog-loading-page > header > .header-logo .brand-logo { max-height: 60px !important; }
+}
+
+/* KYRA NAV CORRECTION — final cascade rules */
+/* Exactly one logo visible on Blog, with correct theme selection. */
+body.blog-loading-page > header > a.header-logo > img.brand-logo-light { display:block !important; }
+body.blog-loading-page > header > a.header-logo > img.brand-logo-dark { display:none !important; }
+body.blog-loading-page.dark-mode > header > a.header-logo > img.brand-logo-light,
+html.dark-mode body.blog-loading-page > header > a.header-logo > img.brand-logo-light { display:none !important; }
+body.blog-loading-page.dark-mode > header > a.header-logo > img.brand-logo-dark,
+html.dark-mode body.blog-loading-page > header > a.header-logo > img.brand-logo-dark { display:block !important; }
+@media (max-width:1679px) {
+  /* Match index and blog nav positions and centered logo. */
+  body.blog-loading-page > header > a.header-logo {position:absolute !important;left:50% !important;transform:translateX(-50%) !important;right:auto !important;}
+  /* The dropdown is ONLY controlled by the .is-open class, not hover/focus. */
+  html body header nav#mobile-menu .projects-switcher:not(.is-open) > .projects-dropdown,
+  html body header nav#mobile-menu .projects-switcher:not(.is-open):hover > .projects-dropdown,
+  html body header nav#mobile-menu .projects-switcher:not(.is-open):focus-within > .projects-dropdown {
+    display:flex !important; max-height:0 !important; height:auto !important;
+    opacity:0 !important; visibility:hidden !important;
+    padding-top:0 !important; padding-bottom:0 !important;
+    pointer-events:none !important; overflow:hidden !important;
+  }
+  html body header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown {
+    display:flex !important; max-height:350px !important;
+    opacity:1 !important; visibility:visible !important;
+    padding-top:7px !important; padding-bottom:7px !important;
+    pointer-events:auto !important;
+  }
+  /* Same full-width, same page gradient for phone and tablet; remove opaque overlay. */
+  html body #hero > header nav#mobile-menu,
+  html body.blog-loading-page > header nav#mobile-menu {
+    width:100vw !important; max-width:100vw !important; min-width:100vw !important;
+    left:50% !important; right:auto !important; transform:translateX(-50%) !important;
+    background-image:var(--light-page-gradient) !important;
+    background-color:transparent !important;
+    background-size:100vw 100vh !important;
+    background-attachment:fixed !important;
+    backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+  }
+  html.dark-mode body #hero > header nav#mobile-menu,
+  html body.dark-mode #hero > header nav#mobile-menu,
+  html.dark-mode body.blog-loading-page > header nav#mobile-menu,
+  html body.blog-loading-page.dark-mode > header nav#mobile-menu {
+    background-image:var(--dark-page-gradient) !important;
+    background-color:#2b3a55 !important;
+  }
+}
+
+/* 2026-10-13: shared light-mode navbar/dropdown surface for phone and tablet.
+   Preserve original desktop and dark-mode styling. */
+@media screen and (max-width: 1679px) {
+  html:not(.dark-mode) body:not(.dark-mode) #hero > header,
+  html:not(.dark-mode) body:not(.dark-mode).blog-loading-page > header,
+  html:not(.dark-mode) body:not(.dark-mode) #hero > header > nav#mobile-menu,
+  html:not(.dark-mode) body:not(.dark-mode).blog-loading-page > header > nav#mobile-menu {
+    background-image: var(--light-page-gradient) !important;
+    background-color: transparent !important;
+    background-attachment: fixed !important;
+    background-size: 100vw 100vh !important;
+    background-position: 0 0 !important;
+  }
+  html:not(.dark-mode) body:not(.dark-mode) #hero > header.mobile-menu-open > nav#mobile-menu,
+  html:not(.dark-mode) body:not(.dark-mode).blog-loading-page > header.mobile-menu-open > nav#mobile-menu {
+    margin-top: 0 !important;
+    box-shadow: 0 12px 20px -16px rgba(20, 31, 52, .35) !important;
+  }
+}
+
+/* KYRA / unified navigation controls (both pages, all viewports).
+   Legacy hover selectors are overridden only for the dropdown controls. */
+
+@media (min-width: 1680px) {
+  
+  
+}
+header .projects-chevron > i, header .lang-btn > i.fa-chevron-down {
+  display: inline-block; transform: rotate(0deg);
+  transition: transform .3s ease; transform-origin: center;
+}
+header .projects-switcher.is-open > .projects-chevron > i,
+header .lang-switcher.is-open > .lang-btn > i.fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+
+/* 2026-10-13: Seamless Projects list on phones and tablets.
+   The main hamburger panel supplies the background; the nested list must not draw a card. */
+@media screen and (max-width: 1679px) {
+  html body header nav#mobile-menu .projects-switcher > .projects-dropdown,
+  html body header nav#mobile-menu .projects-switcher.is-open > .projects-dropdown {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    outline: 0 !important;
+  }
+  html body header nav#mobile-menu .projects-switcher > .projects-dropdown::before,
+  html body header nav#mobile-menu .projects-switcher > .projects-dropdown::after {
+    content: none !important;
+    display: none !important;
+  }
+  /* Keep Blog logo centered vertically AND horizontally, as on Home.
+     Earlier rules used only translateX, leaving the logo at the header top. */
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    width: max-content !important;
+    z-index: 10010 !important;
+  }
+}
+/* Completed status uses the same positive green in both themes. */
+.project-status.completed,
+body.dark-mode .project-status.completed,
+html.dark-mode .project-status.completed {
+  color: #279a62 !important;
+}
+.project-status.completed .status-dot,
+body.dark-mode .project-status.completed .status-dot,
+html.dark-mode .project-status.completed .status-dot {
+  background-color: #279a62 !important;
+}
+
+/* KYRA: final status divider — equal physical spacing on both sides. */
+#hero.home-hero .hero-status > .hero-status-separator {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+@media (max-width: 485px) {
+  #hero.home-hero .hero-status > .hero-status-separator {
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+  }
+}
+/* Blog mobile/tablet logo: center within the actual header box, same as index.
+   Prevent any earlier blog-specific transforms and offsets from displacing it. */
+@media screen and (max-width: 1679px) {
+  /* Blog header positioning matches the home header; no relative override. */
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    inset: 50% auto auto 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    height: 60px !important;
+    max-height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  html body.blog-loading-page > header > a.header-logo > img.brand-logo {
+    max-height: 60px !important;
+    object-fit: contain !important;
+  }
+}
+
+/* KYRA: status pill — equal actual space around separator, independent of flex gap. */
+#hero.home-hero .hero-status { column-gap: 0; }
+#hero.home-hero .hero-status > .hero-status-dot { margin-right: 10px; }
+#hero.home-hero .hero-status > .hero-status-separator { margin: 0 9px !important; }
+#hero.home-hero .hero-status > .hero-location { margin: 0; }
+@media (max-width: 485px) {
+  #hero.home-hero .hero-status > .hero-status-dot { margin-right: 8px; }
+  #hero.home-hero .hero-status > .hero-status-separator { margin: 0 7px !important; }
+}
+/* Blog: center the brand in the NAVBAR HEIGHT, not in the expanded header/menu. */
+@media (max-width: 1679px) {
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    top: calc(var(--kyra-nav-height, 72px) / 2) !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+}
+@media (max-width: 485px) {
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    top: calc(var(--kyra-nav-height, 68px) / 2) !important;
+  }
+}
+
+/* KYRA 2026-10-13: shared responsive navbar geometry.
+   Match home header width and the stable, viewport-centered logo on blog. */
+@media screen and (max-width: 1679px) {
+  html body.blog-loading-page > header {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    width: 100% !important; max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    left: 50vw !important;
+    top: calc(var(--kyra-nav-height, 72px) / 2) !important;
+    right: auto !important; bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+@media screen and (max-width: 485px) {
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    top: 34px !important;
+  }
+}
+/* Status pill: equal and more comfortable space around the divider;
+   identical font family and size on both text labels. */
+#hero.home-hero .hero-status > .hero-status-separator {
+  margin-left: 13px !important;
+  margin-right: 13px !important;
+}
+#hero.home-hero .hero-status > span[data-language="hero.status"],
+#hero.home-hero .hero-status > .hero-location {
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+}
+@media screen and (max-width: 485px) {
+  #hero.home-hero .hero-status > .hero-status-separator {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+}
+
+/* KYRA navigation polish: softly tapered underline, no hard-cut ends. */
+header nav#mobile-menu .nav-item::after {
+  background: linear-gradient(90deg, rgba(255,126,45,0) 0%, rgba(255,126,45,.72) 18%, #ff7e2d 50%, rgba(255,126,45,.72) 82%, rgba(255,126,45,0) 100%);
+  background-color: transparent;
+}
+/* Two static chevrons crossfade in place (no 180-degree rotation). */
+header .kyra-chevron-pair {
+  position: relative; display: inline-grid; place-items: center;
+  width: 1.15em; height: 1.15em; vertical-align: middle;
+}
+header .kyra-chevron-pair > i {
+  grid-area: 1 / 1; position: static; display: block;
+  transform: none !important; transition: opacity .24s ease, filter .24s ease !important;
+}
+header .kyra-chevron-pair > .kyra-chevron-down { opacity: 1; }
+header .kyra-chevron-pair > .kyra-chevron-up { opacity: 0; }
+header .projects-switcher.is-open > .projects-chevron .kyra-chevron-down,
+header .lang-switcher.is-open > .lang-btn .kyra-chevron-down { opacity: 0; }
+header .projects-switcher.is-open > .projects-chevron .kyra-chevron-up,
+header .lang-switcher.is-open > .lang-btn .kyra-chevron-up { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  header .kyra-chevron-pair > i { transition: none !important; }
+}
+/* Blog responsive header: lock layout to the same viewport-based geometry as Home.
+   The logo's position must not depend on the widths of the side controls. */
+@media screen and (max-width: 1679px) {
+  html body.blog-loading-page > header {
+    position: fixed !important; inset: 0 0 auto 0 !important;
+    width: 100vw !important; max-width: 100vw !important;
+    box-sizing: border-box !important;
+    margin: 0 !important; transform: none !important;
+  }
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: absolute !important;
+    inset: 50% auto auto 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important; padding: 0 !important;
+    width: max-content !important; height: auto !important;
+    display: flex !important; align-items: center !important;
+    justify-content: center !important;
+  }
+  html body.blog-loading-page > header > .menu-toggle {
+    position: absolute !important;
+    right: 18px !important; left: auto !important;
+    top: 50% !important; transform: translateY(-50%) !important;
+    margin: 0 !important;
+  }
+  html body.blog-loading-page > header > .header-controls {
+    position: absolute !important;
+    left: 18px !important; right: auto !important;
+    top: 50% !important; transform: translateY(-50%) !important;
+    margin: 0 !important;
+  }
+}
+
+/* 2026-10-13: requested navigation fixes, without changing the home layout. */
+/* Use the same signature white as the search and theme icons in dark mode. */
+html.dark-mode body header nav#mobile-menu a.nav-item,
+html.dark-mode body header nav#mobile-menu a.nav-item:visited,
+body.dark-mode header nav#mobile-menu a.nav-item,
+body.dark-mode header nav#mobile-menu a.nav-item:visited {
+  color: #ffffff !important;
+}
+/* Fade the two independent glyphs instead of rotating a single icon.
+   Higher specificity prevents legacy .projects-chevron i rotation rules. */
+html body header .kyra-chevron-pair {
+  display: inline-grid !important;
+  position: relative !important;
+  width: 1.15em; height: 1.15em;
+  place-items: center;
+}
+html body header .kyra-chevron-pair > i.kyra-chevron-down,
+html body header .kyra-chevron-pair > i.kyra-chevron-up {
+  grid-area: 1 / 1 !important;
+  position: static !important;
+  transform: none !important;
+  transition: opacity 360ms ease-in-out !important;
+  will-change: opacity;
+}
+html body header .kyra-chevron-pair > i.kyra-chevron-down { opacity: 1 !important; }
+html body header .kyra-chevron-pair > i.kyra-chevron-up { opacity: 0 !important; }
+html body header .projects-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-down,
+html body header .lang-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-down { opacity: 0 !important; }
+html body header .projects-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-up,
+html body header .lang-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-up { opacity: 1 !important; }
+@media (prefers-reduced-motion: reduce) {
+  html body header .kyra-chevron-pair > i { transition: none !important; }
+}
+/* Blog header: use the SAME 3-column grid as index, not absolute positioning
+   that accumulated conflicting top/left/transform rules. */
+@media screen and (max-width: 1679px) {
+  html body.blog-loading-page > header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 6px 5% !important;
+    min-height: 58px !important;
+    height: auto !important;
+    position: fixed !important;
+    inset: 0 0 auto 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+  html body.blog-loading-page > header > a.header-logo,
+  html body.blog-loading-page > header.mobile-menu-open > a.header-logo {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; left: auto !important;
+    right: auto !important; bottom: auto !important;
+    grid-column: 2 !important; grid-row: 1 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    transform: none !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+  html body.blog-loading-page > header > .header-controls {
+    position: static !important;
+    display: contents !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  html body.blog-loading-page > header > .header-controls > .theme-toggle {
+    grid-column: 1 !important; grid-row: 1 !important;
+    justify-self: start !important; align-self: center !important;
+    position: static !important; transform: none !important;
+  }
+  html body.blog-loading-page > header > .menu-toggle {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important; left: auto !important;
+    right: auto !important; bottom: auto !important;
+    grid-column: 3 !important; grid-row: 1 !important;
+    justify-self: end !important; align-self: center !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  html body.blog-loading-page > header > nav#mobile-menu {
+    grid-column: 1 / -1;
+    margin-top: 0 !important;
+  }
+  html body #hero > header.mobile-menu-open > nav#mobile-menu,
+  html body.blog-loading-page > header.mobile-menu-open > nav#mobile-menu {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* KYRA — 2026-10-13: navigation state, unified on Home and Blog.
+   Hover keeps the theme's regular text colour; only the current section is orange. */
+header nav#mobile-menu a.nav-item.is-active,
+header nav#mobile-menu a.nav-item.is-active:visited,
+body.blog-loading-page > header nav#mobile-menu a.nav-item.is-active,
+html.dark-mode body.blog-loading-page > header nav#mobile-menu a.nav-item.is-active {
+  color: #ff7e2d !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+}
+body:not(.dark-mode) header nav#mobile-menu a.nav-item:not(.is-active):is(:hover, :focus-visible),
+body:not(.dark-mode) header nav#mobile-menu a.nav-item:not(.is-active):visited:is(:hover, :focus-visible),
+body.blog-loading-page:not(.dark-mode) > header nav#mobile-menu a.nav-item:not(.is-active):is(:hover, :focus-visible) {
+  color: #2b3a55 !important;
+  text-shadow: none !important;
+}
+html.dark-mode body header nav#mobile-menu a.nav-item:not(.is-active):is(:hover, :focus-visible),
+body.dark-mode header nav#mobile-menu a.nav-item:not(.is-active):is(:hover, :focus-visible),
+html.dark-mode body.blog-loading-page > header nav#mobile-menu a.nav-item:not(.is-active):is(:hover, :focus-visible) {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+/* Retain the tapered underline on hover; active state is expressed by orange text. */
+
+/* A soft vertical dissolve, not a spinning chevron. */
+html body header .kyra-chevron-pair > i.kyra-chevron-down,
+html body header .kyra-chevron-pair > i.kyra-chevron-up {
+  transition: opacity 290ms cubic-bezier(.2,.75,.3,1),
+              transform 290ms cubic-bezier(.2,.75,.3,1),
+              filter 290ms ease !important;
+  backface-visibility: hidden;
+}
+html body header .kyra-chevron-pair > i.kyra-chevron-down {
+  transform: translateY(0) scale(1) !important; filter: blur(0) !important;
+}
+html body header .kyra-chevron-pair > i.kyra-chevron-up {
+  transform: translateY(4px) scale(.88) !important; filter: blur(1.5px) !important;
+}
+html body header .projects-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-down,
+html body header .lang-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-down {
+  transform: translateY(-4px) scale(.88) !important; filter: blur(1.5px) !important;
+}
+html body header .projects-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-up,
+html body header .lang-switcher.is-open .kyra-chevron-pair > i.kyra-chevron-up {
+  transform: translateY(0) scale(1) !important; filter: blur(0) !important;
+}
+/* Match the desktop Projects dropdown's entry timing to Language.
+   Keep responsive accordion rules unchanged. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+
+/* Desktop Projects: use the same fade/slide transition as Language.
+   Keep display:flex while closed: display:none prevented the exit animation. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+
+/* Subtle repeating card sheen: long, low-contrast sweep followed by rest. */
+#portfolio .project-showcase { position: relative; isolation: isolate; overflow: hidden; }
+#portfolio .project-showcase::after {
+  content: ""; position: absolute; inset: 0; z-index: 2;
+  pointer-events: none; border-radius: inherit;
+  background: linear-gradient(112deg, transparent 32%, rgba(255,126,45,.015) 43%,
+    rgba(255,126,45,.10) 50%, rgba(255,126,45,.015) 57%, transparent 68%);
+  transform: translateX(-155%); opacity: 0;
+}
+body.dark-mode #portfolio .project-showcase::after,
+html.dark-mode #portfolio .project-showcase::after {
+  background: linear-gradient(112deg, transparent 32%, rgba(255,255,255,.006) 43%,
+    rgba(255,255,255,.14) 50%, rgba(255,255,255,.006) 57%, transparent 68%);
+}
+#portfolio .project-showcase:hover::after {
+  opacity: 1; animation: kyraProjectSheen 10s ease-in-out infinite;
+}
+@keyframes kyraProjectSheen {
+  0%, 7% { transform: translateX(-155%); }
+  30%, 100% { transform: translateX(155%); }
+}
+/* Animate the existing page gradient itself rather than a hidden z-index:-1 overlay.
+   Slow horizontal and vertical drift makes the color shift visible without flashing. */
+/* The gradient travels from A→B to B→A: the 0% and 100% edges
+   are identical, while the midpoint is the original right-hand color. */
+body:not(.blog-loading-page) {
+  background-image: linear-gradient(90deg, #fff 0%, rgba(255,126,45,.20) 50%, #fff 100%);
+  background-size: 200% 100%;
+  animation: kyraAmbientDrift 48s ease-in-out infinite alternate;
+}
+html.dark-mode body:not(.blog-loading-page),
+body.dark-mode:not(.blog-loading-page) {
+  background-image: linear-gradient(90deg, #2b3a55 0%, rgb(105,69,45) 50%, #2b3a55 100%);
+}
+@keyframes kyraAmbientDrift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #portfolio .project-showcase:hover::after { animation: none; opacity: 0; }
+  body:not(.blog-loading-page) { animation: none; background-size: auto; }
+}
+
+/* Navigation: the current section is orange, not bold. Keep other links unchanged. */
+html body header nav#mobile-menu a.nav-item.is-active,
+html body header nav#mobile-menu a.nav-item.is-active:visited,
+html.dark-mode body header nav#mobile-menu a.nav-item.is-active,
+html.dark-mode body header nav#mobile-menu a.nav-item.is-active:visited {
+  color: #ff7e2d !important;
+  font-weight: 500 !important;
+}
+/* Desktop Projects and Language share the same exact visibility, position and transition model. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+
+/* KYRA: the newly added Testing card receives the same entrance stagger. */
+#skills.skills-in-view .skill-category:nth-child(8) { transition-delay: 1.05s, 1.05s; }
+
+/* Brand accent: one orange for all main CTA buttons, in both themes. */
+:root { --kyra-accent: #ff7e2d; --kyra-accent-hover: #e76b20; }
+body .header-btn,
+body.dark-mode .header-btn,
+body .contact-submit,
+body.dark-mode .contact-submit,
+body .cta-1,
+body.dark-mode .cta-1,
+body .cta-2:hover,
+body.dark-mode .cta-2:hover {
+  background-color: var(--kyra-accent);
+}
+body .cta-2, body.dark-mode .cta-2 {
+  color: var(--kyra-accent);
+  border-color: var(--kyra-accent);
+}
+body .header-btn:hover,
+body.dark-mode .header-btn:hover,
+body .contact-submit:hover,
+body.dark-mode .contact-submit:hover,
+body .cta-1:hover,
+body.dark-mode .cta-1:hover,
+body .cta-2:hover,
+body.dark-mode .cta-2:hover {
+  background-color: var(--kyra-accent-hover);
+  color: white;
+}
+
+/* Desktop Projects menu: match the Language dropdown's actual transition
+   (opacity + visibility + translateY), with no display switching. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+
+/* Desktop: Projects uses the exact same transition as the Language menu.
+   Explicitly cancel historical project-specific animation overrides. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+
+/* KYRA targeted fixes: desktop Projects popover mirrors Language popover.
+   Visibility is delayed on close so opacity/translate can animate out. */
+@media screen and (min-width: 1680px) {
+  
+  
+}
+/* Completed uses precisely the Open to Work indicator green. */
+.project-status.completed, body.dark-mode .project-status.completed, html.dark-mode .project-status.completed {color:#29bd72 !important;}
+.project-status.completed .status-dot, body.dark-mode .project-status.completed .status-dot, html.dark-mode .project-status.completed .status-dot {background:#29bd72 !important;}
+/* Light mode: restore original navy My Projects button. */
+body:not(.dark-mode) #hero .cta-1 {background-color:#2b3a55 !important;color:#fff !important;}
+body:not(.dark-mode) #hero .cta-1:hover {background-color:#23314a !important;color:#fff !important;}
+/* Dark Hire Me hover: matching fill and border; no bright outline. */
+body.dark-mode #hero .cta-2:hover {background-color:#e06018 !important;border-color:#e06018 !important;color:#fff !important;}
+
+/* KYRA — targeted 2026-10-13 adjustments. */
+:root { --kyra-navy: #2b3a55; --kyra-orange: #ff7e2d; --kyra-orange-hover: #e76b20; }
+
+/* The card itself is no longer a link: preserve image gallery/lightbox interactions. */
+#portfolio .project-showcase { position: relative; cursor: default; }
+#portfolio .project-showcase.project-card-clickable { cursor: default; }
+#portfolio .project-view-link {
+  position: absolute; right: 22px; bottom: 20px; z-index: 5;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  background: var(--kyra-orange); border: 1px solid var(--kyra-orange);
+  border-radius: 8px; padding: 11px 15px; color: #fff;
+  font-size: 13px; font-weight: 700; line-height: 1.2; text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  transition: background-color .22s ease, border-color .22s ease, transform .22s ease;
+}
+#portfolio .project-view-link:hover, #portfolio .project-view-link:focus-visible {
+  background: var(--kyra-orange-hover); border-color: var(--kyra-orange-hover);
+  color: #fff; transform: translateY(-2px);
+}
+#portfolio .project-info { padding-bottom: max(85px, 6vw); }
+@media (max-width: 485px) {
+  #portfolio .project-view-link { right: 15px; bottom: 15px; padding: 10px 12px; }
+  #portfolio .project-info { padding-bottom: 85px; }
+}
+
+/* Use one shared menu transition for desktop Projects and Language.
+   In particular, override the old hover/display rules that made Projects snap. */
+@media (min-width: 1680px) {
+  
+  
+}
+
+/* Requested logo sizes, consistent for home and blog. */
+@media (min-width: 1680px) {
+  html body #hero > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.blog-brand-logo {
+    height: 60px !important; max-height: 60px !important; width: auto !important;
+  }
+}
+@media (min-width: 486px) and (max-width: 1679px) {
+  html body #hero > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.blog-brand-logo {
+    height: 50px !important; max-height: 50px !important; width: auto !important;
+  }
+}
+@media (max-width: 485px) {
+  html body #hero > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.brand-logo,
+  html body.blog-loading-page > header > .header-logo img.blog-brand-logo {
+    height: 40px !important; max-height: 40px !important; width: auto !important;
+  }
+}
+/* Light My Projects: signature navy at rest, signature orange on hover. */
+body:not(.dark-mode) #hero .cta-1 { background-color: var(--kyra-navy) !important; border-color: var(--kyra-navy) !important; color: white !important; }
+body:not(.dark-mode) #hero .cta-1:hover,
+body:not(.dark-mode) #hero .cta-1:focus-visible { background-color: var(--kyra-orange) !important; border-color: var(--kyra-orange) !important; color: white !important; }
+
+/* Project link: lighter weight, same button geometry. */
+#portfolio .project-view-link { font-weight: 500 !important; }
+
+/* Hire Me: fill and outline must always share the same hover color. */
+body:not(.dark-mode) #hero .cta-2:hover,
+body:not(.dark-mode) #hero .cta-2:focus-visible,
+body.dark-mode #hero .cta-2:hover,
+body.dark-mode #hero .cta-2:focus-visible {
+  background-color: var(--kyra-orange-hover) !important;
+  border-color: var(--kyra-orange-hover) !important;
+  color: #fff !important;
+}
+
+/* 2026-10-13: desktop Projects uses the EXACT Language dropdown transition mechanism.
+   No keyframe animation, no display toggling, no hover open, no !important opacity on keyframes. */
+@media (min-width: 1680px) {
+  
+  
+}
+/* Outline-style View Project: original orange border, transparent fill. */
+#portfolio .project-view-link,
+#portfolio .project-view-link:visited {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 1px solid var(--kyra-orange) !important;
+  color: var(--kyra-orange) !important;
+  font-weight: 500 !important;
+}
+#portfolio .project-view-link:hover,
+#portfolio .project-view-link:focus-visible {
+  background: var(--kyra-orange) !important;
+  border-color: var(--kyra-orange) !important;
+  color: #fff !important;
+}
+/* Restore Contact Me navbar button to its styling before the previous change. */
+
+/* Keep Contact Me typography identical to the navbar links. */
+body header .header-btn, body.dark-mode header .header-btn { font-weight: 600 !important; }
+
+/* Projects desktop dropdown: ONE canonical state machine, same as Language. */
+@media (min-width: 1680px) {
+  .projects-switcher { position: relative; }
+  .projects-switcher > .projects-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0;
+    display: flex; flex-direction: column; min-width: 230px;
+    padding: 0; background: white; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 4px 14px rgba(43, 58, 85, 0.1); z-index: 100;
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: all .3s ease; pointer-events: none;
+  }
+  .projects-switcher.is-open > .projects-dropdown {
+    opacity: 1; visibility: visible; transform: translateY(0);
+    pointer-events: auto;
+  }
+  /* Identical dark-mode surface and shadow to the Language dropdown. */
+  body.dark-mode .projects-switcher > .projects-dropdown,
+  body.dark-mode .lang-switcher > .lang-dropdown {
+    background: rgb(43, 58, 85);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Thin navigation loading bar, shared across pages. */
+.kyra-page-progress { position: fixed; top: 0; left: 0; width: 0; height: 3px; z-index: 2147483647; background: #ff7e2d; opacity: 0; pointer-events: none; transition: width .75s ease-out, opacity .35s ease; }
+.kyra-page-progress.kyra-progress-active { opacity: 1; }
+.kyra-page-progress.kyra-progress-done { width: 100% !important; opacity: 0; }
+
+/* Blazor: high-contrast monochrome icon in dark mode. */
+body.dark-mode .blazor-dark-logo,
+html.dark-mode .blazor-dark-logo,
+[data-theme="dark"] .blazor-dark-logo { filter: brightness(0) invert(1); }

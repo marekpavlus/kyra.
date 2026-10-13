@@ -28,14 +28,28 @@ document.addEventListener('pointermove', (event) => {
     document.body.classList.add('header-peek');
   } else if (!header.matches(':hover')) {
     document.body.classList.remove('header-peek');
+    closeDesktopNavDropdowns();
   }
 });
 
 header.addEventListener('mouseleave', () => {
   if (window.scrollY > 40) {
     document.body.classList.remove('header-peek');
+    closeDesktopNavDropdowns();
   }
 });
+
+function closeDesktopNavDropdowns() {
+  if (window.innerWidth < 1680) return;
+  document.querySelectorAll('.lang-switcher.is-open').forEach(el => {
+    el.classList.remove('is-open');
+    el.querySelector('.lang-btn')?.setAttribute('aria-expanded', 'false');
+  });
+  document.querySelectorAll('.projects-switcher.is-open').forEach(el => {
+    el.classList.remove('is-open');
+    el.querySelector('.projects-chevron')?.setAttribute('aria-expanded', 'false');
+  });
+}
 
 updateHeaderVisibility();
 
@@ -234,8 +248,12 @@ navLinks.forEach(link => {
 });
 
 const trackedSections = [...navLinks]
-  .map(link => document.querySelector(link.getAttribute('href')))
-  .filter(section => section instanceof HTMLElement);
+  .map(link => {
+    const href = link.getAttribute('href') || '';
+    return href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
+  })
+  .filter(section => section instanceof HTMLElement)
+  .sort((a, b) => a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
 
 const skillsSnapPoint = document.querySelector('#skills');
 const aboutNextArrow = document.querySelector('#about .section-next:not(.section-prev)');
@@ -244,12 +262,12 @@ const aboutPreviousArrow = document.querySelector('#about .section-prev');
 let activeSectionFrame = 0;
 
 function getMobileSkillSnapOffset() {
-  if (window.innerWidth > 1199) {
+  if (window.innerWidth > 1679) {
     return 0;
   }
 
   const header = document.querySelector('header');
-  const phoneExtraOffset = window.innerWidth <= 430 ? 35 : 0;
+  const phoneExtraOffset = window.innerWidth <= 430 ? 20 : 0;
   return header instanceof HTMLElement
     ? Math.ceil(header.getBoundingClientRect().bottom + 12 + phoneExtraOffset)
     : 0;
@@ -289,7 +307,7 @@ function updateActiveNavigation() {
     && aboutPreviousArrow instanceof HTMLAnchorElement) {
     const skillsRect = skillsSnapPoint.getBoundingClientRect();
     const canCenterSkills = skillsRect.height <= window.innerHeight
-      && window.innerWidth > 1199;
+      && window.innerWidth > 1679;
     const firstSkillCategory = skillsSnapPoint.querySelector('.skill-category');
     skillsSnapPoint.style.scrollSnapAlign = canCenterSkills ? 'center' : 'none';
 
@@ -342,13 +360,14 @@ function cancelSectionArrowScroll() {
   sectionArrowScrollFrame = 0;
   document.documentElement.style.scrollBehavior = sectionArrowScrollBehavior;
   document.documentElement.style.scrollSnapType = sectionArrowScrollSnapType;
+  document.body.classList.remove('kyra-section-travelling');
 }
 
 function getSectionArrowTargetY(targetElement, startY) {
   const skillsHeight = skillsSnapPoint?.getBoundingClientRect().height;
   const firstSkillCategory = skillsSnapPoint?.querySelector('.skill-category');
   const snapTarget = targetElement === skillsSnapPoint
-    && (skillsHeight > window.innerHeight || window.innerWidth <= 1199)
+    && (skillsHeight > window.innerHeight || window.innerWidth <= 1679)
     && firstSkillCategory instanceof HTMLElement
     ? firstSkillCategory
     : targetElement;
@@ -388,7 +407,7 @@ function scrollToSectionFromArrow(targetElement) {
 
   const startY = window.scrollY;
   const targetY = getSectionArrowTargetY(targetElement, startY);
-  const duration = 800;
+  const duration = 950; // Shared, gentle navigation speed for navbar and arrows
   let startTime;
 
   function animateScroll(timestamp) {
@@ -422,20 +441,27 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+// All internal section links use the same easing as the section arrows.
+// Links to other pages and invalid hashes keep their default browser behavior.
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-
+  anchor.addEventListener('click', function (event) {
     const targetId = this.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
-
-    if (targetElement) {
-      if (this.matches('.section-next')) {
-        scrollToSectionFromArrow(targetElement);
-      } else {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!targetId || targetId === '#') return;
+    let targetElement = document.getElementById(targetId.slice(1));
+    if (!targetElement) return;
+    // The skills area lives inside About rather than being a separate section.
+    // When the About down-arrow is pressed while Skills is on screen, always
+    // advance to Projects, even if scroll-snap hasn't updated its href yet.
+    if (window.innerWidth <= 1679 && this.matches('#about > .section-next:not(.section-prev)')) {
+      const skills = document.querySelector('#skills');
+      if (skills) {
+        const rect = skills.getBoundingClientRect();
+        const reachedSkills = rect.top <= getMobileSkillSnapOffset() + 60 && rect.bottom > 0;
+        if (reachedSkills) targetElement = document.getElementById('portfolio') || targetElement;
       }
     }
+    event.preventDefault();
+    scrollToSectionFromArrow(targetElement);
   });
 });
 
@@ -551,18 +577,6 @@ if (siteSearch) {
     });
   }
 
-  siteSearch.addEventListener('pointerenter', () => updateSearchVisibility(true));
-  siteSearch.addEventListener('pointerleave', () => {
-    if (!searchPinnedOpen && !siteSearch.contains(document.activeElement)) {
-      updateSearchVisibility(false);
-    }
-  });
-  siteSearch.addEventListener('focusin', () => updateSearchVisibility(true));
-  siteSearch.addEventListener('focusout', (event) => {
-    if (!searchPinnedOpen && !siteSearch.contains(event.relatedTarget)) {
-      updateSearchVisibility(false);
-    }
-  });
   header.addEventListener('mouseleave', () => {
     if (window.scrollY > 40) {
       closeSiteSearch();
@@ -573,6 +587,15 @@ if (siteSearch) {
       closeSiteSearch();
     }
   }, { passive: true });
+
+  // Desktop retains hover-to-open; tablets are strictly tap/click only.
+  const desktopSearchHover = window.matchMedia('(min-width: 1680px) and (hover: hover) and (pointer: fine)');
+  siteSearch.addEventListener('mouseenter', () => {
+    if (desktopSearchHover.matches) updateSearchVisibility(true);
+  });
+  siteSearch.addEventListener('mouseleave', () => {
+    if (desktopSearchHover.matches && !searchPinnedOpen) updateSearchVisibility(false);
+  });
 
   searchToggle.addEventListener('click', () => {
     searchPinnedOpen = !searchPinnedOpen;
@@ -652,7 +675,10 @@ if (revealSections.length && 'IntersectionObserver' in window) {
         || entry.intersectionRect.height >= viewportHeight * 0.3
       );
 
-      entry.target.classList.toggle('in-view', isInView);
+      if (isInView) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
       if (entry.target.id === 'portfolio' && !entry.isIntersecting) {
         projectCards.forEach((card) => {
           card.style.removeProperty('transition-delay');
@@ -669,11 +695,9 @@ if (revealSections.length && 'IntersectionObserver' in window) {
 if (skillGroups instanceof HTMLElement && 'IntersectionObserver' in window) {
   const skillRevealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      entry.target.classList.toggle('skills-in-view', entry.isIntersecting);
-      if (!entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-category').forEach((category) => {
-          category.style.removeProperty('transition-delay');
-        });
+      if (entry.isIntersecting) {
+        entry.target.classList.add('skills-in-view');
+        skillRevealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.08 });
@@ -872,7 +896,8 @@ if (projectLightbox) {
   }
 
   document.querySelectorAll('.project-carousel-image').forEach((image) => {
-    image.addEventListener('click', () => {
+    image.addEventListener('click', (event) => {
+      event.stopPropagation(); // Screenshot opens lightbox, never the parent project link.
       openLightbox(image);
     });
   });
@@ -911,3 +936,92 @@ if (projectLightbox) {
     }
   });
 }
+
+
+/* One-time contact card reveal after the section heading/intro enter. */
+(() => {
+  const section = document.getElementById('contact');
+  if (!section) return;
+  let started = false;
+  const begin = () => {
+    if (started || !section.classList.contains('in-view')) return;
+    started = true;
+    window.setTimeout(() => section.classList.add('kyra-form-visible'), 800);
+  };
+  new MutationObserver(begin).observe(section, {attributes:true, attributeFilter:['class']});
+  begin();
+  // Fallback if the global section observer fails to activate this section.
+  if ('IntersectionObserver' in window) {
+    const fallback = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) {
+        section.classList.add('in-view'); begin(); fallback.disconnect();
+      }
+    }, {threshold:0.12});
+    fallback.observe(section);
+  } else { section.classList.add('in-view'); begin(); }
+})();
+
+/* Close both desktop popovers on the very frame the scroll navbar hides. */
+(() => {
+  const nav = document.querySelector('header');
+  if (!nav) return;
+  const close = () => {
+    if (window.innerWidth < 1680 || window.scrollY <= 40) return;
+    nav.querySelectorAll('.projects-switcher.is-open, .lang-switcher.is-open').forEach((box) => {
+      box.classList.remove('is-open');
+      box.querySelector('.projects-chevron, .lang-btn')?.setAttribute('aria-expanded', 'false');
+    });
+  };
+  const observer = new MutationObserver(() => {
+    if (!document.body.classList.contains('header-peek')) close();
+  });
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('scroll', () => {
+    if (!document.body.classList.contains('header-peek')) close();
+  }, { passive: true });
+})();
+
+
+/* Integrated Projects dropdown behavior (formerly projects-menu.js). */
+/* Projects dropdown: click only on all devices. */
+(() => {
+  const desktop = window.matchMedia('(min-width: 1680px) and (hover: hover) and (pointer: fine)');
+  document.querySelectorAll('.projects-switcher').forEach((box) => {
+    const button = box.querySelector('.projects-chevron');
+    const label = box.querySelector('.projects-trigger');
+    const setOpen = (open) => {
+      box.classList.remove('was-open');
+      box.classList.toggle('is-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Hide projects' : 'Show projects');
+    };
+    if (!button) return;
+    button.addEventListener('click', (event) => {
+      event.preventDefault(); event.stopPropagation();
+      setOpen(!box.classList.contains('is-open'));
+    });
+    // Click only: hover never opens the project list.
+    label.addEventListener('click', () => setOpen(false));
+    document.addEventListener('click', (event) => { if (!box.contains(event.target)) setOpen(false); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setOpen(false); });
+    desktop.addEventListener('change', () => setOpen(false));
+    const hamburger = document.querySelector('.menu-toggle');
+    hamburger?.addEventListener('click', () => setOpen(false));
+  });
+})();
+
+/* Keep Projects and Language mutually exclusive without interrupting their fade transitions. */
+(() => {
+  document.addEventListener('click', (event) => {
+    const projectsToggle = event.target.closest('.projects-chevron');
+    const languageToggle = event.target.closest('.lang-btn');
+    if (!projectsToggle && !languageToggle) return;
+    const selector = projectsToggle ? '.lang-switcher.is-open' : '.projects-switcher.is-open';
+    document.querySelectorAll(selector).forEach((box) => {
+      box.classList.remove('is-open');
+      const button = box.querySelector('.lang-btn, .projects-chevron');
+      if (button) button.setAttribute('aria-expanded', 'false');
+    });
+  }, true);
+})();
+

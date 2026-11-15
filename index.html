@@ -18,11 +18,7 @@
     <meta name="twitter:description" content="KYRA. software engineering portfolio."/>
     <meta name="twitter:image" content="https://marekpavlus.github.io/kyra./images/og-preview.png"/>
     <title data-language="meta.title">Kyra. | Software Engineer</title>
-    <!-- Favicon Icons -->
-    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-k-transparent-2026.png?v=2">
-    <link href="images/kyra-k-transparent-2026.ico?v=2" rel="icon" type="image/x-icon"/>
-    <link href="images/kyra-k-transparent-2026.ico?v=2" rel="shortcut icon" type="image/x-icon"/>
-
+    <!-- Favicon Icons (browser tab / light and dark appearance) -->
     <script>
       try {
       if (localStorage.getItem('kyra-theme') === 'dark') {
@@ -55,6 +51,11 @@
     <!-- Stylesheets & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
     <link href="styles.css" rel="stylesheet"/>
+  
+    <!-- Favicon Icons -->
+    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" type="image/x-icon" href="images/kyra-favicon-adaptive.ico">
   </head>
 
   <body>
@@ -69,7 +70,7 @@
          ========================================== -->
     <section class="home-hero" id="hero">
       <header>
-        <a class="header-logo" href="#hero" aria-label="KYRA. – Home"><img class="brand-logo brand-logo-light" src="images/logo/kyra-official-logo-light.png" alt="KYRA."/><img class="brand-logo brand-logo-dark" src="images/logo/kyra-official-logo-dark.png" alt="" aria-hidden="true"/></a>
+        <a class="header-logo" href="#hero" aria-label="MP. – Home"><span class="brand-wordmark" aria-hidden="true">MP<span class="brand-period"></span></span></a>
         <button aria-controls="mobile-menu" aria-expanded="false" class="menu-toggle" type="button">
           <i aria-hidden="true" class="fa-solid fa-bars"></i>
           <span class="sr-only" data-language="ui.openMenu">Open menu</span>
@@ -117,7 +118,7 @@
             <div class="header-search-results"></div>
           </div>
         </div>
-        <a class="header-btn" data-language="header.contactMe" href="mailto:info@kyra.com">Contact Me</a>
+        <a class="header-btn" data-language="header.contactMe" href="mailto:info@mp.com">Contact Me</a>
         <!-- Light/Dark Mode Toggle | Language Switcher -->
         <div class="header-controls">
           <button aria-label="Switch to dark mode" class="theme-toggle" data-language-attr="aria-label:ui.switchToDark" type="button">
@@ -149,7 +150,7 @@
           <h1 class="role-title"><span class="role-title-text"></span></h1>
           <p data-language-html="hero.intro">
             I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens.
-            I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL).
+            I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (PostgreSQL, SQLite).
             I enjoy bridging the gap between efficient backend logic and intuitive frontend design.
           </p>
           <p><i data-language="hero.quote">"Always learning, always coding."</i></p>
@@ -186,53 +187,86 @@
          ========================================== -->
     <section class="full-section" id="about">
       <div class="section-container">
-        <h2 data-language-html="about.title">My <span>Story</span></h2>
-        <div class="about-bio">
-          <p data-language-html="about.paragraphs.0">
-            I’m Marek, a <b>Software Technology Engineering</b> student at
-            <b>VIA University College</b> in Denmark.
-          </p>
-          <p data-language-html="about.paragraphs.1">
-            I have a passion for <b>problem-solving</b> and enjoy the process of designing
-            and implementing software solutions that are both efficient and maintainable.
-            My goal is to create applications that not only meet user needs but also adhere
-            to <b>best practices in software engineering</b>.
-          </p>
-          <div aria-hidden="true" class="about-more-content" id="about-more-content" inert="">
-            <div class="about-more-content-inner">
-              <p data-language-html="about.moreParagraphs.0">
-                I’m originally from <b>Slovakia</b>, and I have lived in
-                <b>Denmark since 2022</b>. Before starting my degree, I worked full-time
-                in manufacturing and logistics, an experience that taught me discipline,
-                reliability and how to work effectively in <b>international teams</b>.
-              </p>
-              <p data-language-html="about.moreParagraphs.1">
-                My journey into <b>software development</b> began with a curiosity for how
-                things work and a desire to create. I started learning programming through
-                online courses and personal projects, which led me to pursue formal
-                education in software engineering.
-              </p>
-              <p data-language-html="about.moreParagraphs.2">
-                Today, I’m continuously expanding my skills through
-                <b>university and personal projects</b>, exploring technologies such as
-                Spring Boot, .NET and distributed systems while strengthening my knowledge
-                of software architecture, databases and web development.
-              </p>
-              <p data-language-html="about.moreParagraphs.3">
-                I’m currently looking for <b>professional opportunities</b> where I can
-                gain experience, contribute to real-world software and continue developing
-                as a software engineer.
-              </p>
-            </div>
+        <div class="about-story-layout">
+          <div class="about-portrait">
+            <img src="images/pro-pic.png" alt="Marek Pavlus" width="873" height="1000" loading="lazy">
+            <span class="about-portrait-badge"><strong>1+</strong><span>Years building</span></span>
           </div>
-          <button aria-controls="about-more-content" aria-expanded="false" class="about-more-toggle" data-language="about.readMore" data-language-attr="data-more-label:about.readMore;data-less-label:about.readLess" data-less-label="Read less -" data-more-label="Read more +" type="button">Read more +</button>
+          <div class="about-story-copy">
+            <p class="about-eyebrow" data-language="about.eyebrow">About me</p>
+            <h2 data-language-html="about.title">My <span>Story</span></h2>
+            <div class="about-bio">
+              <p data-language-html="about.paragraphs.0">
+                I’m Marek, a <b>Software Technology Engineering</b> student at
+                <b>VIA University College</b> in Denmark.
+              </p>
+              <p data-language-html="about.paragraphs.1">
+                I have a passion for <b>problem-solving</b> and enjoy the process of designing
+                and implementing software solutions that are both efficient and maintainable.
+                My goal is to create applications that not only meet user needs but also adhere
+                to <b>best practices in software engineering</b>.
+              </p>
+              <div aria-hidden="true" class="about-more-content" id="about-more-content" inert="">
+                <div class="about-more-content-inner">
+                  <p data-language-html="about.moreParagraphs.0">
+                    I’m originally from <b>Slovakia</b>, and I have lived in
+                    <b>Denmark since 2022</b>. Before starting my degree, I worked full-time
+                    in manufacturing and logistics, an experience that taught me discipline,
+                    reliability and how to work effectively in <b>international teams</b>.
+                  </p>
+                  <p data-language-html="about.moreParagraphs.1">
+                    My journey into <b>software development</b> began with a curiosity for how
+                    things work and a desire to create. I started learning programming through
+                    online courses and personal projects, which led me to pursue formal
+                    education in software engineering.
+                  </p>
+                  <p data-language-html="about.moreParagraphs.2">
+                    Today, I’m continuously expanding my skills through
+                    <b>university and personal projects</b>, exploring technologies such as
+                    Spring Boot, .NET and distributed systems while strengthening my knowledge
+                    of software architecture, databases and web development.
+                  </p>
+                  <p data-language-html="about.moreParagraphs.3">
+                    I’m currently looking for <b>professional opportunities</b> where I can
+                    gain experience, contribute to real-world software and continue developing
+                    as a software engineer.
+                  </p>
+                </div>
+              </div>
+              <button aria-controls="about-more-content" aria-expanded="false" class="about-more-toggle" data-language="about.readMore" data-language-attr="data-more-label:about.readMore;data-less-label:about.readLess" data-less-label="Read less -" data-more-label="Read more +" type="button">Read more +</button>
+            </div>
+            <a class="about-cv-link" download="CV - Marek Pavlus.pdf" href="./CV%20-%20Marek%20Pavlus.pdf">
+              CV
+              <svg aria-hidden="true" class="about-cv-download-icon" fill="none" height="20" viewBox="0 0 24 24" width="20">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              </svg>
+            </a>
+            <dl class="about-stats">
+              <div><dt data-count="1" data-count-suffix="+">1+</dt><dd data-language="about.stats.yearsCoding">Years coding</dd></div>
+              <div><dt data-count="4">4</dt><dd data-language="about.stats.projects">Projects</dd></div>
+              <div><dt data-count="30">30</dt><dd data-language="about.stats.skills">Technologies</dd></div>
+            </dl>
+          </div>
         </div>
-        <a class="about-cv-link" download="CV - Marek Pavlus.pdf" href="./CV%20-%20Marek%20Pavlus.pdf">
-          CV <i aria-hidden="true" class="fa-solid fa-download"></i>
-        </a>
       </div>
+      <a aria-label="Go to Technical Skills" class="section-next" data-language-attr="aria-label:ui.goSkills" href="#skills">
+        <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+      </a>
+      <a aria-label="Go to top section" class="section-next section-prev" data-language-attr="aria-label:ui.goTop" href="#hero">
+        <i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         TECHNICAL SKILLS
+         ========================================== -->
+    <section class="full-section" id="skills">
       <div class="section-container skills-content">
-        <div aria-label="Skills" class="skill-groups" data-language-attr="aria-label:about.skillsLabel" id="skills">
+        <div class="skills-heading">
+          <p class="about-eyebrow section-eyebrow" data-language="about.skillsEyebrow">Skills</p>
+          <h2 data-language-html="about.skillsTitle">Technical <span>Skills</span></h2>
+        </div>
+        <div aria-label="Skills" class="skill-groups" data-language-attr="aria-label:about.skillsLabel" id="skill-groups">
           <section class="skill-category">
             <h3 data-language="about.skillHeadings.0">Programming Languages</h3>
             <div class="skill-list">
@@ -240,6 +274,7 @@
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"/><span>C#</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"/><span>Python</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"/><span>JavaScript</span></div>
+              <div class="skill-item skill-sql"><i aria-hidden="true" class="fa-solid fa-database skill-symbol"></i><span>SQL</span></div>
             </div>
           </section>
           <section class="skill-category">
@@ -248,18 +283,19 @@
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"/><span>HTML</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"/><span>CSS</span></div>
               <div class="skill-item"><img alt="" class="skill-logo blazor-dark-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blazor/blazor-original.svg"/><span>Blazor</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"/><span>React</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"/><span>Vite</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"/><span>Tailwind CSS</span></div>
             </div>
           </section>
           <section class="skill-category">
             <h3 data-language="about.skillHeadings.2">Backend &amp; APIs</h3>
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg"/><span>RabbitMQ</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo dotnet-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/dotnet/512BD4"/><span>.NET</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="images/tech/spring.svg"/><span>Spring Boot</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg"/><span>Maven</span></div>
-              
-              
-              <div class="skill-item skill-rest"><img alt="" aria-hidden="true" class="skill-logo" loading="lazy" src="images/tech/rest-api.png"/><span>REST API</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="images/tech/spring.svg"/><span>Spring Boot</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo dotnet-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/dotnet/512BD4"/><span>.NET</span></div>
+              <div class="skill-item skill-rest"><img alt="" aria-hidden="true" class="skill-logo" loading="lazy" src="images/tech/rest-api.png"/><span>REST APIs</span></div>
               <div class="skill-item skill-grpc"><img alt="" aria-hidden="true" class="skill-logo" loading="lazy" src="https://grpc.io/img/logos/grpc-icon-color.png" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'"/><img class="skill-logo grpc-dark-logo" src="images/tech/grpc-dark-official.png" alt="" aria-hidden="true" loading="lazy"/><span class="grpc-fallback" style="display:none" aria-hidden="true">gRPC</span><span>gRPC</span></div>
             </div>
           </section>
@@ -267,42 +303,36 @@
             <h3 data-language="about.skillHeadings.3">Databases</h3>
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"/><span>PostgreSQL</span></div>
-              <div class="skill-item skill-sql"><i aria-hidden="true" class="fa-solid fa-database skill-symbol"></i><span>SQL</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg"/><span>SQL Server</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"/><span>SQLite</span></div>
             </div>
           </section>
-          <section class="skill-category"><h3>Testing</h3><div class="skill-list"><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"/><span>JUnit 5</span></div><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="images/tech/mockito-symbol.svg"/><span>Mockito</span></div><div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"/><span>Postman</span></div></div></section>
           <section class="skill-category">
-            <h3 data-language="about.skillHeadings.5">Collaboration Tools</h3>
+            <h3 data-language="about.skillHeadings.4">Testing</h3>
+            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"/><span>JUnit 5</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"/><span>Postman</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo swagger-skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg"/><img alt="" aria-hidden="true" class="skill-logo swagger-dark-logo" loading="lazy" src="images/tech/swagger-dark.svg"/><span>Swagger</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://raw.githubusercontent.com/bloomrpc/bloomrpc/master/resources/logo.svg"/><span>BloomRPC</span></div>
+              <div class="skill-item"><img alt="" class="skill-logo theme-sensitive-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/httpie/000000"/><span>HTTPie</span></div>
+            </div>
+          </section>
+          <section class="skill-category">
+            <h3 data-language="about.skillHeadings.5">Tools &amp; DevOps</h3>
             <div class="skill-list">
               <div class="skill-item"><img alt="" class="skill-logo github-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/github/181717"/><span>GitHub</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"/><span>Git</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/gitlab/FCA121"/><span>GitLab</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/jira/0052CC"/><span>Jira</span></div>
-            </div>
-          </section>
-          <section class="skill-category">
-            <h3 data-language="about.skillHeadings.4">Cloud &amp; DevOps</h3>
-            <div class="skill-list">
+              <div class="skill-item"><img alt="" class="skill-logo theme-sensitive-skill-logo" loading="lazy" src="https://cdn.simpleicons.org/notion/000000"/><span>Notion</span></div>
               <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"/><span>Docker</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg"/><span>Azure</span></div>
-            </div>
-          </section>
-          <section class="skill-category">
-            <h3 data-language="about.skillHeadings.6">Marketing &amp; Analytics</h3>
-            <div class="skill-list">
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/facebook/4267B2"/><span>Facebook Ads</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/shopify/7AB55C"/><span>Shopify</span></div>
-              <div class="skill-item"><img alt="" class="skill-logo" loading="lazy" src="https://cdn.simpleicons.org/googleanalytics/E37400"/><span>Google Analytics</span></div>
-              <div class="skill-item skill-looker"><i aria-hidden="true" class="fa-solid fa-chart-column skill-symbol"></i><span>Google Data Studio</span></div>
             </div>
           </section>
         </div>
       </div>
-      <a aria-label="Go to Technical Skills" class="section-next" data-language-attr="aria-label:ui.goSkills;data-label-after:ui.goProjects;data-label-before:ui.goSkills" data-label-after="Go to Projects" data-label-before="Go to Technical Skills" href="#skills">
+      <a aria-label="Go to Projects" class="section-next" data-language-attr="aria-label:ui.goProjects" href="#portfolio">
         <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
       </a>
-      <a aria-label="Go to top section" class="section-next section-prev" data-language-attr="aria-label:ui.goTop;data-label-after:ui.goAbout;data-label-before:ui.goTop" data-label-after="Go to About Me" data-label-before="Go to top section" href="#hero">
+      <a aria-label="Go to About Me" class="section-next section-prev" data-language-attr="aria-label:ui.goAbout" href="#about">
         <i aria-hidden="true" class="fa-solid fa-chevron-up"></i>
       </a>
     </section>
@@ -312,17 +342,24 @@
          ========================================== -->
     <section class="full-section" id="portfolio">
       <div class="section-container">
-        <h2 data-language-html="projects.title">My <span>Projects</span></h2>
+        <div class="projects-heading-row">
+          <div class="projects-heading-copy">
+            <p class="about-eyebrow section-eyebrow" data-language="projects.eyebrow">Projects</p>
+            <h2 data-language-html="projects.title">My <span>Projects</span></h2>
+          </div>
+          <div aria-label="Filter projects" class="project-filters" data-language-attr="aria-label:projects.filters.label" role="group">
+            <button aria-pressed="true" class="project-filter is-active" data-language="projects.filters.all" data-project-filter="all" type="button">All</button>
+            <button aria-pressed="false" class="project-filter" data-language="projects.filters.completed" data-project-filter="Completed" type="button">Completed</button>
+            <button aria-pressed="false" class="project-filter" data-language="projects.filters.inDevelopment" data-project-filter="In Development" type="button">In Development</button>
+          </div>
+        </div>
         <div class="projects-container">
           <!-- ==========================================
                01 - PERSONAL FINANCE API
                ========================================== -->
-          <article class="project-showcase" id="project-finance-api" data-project-url="projects/personal-finance-api.html">
+          <article class="project-showcase" data-project-status="In Development" id="project-finance-api" data-project-url="projects/personal-finance-api.html">
             <div class="project-image">
-              <div class="project-image-placeholder">
-                <i class="fa-solid fa-code"></i>
-                <span>Project screenshot coming soon</span>
-              </div>
+              <img alt="Personal Finance API preview" class="project-feature-image" height="800" loading="lazy" src="images/projects/lovable-finance.jpg" width="1280"/>
             </div>
             <div class="project-info">
               <div class="project-top">
@@ -360,12 +397,9 @@
           <!-- ==========================================
                02 - HOTEL AURORA CLIFFS
                ========================================== -->
-          <article class="project-showcase" id="project-hotel" data-project-url="projects/hotel-aurora-cliffs.html">
+          <article class="project-showcase" data-project-status="Completed" id="project-hotel" data-project-url="projects/hotel-aurora-cliffs.html">
             <div class="project-image">
-              <div class="project-image-placeholder">
-                <i class="fa-solid fa-hotel"></i>
-                <span>Project screenshot coming soon</span>
-              </div>
+              <img alt="Aurora Cliffs Hotel System preview" class="project-feature-image" height="800" loading="lazy" src="images/projects/lovable-hotel.jpg" width="1280"/>
             </div>
             <div class="project-info">
               <div class="project-top">
@@ -408,7 +442,7 @@
           <!-- ==========================================
                03 - BANK TRANSFER SYSTEM
                ========================================== -->
-          <article class="project-showcase" id="project-bank" data-project-url="projects/bank-transfer-system.html">
+          <article class="project-showcase" data-project-status="In Development" id="project-bank" data-project-url="projects/bank-transfer-system.html">
             <!-- Screenshot Carousel -->
             <div class="project-image">
               <div class="project-carousel">
@@ -465,7 +499,7 @@
           <!-- ==========================================
                04 - KYRA. PORTFOLIO
                ========================================== -->
-          <article class="project-showcase" id="project-kyra" data-project-url="projects/kyra-portfolio.html">
+          <article class="project-showcase" data-project-status="In Development" id="project-kyra" data-project-url="projects/kyra-portfolio.html">
             <div class="project-image">
               <div class="project-carousel">
                 <div class="project-carousel-track">
@@ -547,9 +581,33 @@
          CONTACT
          ========================================== -->
     <section class="full-section" id="contact">
-      <div class="section-container">
-        <h2 data-language-html="contact.title">Get In <span>Touch</span></h2>
-        <p data-language-html="contact.intro">Are you interested in collaborating? Write to me!</p>
+      <div class="section-container contact-layout">
+        <div class="contact-details">
+          <p class="about-eyebrow section-eyebrow" data-language="contact.eyebrow">Contact</p>
+          <h2 data-language-html="contact.title">Get In <span>Touch</span></h2>
+          <p class="contact-intro" data-language-html="contact.intro">Are you interested in collaborating? Write to me!</p>
+          <div class="contact-methods">
+            <a class="contact-method" href="mailto:info@mp.com">
+              <span class="contact-method-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+              <span>info@mp.com</span>
+            </a>
+            <a class="contact-method" href="tel:+4552751374">
+              <span class="contact-method-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <span>+45 52 75 13 74</span>
+            </a>
+          </div>
+          <div aria-label="Social profiles" class="contact-socials">
+            <a aria-label="Visit my LinkedIn profile" data-language-attr="aria-label:hero.linkedin" href="https://www.linkedin.com/in/marekpavlus" rel="noopener noreferrer" target="_blank">
+              <i aria-hidden="true" class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a aria-label="Visit my GitHub profile" data-language-attr="aria-label:hero.github" href="https://github.com/marekpavlus" rel="noopener noreferrer" target="_blank">
+              <i aria-hidden="true" class="fa-brands fa-github"></i>
+            </a>
+            <a aria-label="Email me" data-language-attr="aria-label:hero.email" href="mailto:info@mp.com">
+              <i aria-hidden="true" class="fa-regular fa-envelope"></i>
+            </a>
+          </div>
+        </div>
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-field">
@@ -573,8 +631,9 @@
             <label for="cf-message"><span data-language-html="contact.message">Message</span> <span aria-hidden="true" class="required-marker">*</span></label>
             <textarea data-language-attr="placeholder:contact.messagePlaceholder" id="cf-message" name="message" placeholder="Your message..." required="" rows="5"></textarea>
           </div>
-          <button class="header-btn contact-submit" data-language-html="contact.submit" type="submit">
-            Send Email
+          <button class="header-btn contact-submit" type="submit">
+            <span data-language="contact.submit">Send Email</span>
+            <i aria-hidden="true" class="fa-solid fa-paper-plane"></i>
           </button>
         </form>
       </div>
@@ -587,20 +646,22 @@
          FOOTER
          ========================================== -->
     <footer id="footer">
-      <a class="footer-logo" href="#hero" aria-label="KYRA. – Home"><img class="brand-logo brand-logo-light" src="images/logo/kyra-official-watermark-light.png" alt="KYRA."/><img class="brand-logo brand-logo-dark" src="images/logo/kyra-official-watermark-dark.png" alt="" aria-hidden="true"/></a>
+      <a class="footer-logo" href="#hero" aria-label="MP. – Home"><span class="brand-wordmark" aria-hidden="true">MP<span class="brand-period"></span></span></a>
       <p data-language-html="footer.copyright">© 2026 Kyra. All rights reserved.</p>
       <div class="footer-contact">
-        <p><i class="fa-solid fa-envelope"></i><span class="footer-contact-label" data-language-html="footer.emailLabel">email:</span>  <a href="mailto:info@kyra.com">info@kyra.com</a></p>
+        <p><i class="fa-solid fa-envelope"></i><span class="footer-contact-label" data-language-html="footer.emailLabel">email:</span>  <a href="mailto:info@mp.com">info@mp.com</a></p>
         <p><i class="fa-solid fa-phone"></i><span class="footer-contact-label" data-language-html="footer.phoneLabel">phone:</span>  <a href="tel:+4552751374">+45 52 75 13 74</a></p>
       </div>
     </footer>
     <div aria-label="Page scroll progress" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="scroll-progress" data-language-attr="aria-label:ui.scrollProgress" role="progressbar">
       <span class="scroll-progress-fill"></span>
     </div>
-    <!-- JavaScript -->
-    <script src="translations.js"></script><script src="language.js"></script><script src="script.js"></script>
+    <!-- Scripts that work with the rendered page (order matters) -->
+    <script src="translations.js"></script>
+    <script src="language.js"></script>
+    <script src="script.js"></script>
   
-<script>
+    <script>
 /* Move the existing social links below the photo only in portrait tablet mode;
    restore them to their original position in all other layouts. */
 (function () {
@@ -638,8 +699,7 @@
 })();
 </script>
 
-
-<script id="kyra-cursor-glow-script">(function(){if(!matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const glow=document.createElement('div');glow.id='kyra-cursor-glow';document.body.appendChild(glow);document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1';},{passive:true});document.addEventListener('pointerleave',()=>glow.style.opacity='0');})();</script>
-<script src="loading.js" defer></script>
-</body>
+    <script id="kyra-cursor-glow-script">(function(){if(!matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const glow=document.createElement('div');glow.id='kyra-cursor-glow';document.body.appendChild(glow);document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1';},{passive:true});document.addEventListener('pointerleave',()=>glow.style.opacity='0');})();</script>
+    <script src="loading.js" defer></script>
+  </body>
 </html>

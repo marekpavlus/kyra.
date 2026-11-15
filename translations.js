@@ -60,14 +60,16 @@ window.LANGUAGE = {
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens. I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (SQL, PostgreSQL). I enjoy bridging the gap between efficient <b>backend</b> logic and intuitive <b>frontend</b> design.",
+      "intro": "I’m a <b>Software Technology Engineering</b> student at VIA University College in Horsens. I’m continuously improving my skills in <b>Web Development</b> (HTML, CSS, JavaScript), <b>Object-Oriented Programming</b> (Java, Python, C#), and <b>Databases</b> (PostgreSQL, SQLite). I enjoy bridging the gap between efficient <b>backend</b> logic and intuitive <b>frontend</b> design.",
       "quote": "\"Always learning, always coding.\"",
       "ctaProjects": "My Projects",
       "ctaHire": "Hire me",
       "linkedin": "Visit my LinkedIn profile",
-      "github": "Visit my GitHub profile"
+      "github": "Visit my GitHub profile",
+      "email": "Email me"
     },
     "about": {
+      "eyebrow": "About me",
       "title": "My <span>Story</span>",
       "paragraphs": [
         "I’m Marek, a <b>Software Technology Engineering</b> student at\n  <b>VIA University College</b> in Denmark.",
@@ -81,20 +83,33 @@ window.LANGUAGE = {
       ],
       "readMore": "Read more +",
       "readLess": "Read less -",
+      "stats": {
+        "yearsCoding": "Years coding",
+        "projects": "Projects",
+        "skills": "Technologies"
+      },
+      "skillsEyebrow": "Skills",
+      "skillsTitle": "Technical <span>Skills</span>",
       "skillsLabel": "Skills",
       "skillHeadings": [
         "Programming Languages",
         "Frontend",
         "Backend & APIs",
         "Databases",
-        "Cloud & DevOps",
-        "Collaboration Tools",
-        "Marketing & Analytics"
+        "Testing",
+        "Tools & DevOps"
       ]
     },
     "projects": {
       "viewProject": "View Project",
+      "eyebrow": "Projects",
       "title": "My <span>Projects</span>",
+      "filters": {
+        "label": "Filter projects",
+        "all": "All",
+        "completed": "Completed",
+        "inDevelopment": "In Development"
+      },
       "items": {
         "finance_api": {
           "status": "In Development",
@@ -126,8 +141,9 @@ window.LANGUAGE = {
       ]
     },
     "contact": {
+      "eyebrow": "Contact",
       "title": "Get In <span>Touch</span>",
-      "intro": "Are you interested in collaborating? Write to me!",
+      "intro": "Are you interested in collaborating?<br>Write to me!",
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email",
@@ -198,14 +214,16 @@ window.LANGUAGE = {
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "Som študent odboru <b>Software Technology Engineering</b> na VIA University College v Horsens. Neustále si zlepšujem zručnosti vo <b>webovom vývoji</b> (HTML, CSS, JavaScript), <b>objektovo orientovanom programovaní</b> (Java, Python, C#) a <b>databázach</b> (SQL, PostgreSQL). Baví ma prepájať efektívnu <b>backendovú</b> logiku s intuitívnym <b>frontendovým</b> dizajnom.",
+      "intro": "Som študent odboru <b>Software Technology Engineering</b> na VIA University College v Horsens. Neustále si zlepšujem zručnosti vo <b>webovom vývoji</b> (HTML, CSS, JavaScript), <b>objektovo orientovanom programovaní</b> (Java, Python, C#) a <b>databázach</b> (PostgreSQL, SQLite). Baví ma prepájať efektívnu <b>backendovú</b> logiku s intuitívnym <b>frontendovým</b> dizajnom.",
       "quote": "\"Neustále sa učím, neustále kódujem.\"",
       "ctaProjects": "Moje Projekty",
       "ctaHire": "Ozvite sa mi",
       "linkedin": "Navštíviť Marekov LinkedIn profil",
-      "github": "Navštíviť Marekov GitHub profil"
+      "github": "Navštíviť Marekov GitHub profil",
+      "email": "Napísať e-mail"
     },
     "about": {
+      "eyebrow": "O mne",
       "title": "Kto <span>Som?</span>",
       "paragraphs": [
         "Som Marek, študent odboru <b>Software Technology Engineering</b> na <b>VIA University College</b> v Dánsku.",
@@ -219,20 +237,33 @@ window.LANGUAGE = {
       ],
       "readMore": "Zobraziť viac +",
       "readLess": "Zobraziť menej -",
+      "stats": {
+        "yearsCoding": "Roky programovania",
+        "projects": "Projekty",
+        "skills": "Technológie"
+      },
+      "skillsEyebrow": "Zručnosti",
+      "skillsTitle": "Technické <span>zručnosti</span>",
       "skillsLabel": "Technické zručnosti",
       "skillHeadings": [
         "Programovacie jazyky",
         "Frontend",
         "Backend a API",
         "Databázy",
-        "Cloud a DevOps",
-        "Nástroje na spoluprácu",
-        "Marketing a analytika"
+        "Testovanie",
+        "Nástroje a DevOps"
       ]
     },
     "projects": {
       "viewProject": "Zobraziť Projekt",
+      "eyebrow": "Projekty",
       "title": "Moje <span>Projekty</span>",
+      "filters": {
+        "label": "Filtrovať projekty",
+        "all": "Všetky",
+        "completed": "Dokončené",
+        "inDevelopment": "Vo vývoji"
+      },
       "items": {
         "finance_api": {
           "status": "Vo vývoji",
@@ -264,8 +295,9 @@ window.LANGUAGE = {
       ]
     },
     "contact": {
+      "eyebrow": "Kontakt",
       "title": "Kontaktujte <span>Ma</span>",
-      "intro": "Máte záujem o spoluprácu? Napíšte mi!",
+      "intro": "Máte záujem o spoluprácu?<br>Napíšte mi!",
       "firstName": "Meno",
       "lastName": "Priezvisko",
       "email": "Email",
@@ -337,15 +369,17 @@ window.LANGUAGE = {
         "WEB DEVELOPER",
         "UI/UX DESIGNER"
       ],
-      "intro": "Jeg er studerende i <b>Software Technology Engineering</b> på VIA University College i Horsens. Jeg udvikler løbende mine færdigheder inden for <b>webudvikling</b> (HTML, CSS, JavaScript), <b>objektorienteret programmering</b> (Java, Python, C#) og <b>databaser</b> (SQL, PostgreSQL). Jeg nyder at bygge bro mellem effektiv <b>backend</b>-logik og intuitivt <b>frontend</b>-design.",
+      "intro": "Jeg er studerende i <b>Software Technology Engineering</b> på VIA University College i Horsens. Jeg udvikler løbende mine færdigheder inden for <b>webudvikling</b> (HTML, CSS, JavaScript), <b>objektorienteret programmering</b> (Java, Python, C#) og <b>databaser</b> (PostgreSQL, SQLite). Jeg nyder at bygge bro mellem effektiv <b>backend</b>-logik og intuitivt <b>frontend</b>-design.",
       "quote": "\"Altid i gang med at lære, altid i gang med at kode.\"",
       "ctaProjects": "Mine Projekter",
       "ctaHire": "Ansæt mig",
       "linkedin": "Besøg Mareks LinkedIn-profil",
-      "github": "Besøg Mareks GitHub-profil"
+      "github": "Besøg Mareks GitHub-profil",
+      "email": "Send mig en e-mail"
     },
     "about": {
-      "title": "Om <span>Mig</span>",
+      "eyebrow": "Om mig",
+      "title": "Hvem <span>er jeg?</span>",
       "paragraphs": [
         "Jeg hedder Marek og læser <b>Software Technology Engineering</b> på <b>VIA University College</b> i Danmark.",
         "Jeg brænder for at løse <b>problemer</b> og nyder at designe og udvikle softwareløsninger, der både er effektive og nemme at vedligeholde. Mit mål er at skabe applikationer, der ikke kun opfylder brugernes behov, men også følger <b>best practices inden for software engineering</b>."
@@ -358,20 +392,33 @@ window.LANGUAGE = {
       ],
       "readMore": "Læs mere +",
       "readLess": "Læs mindre -",
+      "stats": {
+        "yearsCoding": "År med programmering",
+        "projects": "Projekter",
+        "skills": "Teknologier"
+      },
+      "skillsEyebrow": "Færdigheder",
+      "skillsTitle": "Tekniske <span>færdigheder</span>",
       "skillsLabel": "Færdigheder",
       "skillHeadings": [
         "Programmeringssprog",
         "Frontend",
         "Backend og API'er",
         "Databaser",
-        "Cloud & DevOps",
-        "Samarbejdsværktøjer",
-        "Marketing & Analyse"
+        "Test",
+        "Værktøjer & DevOps"
       ]
     },
     "projects": {
       "viewProject": "Se Projekt",
+      "eyebrow": "Projekter",
       "title": "Mine <span>Projekter</span>",
+      "filters": {
+        "label": "Filtrer projekter",
+        "all": "Alle",
+        "completed": "Afsluttet",
+        "inDevelopment": "Under udvikling"
+      },
       "items": {
         "finance_api": {
           "status": "Under udvikling",
@@ -403,8 +450,9 @@ window.LANGUAGE = {
       ]
     },
     "contact": {
+      "eyebrow": "Kontakt",
       "title": "Kom I <span>Kontakt</span>",
-      "intro": "Er du interesseret i et samarbejde? Skriv til mig!",
+      "intro": "Er du interesseret i et samarbejde?<br>Skriv til mig!",
       "firstName": "Fornavn",
       "lastName": "Efternavn",
       "email": "Email",

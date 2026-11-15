@@ -4,7 +4,7 @@
  * ==========================================
  */
 const header = document.querySelector('header');
-const topHoverZone = 100;
+const topHoverZone = 80;
 
 function updateHeaderVisibility() {
   const isScrolled = window.scrollY > 40;
@@ -221,15 +221,39 @@ if (aboutMoreToggle) {
     : null;
 
   if (aboutBio && aboutMoreContent) {
+    let aboutContentTimer = 0;
+
+    aboutMoreContent.addEventListener('transitionend', (event) => {
+      if (
+        event.target === aboutMoreContent
+        && event.propertyName === 'height'
+        && aboutMoreToggle.getAttribute('aria-expanded') === 'true'
+      ) {
+        aboutMoreContent.style.height = 'auto';
+      }
+    });
+
     aboutMoreToggle.addEventListener('click', () => {
       const isExpanded = aboutMoreToggle.getAttribute('aria-expanded') === 'true';
       const shouldExpand = !isExpanded;
+      window.clearTimeout(aboutContentTimer);
+      aboutMoreContent.style.height = `${aboutMoreContent.getBoundingClientRect().height}px`;
 
       aboutMoreToggle.setAttribute('aria-expanded', String(shouldExpand));
       aboutMoreToggle.textContent = aboutMoreToggle.dataset[shouldExpand ? 'lessLabel' : 'moreLabel'];
       aboutMoreContent.setAttribute('aria-hidden', String(!shouldExpand));
       aboutMoreContent.inert = !shouldExpand;
       aboutBio.classList.toggle('is-expanded', shouldExpand);
+
+      aboutContentTimer = window.setTimeout(() => {
+        if (shouldExpand) {
+          aboutMoreContent.style.height = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'auto'
+            : `${aboutMoreContent.scrollHeight}px`;
+        } else {
+          aboutMoreContent.style.height = '0px';
+        }
+      }, 0);
     });
   }
 }
@@ -247,31 +271,10 @@ navLinks.forEach(link => {
   });
 });
 
-const trackedSections = [...navLinks]
-  .map(link => {
-    const href = link.getAttribute('href') || '';
-    return href.startsWith('#') ? document.getElementById(href.slice(1)) : null;
-  })
-  .filter(section => section instanceof HTMLElement)
-  .sort((a, b) => a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1);
-
-const skillsSnapPoint = document.querySelector('#skills');
-const aboutNextArrow = document.querySelector('#about .section-next:not(.section-prev)');
-const aboutPreviousArrow = document.querySelector('#about .section-prev');
+const trackedSections = [...document.querySelectorAll('#hero, .full-section')]
+  .filter(section => section instanceof HTMLElement);
 
 let activeSectionFrame = 0;
-
-function getMobileSkillSnapOffset() {
-  if (window.innerWidth > 1679) {
-    return 0;
-  }
-
-  const header = document.querySelector('header');
-  const phoneExtraOffset = window.innerWidth <= 430 ? 20 : 0;
-  return header instanceof HTMLElement
-    ? Math.ceil(header.getBoundingClientRect().bottom + 12 + phoneExtraOffset)
-    : 0;
-}
 
 function updateActiveNavigation() {
   const activationLine = window.innerHeight * 0.4;
@@ -292,8 +295,9 @@ function updateActiveNavigation() {
     section.classList.toggle('section-arrow-active', section === activeSection);
   });
 
+  const activeNavigationId = activeSection.id === 'skills' ? 'about' : activeSection.id;
   navLinks.forEach(link => {
-    const isActive = link.getAttribute('href') === `#${activeSection.id}`;
+    const isActive = link.getAttribute('href') === `#${activeNavigationId}`;
     link.classList.toggle('is-active', isActive);
     if (isActive) {
       link.setAttribute('aria-current', 'location');
@@ -301,38 +305,6 @@ function updateActiveNavigation() {
       link.removeAttribute('aria-current');
     }
   });
-
-  if (skillsSnapPoint instanceof HTMLElement
-    && aboutNextArrow instanceof HTMLAnchorElement
-    && aboutPreviousArrow instanceof HTMLAnchorElement) {
-    const skillsRect = skillsSnapPoint.getBoundingClientRect();
-    const canCenterSkills = skillsRect.height <= window.innerHeight
-      && window.innerWidth > 1679;
-    const firstSkillCategory = skillsSnapPoint.querySelector('.skill-category');
-    skillsSnapPoint.style.scrollSnapAlign = canCenterSkills ? 'center' : 'none';
-
-    if (firstSkillCategory instanceof HTMLElement) {
-      firstSkillCategory.style.scrollSnapAlign = canCenterSkills ? 'none' : 'start';
-      firstSkillCategory.style.scrollMarginTop = `${getMobileSkillSnapOffset()}px`;
-    }
-
-    const snapPoint = canCenterSkills || !(firstSkillCategory instanceof HTMLElement)
-      ? skillsSnapPoint
-      : firstSkillCategory;
-    const snapRect = snapPoint.getBoundingClientRect();
-    const skillsSnapLine = canCenterSkills
-      ? (window.innerHeight - skillsRect.height) / 2
-      : getMobileSkillSnapOffset();
-    const skillsReached = snapRect.top <= skillsSnapLine + 1;
-    aboutNextArrow.href = skillsReached ? '#portfolio' : '#skills';
-    aboutPreviousArrow.href = skillsReached ? '#about' : '#hero';
-    aboutNextArrow.setAttribute('aria-label', skillsReached
-      ? aboutNextArrow.dataset.labelAfter
-      : aboutNextArrow.dataset.labelBefore);
-    aboutPreviousArrow.setAttribute('aria-label', skillsReached
-      ? aboutPreviousArrow.dataset.labelAfter
-      : aboutPreviousArrow.dataset.labelBefore);
-  }
 
   activeSectionFrame = 0;
 }
@@ -364,16 +336,9 @@ function cancelSectionArrowScroll() {
 }
 
 function getSectionArrowTargetY(targetElement, startY) {
-  const skillsHeight = skillsSnapPoint?.getBoundingClientRect().height;
-  const firstSkillCategory = skillsSnapPoint?.querySelector('.skill-category');
-  const snapTarget = targetElement === skillsSnapPoint
-    && (skillsHeight > window.innerHeight || window.innerWidth <= 1679)
-    && firstSkillCategory instanceof HTMLElement
-    ? firstSkillCategory
-    : targetElement;
-  const targetRect = snapTarget.getBoundingClientRect();
-  const snapAlign = getComputedStyle(snapTarget).scrollSnapAlign.split(' ')[0];
-  const snapMarginTop = Number.parseFloat(getComputedStyle(snapTarget).scrollMarginTop) || 0;
+  const targetRect = targetElement.getBoundingClientRect();
+  const snapAlign = getComputedStyle(targetElement).scrollSnapAlign.split(' ')[0];
+  const snapMarginTop = Number.parseFloat(getComputedStyle(targetElement).scrollMarginTop) || 0;
   const snapOffset = snapAlign === 'center' && targetRect.height <= window.innerHeight
     ? (window.innerHeight - targetRect.height) / 2
     : snapMarginTop;
@@ -449,17 +414,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (!targetId || targetId === '#') return;
     let targetElement = document.getElementById(targetId.slice(1));
     if (!targetElement) return;
-    // The skills area lives inside About rather than being a separate section.
-    // When the About down-arrow is pressed while Skills is on screen, always
-    // advance to Projects, even if scroll-snap hasn't updated its href yet.
-    if (window.innerWidth <= 1679 && this.matches('#about > .section-next:not(.section-prev)')) {
-      const skills = document.querySelector('#skills');
-      if (skills) {
-        const rect = skills.getBoundingClientRect();
-        const reachedSkills = rect.top <= getMobileSkillSnapOffset() + 60 && rect.bottom > 0;
-        if (reachedSkills) targetElement = document.getElementById('portfolio') || targetElement;
-      }
-    }
     event.preventDefault();
     scrollToSectionFromArrow(targetElement);
   });
@@ -471,6 +425,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
  * ==========================================
  */
 const siteSearch = document.querySelector('[data-site-search]');
+const projectFilters = [...document.querySelectorAll('[data-project-filter]')];
+let activeProjectFilter = 'all';
+let refreshProjectVisibility = null;
+const projectVisibilityTimers = new WeakMap();
+
+function setProjectCardVisibility(card, isVisible) {
+  const isExiting = card.classList.contains('project-filter-exiting');
+  if ((isVisible && !card.hidden && !isExiting) || (!isVisible && (card.hidden || isExiting))) {
+    return;
+  }
+
+  const pendingTimer = projectVisibilityTimers.get(card);
+  if (pendingTimer) {
+    window.clearTimeout(pendingTimer);
+    projectVisibilityTimers.delete(card);
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    card.hidden = !isVisible;
+    card.classList.remove('project-filter-entering', 'project-filter-exiting');
+    return;
+  }
+
+  if (isVisible) {
+    const shouldAnimate = card.hidden || isExiting;
+    card.hidden = false;
+    card.classList.remove('project-filter-exiting', 'project-filter-entering');
+
+    if (shouldAnimate) {
+      void card.offsetWidth;
+      card.classList.add('project-filter-entering');
+      const timer = window.setTimeout(() => {
+        card.classList.remove('project-filter-entering');
+        projectVisibilityTimers.delete(card);
+      }, 460);
+      projectVisibilityTimers.set(card, timer);
+    }
+    return;
+  }
+
+  if (card.hidden || card.classList.contains('project-filter-exiting')) {
+    return;
+  }
+
+  card.classList.remove('project-filter-entering');
+  card.classList.add('project-filter-exiting');
+  const timer = window.setTimeout(() => {
+    card.hidden = true;
+    card.classList.remove('project-filter-exiting');
+    projectVisibilityTimers.delete(card);
+  }, 260);
+  projectVisibilityTimers.set(card, timer);
+}
 
 if (siteSearch) {
   const searchInput = siteSearch.querySelector('.header-search-input');
@@ -539,8 +546,11 @@ if (siteSearch) {
       const searchableText = normalizeSearchText(
         `${card.textContent} projects project portfolio`
       );
-      const matches = !query || searchableText.includes(query);
-      card.hidden = !matches;
+      const matchesQuery = !query || searchableText.includes(query);
+      const matchesFilter = activeProjectFilter === 'all'
+        || card.dataset.projectStatus === activeProjectFilter;
+      const matches = matchesQuery && matchesFilter;
+      setProjectCardVisibility(card, matches);
       return matches;
     });
 
@@ -576,6 +586,8 @@ if (siteSearch) {
       message.textContent = siteSearch.dataset.projectsEmpty;
     });
   }
+
+  refreshProjectVisibility = updateSiteSearch;
 
   header.addEventListener('mouseleave', () => {
     if (window.scrollY > 40) {
@@ -632,14 +644,78 @@ if (siteSearch) {
   updateSiteSearch();
 }
 
+projectFilters.forEach((button) => {
+  button.addEventListener('click', () => {
+    activeProjectFilter = button.dataset.projectFilter || 'all';
+    projectFilters.forEach((filterButton) => {
+      const isActive = filterButton === button;
+      filterButton.classList.toggle('is-active', isActive);
+      filterButton.setAttribute('aria-pressed', String(isActive));
+    });
+
+    if (refreshProjectVisibility) {
+      refreshProjectVisibility();
+      return;
+    }
+
+    document.querySelectorAll('#portfolio .project-showcase').forEach((card) => {
+      setProjectCardVisibility(
+        card,
+        activeProjectFilter === 'all' || card.dataset.projectStatus === activeProjectFilter
+      );
+    });
+  });
+});
+
 /**
  * ==========================================
  * 08. SECTION REVEAL INTERSECTION OBSERVER
  * ==========================================
  */
 const revealSections = document.querySelectorAll('.full-section, #hero');
-const skillGroups = document.querySelector('#skills');
+const skillGroups = document.querySelector('#skill-groups');
 const projectCards = document.querySelectorAll('#portfolio .project-showcase');
+const aboutCounters = document.querySelectorAll('#about [data-count]');
+let aboutCountersStarted = false;
+
+function startAboutCounters() {
+  if (aboutCountersStarted) {
+    return;
+  }
+
+  aboutCountersStarted = true;
+  const duration = 1100;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  aboutCounters.forEach((counter) => {
+    const target = Number(counter.dataset.count);
+    const suffix = counter.dataset.countSuffix || '';
+
+    if (!Number.isFinite(target)) {
+      return;
+    }
+
+    if (reduceMotion) {
+      counter.textContent = `${target}${suffix}`;
+      return;
+    }
+
+    let startTime;
+    const updateCounter = (timestamp) => {
+      startTime ??= timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easedProgress = 1 - (1 - progress) ** 3;
+      counter.textContent = `${Math.round(target * easedProgress)}${suffix}`;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(updateCounter);
+      }
+    };
+
+    counter.textContent = `0${suffix}`;
+    window.requestAnimationFrame(updateCounter);
+  });
+}
 
 projectCards.forEach((card) => {
   card.addEventListener('pointerleave', () => {
@@ -677,6 +753,9 @@ if (revealSections.length && 'IntersectionObserver' in window) {
 
       if (isInView) {
         entry.target.classList.add('in-view');
+        if (entry.target.id === 'about') {
+          startAboutCounters();
+        }
         revealObserver.unobserve(entry.target);
       }
       if (entry.target.id === 'portfolio' && !entry.isIntersecting) {
@@ -690,6 +769,7 @@ if (revealSections.length && 'IntersectionObserver' in window) {
   revealSections.forEach(section => revealObserver.observe(section));
 } else {
   revealSections.forEach(section => section.classList.add('in-view'));
+  startAboutCounters();
 }
 
 if (skillGroups instanceof HTMLElement && 'IntersectionObserver' in window) {
@@ -731,7 +811,7 @@ if (contactForm) {
       `${message}`;
 
     const mailtoUrl =
-      `mailto:info@kyra.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      `mailto:info@mp.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailtoUrl;
   });
@@ -946,7 +1026,7 @@ if (projectLightbox) {
   const begin = () => {
     if (started || !section.classList.contains('in-view')) return;
     started = true;
-    window.setTimeout(() => section.classList.add('kyra-form-visible'), 800);
+    window.setTimeout(() => section.classList.add('kyra-form-visible'), 650);
   };
   new MutationObserver(begin).observe(section, {attributes:true, attributeFilter:['class']});
   begin();
@@ -1024,4 +1104,3 @@ if (projectLightbox) {
     });
   }, true);
 })();
-

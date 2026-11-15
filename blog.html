@@ -19,10 +19,6 @@
     <meta name="twitter:description" content="KYRA. software engineering portfolio."/>
     <meta name="twitter:image" content="https://marekpavlus.github.io/kyra./images/og-preview.png"/>
     <title>Kyra. | Blog</title>
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-k-transparent-2026.png?v=2">
-    <link rel="icon" type="image/x-icon" href="images/kyra-k-transparent-2026.ico?v=2">
-    <link rel="shortcut icon" type="image/x-icon" href="images/kyra-k-transparent-2026.ico?v=2">
    
     <!-- RESTORE SAVED THEME BEFORE PAGE RENDERS -->
     <script>
@@ -58,6 +54,11 @@
     <!-- STYLESHEETS & ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+  
+    <!-- Theme-aware KYRA. favicon: dark K. on light tabs, white K. on dark tabs -->
+    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/kyra-favicon-dark.png" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" type="image/x-icon" href="images/kyra-favicon-adaptive.ico">
   </head>
 
   <body class="blog-loading-page">
@@ -70,8 +71,9 @@
     <!-- ==========================================
          BLOG HEADER & NAVIGATION
          ========================================== -->
+    <div id="hero" class="blog-header-shell">
       <header>
-        <a class="header-logo" href="index.html#hero" aria-label="KYRA. – Home"><img class="brand-logo brand-logo-light" src="images/logo/kyra-official-logo-light.png" alt="KYRA."/><img class="brand-logo brand-logo-dark" src="images/logo/kyra-official-logo-dark.png" alt="" aria-hidden="true"/></a>
+        <a class="header-logo" href="index.html#hero" aria-label="MP. – Home"><span class="brand-wordmark" aria-hidden="true">MP<span class="brand-period"></span></span></a>
         <button aria-controls="mobile-menu" aria-expanded="false" class="menu-toggle" type="button">
           <i aria-hidden="true" class="fa-solid fa-bars"></i>
           <span class="sr-only" data-language="ui.openMenu">Open menu</span>
@@ -119,7 +121,7 @@
             <div class="header-search-results"></div>
           </div>
         </div>
-        <a class="header-btn" data-language="header.contactMe" href="mailto:info@kyra.com">Contact Me</a>
+        <a class="header-btn" data-language="header.contactMe" href="mailto:info@mp.com">Contact Me</a>
         <!-- Light/Dark Mode Toggle | Language Switcher -->
         <div class="header-controls">
           <button aria-label="Switch to dark mode" class="theme-toggle" data-language-attr="aria-label:ui.switchToDark" type="button">
@@ -144,6 +146,7 @@
           </div>
         </div>
       </header>
+    </div>
 
     <!-- ==========================================
          BLOG LOADING SCREEN
@@ -161,7 +164,7 @@
     <script src="language.js"></script>
     <script src="blog.js"></script>
   
-<script id="kyra-cursor-glow-script">(function(){if(!matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const glow=document.createElement('div');glow.id='kyra-cursor-glow';document.body.appendChild(glow);document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1';},{passive:true});document.addEventListener('pointerleave',()=>glow.style.opacity='0');})();</script>
-<script src="loading.js" defer></script>
-</body>
+    <script id="kyra-cursor-glow-script">(function(){if(!matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const glow=document.createElement('div');glow.id='kyra-cursor-glow';document.body.appendChild(glow);document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';glow.style.opacity='1';},{passive:true});document.addEventListener('pointerleave',()=>glow.style.opacity='0');})();</script>
+    <script src="loading.js" defer></script>
+  </body>
 </html>

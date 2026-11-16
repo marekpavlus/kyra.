@@ -40,6 +40,11 @@ html {
   scroll-snap-type: y proximity;
   scroll-padding-top: 0;
   background-color: transparent;
+  background-image: var(--light-page-gradient);
+  background-position: top left;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
@@ -61,7 +66,8 @@ body {
 }
 
 html.dark-mode {
-  background-color: transparent;
+  background-color: #2b3a55;
+  background-image: var(--dark-page-gradient);
 }
 
 html.dark-mode body {
@@ -2205,7 +2211,8 @@ body.dark-mode {
 }
 
 html:has(body.dark-mode) {
-  background-color: transparent;
+  background-color: #2b3a55;
+  background-image: var(--dark-page-gradient);
 }
 
 body.dark-mode header {

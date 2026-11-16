@@ -39,7 +39,7 @@ html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
   scroll-padding-top: 0;
-  background-color: #fff;
+  background-color: transparent;
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
@@ -53,13 +53,15 @@ html.has-custom-scrollbar::-webkit-scrollbar {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   padding: 0 10%;
   line-height: 1.6;
 }
 
 html.dark-mode {
-  background-color: #2b3a55;
+  background-color: transparent;
 }
 
 html.dark-mode body {
@@ -2203,7 +2205,7 @@ body.dark-mode {
 }
 
 html:has(body.dark-mode) {
-  background-color: #2b3a55;
+  background-color: transparent;
 }
 
 body.dark-mode header {
